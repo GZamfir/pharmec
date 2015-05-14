@@ -1,0 +1,194 @@
+
+@media only screen {
+    .top-bar {
+        background:none!important;
+        height:70px;
+    }
+    .top-bar .name {
+        height: 70px;
+    }
+    .top-bar.expanded .title-area {
+        background: none;
+    }
+
+    .top-bar .toggle-topbar.menu-icon a {
+        display: block;
+        width: 42px;
+        height: 30px;
+        padding:0px;
+        background: url("images/mobile-menu-icon.png") no-repeat;
+    }
+    .top-bar .toggle-topbar.menu-icon a span::after {
+        box-shadow: none;
+    }
+    .top-bar-section ul li {
+        background: none repeat scroll 0 0 #4c4d4d;
+    }
+    .top-bar-section li.active:not(.has-form) a:not(.button) {
+        background: none repeat scroll 0 0 #4c4d4d;
+    }
+    .top-bar-section .has-dropdown > a:after {
+        border-image: none;
+        border-style: none;
+        border-width: 0px;
+        content: url('images/plusicon.png');
+        display: block;
+        height: 0;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 0;
+        margin-right: 30px;
+        margin-top: -10px;
+    }
+    .separator {
+        display:none;
+    }
+}
+
+@media only screen and (min-width:40.063em) {
+    .top-bar {
+        height:30px;
+    }
+    .top-bar .name {
+        height: 30px;
+    }
+    .tablet-number h3, .desktop-number h3 {
+        font-weight:bold;
+        font-size:26px;
+        color:#000;
+    }
+    .tablet-number, .tablet-search {
+        margin-top:40px;
+        text-align:center;
+    }
+    .tablet-search {
+        position:relative;
+    }
+    .tablet-search input {
+        height:auto!important;
+        margin-top:5px;
+        border-radius: 5px;
+    }
+    .tablet-menu-toggle {
+        text-align: right;
+    }
+    .tablet-search .search-icon {
+        top:4px;
+    }
+    #togglemenu {
+        display:block;
+        width:42px;
+        height:30px;
+        background: url("images/mobile-menu-icon.png") no-repeat;
+        cursor:pointer;
+        float:right;
+        margin-right:20px;
+        margin-top:40px;
+    }
+    .logo {
+        margin-top:40px;
+    }
+    #search-box {
+        display:block;
+        margin-bottom:0px;
+    }
+}
+
+
+@media only screen and (min-width:64.063em) {
+    /* Header */
+
+
+    .top-bar-section li {
+        padding:0px;
+        position:relative;
+
+    }
+
+    .top-bar-section ul li a {
+        color:#9f9e9e;
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        /* ...and now for the proper property */
+        transition:.5s;
+        padding-left:15px;
+        padding-right:15px!important;
+    }
+
+    .top-bar-section .has-dropdown > a:after {
+        content: "";
+    }
+
+    .top-bar-section li:not(.has-form) a:not(.button) {
+        background-color:#fff;
+    }
+
+    .top-bar-section li:not(.has-form) a:hover:not(.button) {
+        background-color:#4c4d4d;
+        color:#fec352;
+    }
+
+    .top-bar-section li.active:not(.has-form) a:hover:not(.button) {
+        background-color:#4c4d4d;
+        color:#fec352;
+    }
+
+    .top-bar-section li.active:not(.has-form) a:not(.button) {
+        background-color:#fff;
+        color:#818181;
+        line-height: 45px;
+        padding: 0 15px;
+    }
+
+    .top-bar-section li.active:not(.has-form) a:not(.button) {
+        background-color:#4c4d4d;
+        color:#fff;
+    }
+
+    .top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
+        background-color:#4c4d4d;
+        color:#fff;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .top-bar-section .dropdown li:hover:not(.has-form):not(.active) > a:not(.button) {
+        background-color:#fec352;
+        color:#000;
+    }
+
+    .top-bar-section li.active:not(.has-form) a:not(.button) {
+        background-color: #fff;
+        color: #9f9e9e;
+    }
+
+    .top-bar-section .dropdown li.active:not(.has-form) a:not(.button) {
+        background-color:#4c4d4d;
+        color:#fff;
+        border-bottom:  1px solid #ccc;
+    }
+
+    .top-bar-section .dropdown li.active:hover:not(.has-form) a:not(.button) {
+        background-color:#fec352;
+        color:#000;
+    }
+
+    .top-bar-section .separator {
+        position:absolute;
+        top:13px;
+        display:block;
+        right:0px;
+        font-size:14px;
+        color:#ccc;
+    }
+
+    .dropdown .separator {
+        display:none;
+    }
+
+    .item-107 .separator {
+        display:none;
+    }
+}

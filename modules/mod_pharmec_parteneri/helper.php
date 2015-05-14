@@ -1,0 +1,11 @@
+<?php
+
+class modPharmecParteneriHelper {
+
+	var $db;
+
+	public function __construct() {
+		$this->db = JFactory::getDbo();
+
+	}
+}
