@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field
+                name="id"
+                type="hidden"
+                />
+        <field
+                name="name"
+                type="input"
+                label="COM_PARTNER_PARTNER_NAME_LABEL"
+                description="COM_PARTNER_PARTNER_NAME_DESC"
+                size="148"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="website"
+                type="input"
+                label="COM_PARTNER_PARTNER_WEBSITE_LABEL"
+                description="COM_PARTNER_PARTNER_WEBSITE_DESC"
+                size="148"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="image"
+                type="media"
+                label="COM_PARTNER_PARTNER_IMAGE_LABEL"
+                description="COM_PARTNER_PARTNER_IMAGE_DESC"
+                size="148"
+                required="true"
+                default=""
+                class="span8"
+                />
+    </fieldset>
+</form>

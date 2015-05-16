@@ -32,8 +32,8 @@ JHtml::_('jquery.framework', false);
                 <div>
                     <img u="image" src2="<?php echo $slide['image']?>"/>
 
-                    <div class="slider_text"><h1><?php echo $slide['title']?></h1>
-                    </div>
+                    <a href="www.google.com"><div class="slider_text"><h2><?php echo $slide['title']?></h2>
+                    </div></a>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -53,11 +53,11 @@ JHtml::_('jquery.framework', false);
                     background-color: rgba(144, 144, 141, 0.8);
                 }
 
-                .slider_text h1{
+                .slider_text h2{
                     text-align: center;
                     line-height: 60px;
                     text-transform: uppercase;
-                    font-size: 50px;
+                    font-size: 3rem;
                     color: #FFFFFF;
                 }
                 /* jssor slider bullet navigator skin 05 css */

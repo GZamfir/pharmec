@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field
+                name="id"
+                type="hidden"
+                />
+        <field
+                name="title"
+                type="textarea"
+                label="COM_PARTNER_PARTNER_TITLE_LABEL"
+                description="COM_PARTNER_PARTNER_TITLE_DESC"
+                size="148"
+                required="true"
+                default=""
+                class="span8"
+                />
+
+
+        <field name="image"
+               type="media"
+               required="true"
+               directory="/partners/"
+               hide_none="1"
+               label="COM_PARTNER_PARTNER_IMAGE_LABEL"
+               description="COM_PARTNER_PARTNER_IMAGE_DESC"
+                />
+
+        <field
+                name="link"
+                type="textarea"
+                label="COM_PARTNER_PARTNER_LINK_LABEL"
+                description="COM_PARTNER_PARTNER_LINK_DESC"
+                size="148"
+                default=""
+                class="span8"
+                />
+    </fieldset>
+</form>

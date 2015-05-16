@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset
+            name="messages"
+            label="COM_PARTNER_CONFIG_MESSAGE_SETTINGS_LABEL"
+            description="COM_PARTNER_CONFIG_MESSAGE_SETTINGS_DESC"
+            >
+        <field name="tags" type="tag" mode="ajax"
+               label="JTAG" description="JTAG_DESC"
+               class="inputbox span12 small" multiple="true"
+                >
+        </field>
+    </fieldset>
+</config>
