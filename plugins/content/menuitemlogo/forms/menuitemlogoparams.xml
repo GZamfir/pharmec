@@ -3,16 +3,11 @@
 		<fields name="params">
 			<fieldset label="Category Information" name="params">
 				<field
-						name="status"
-						type="list"
-						default=""
-						label="Status"
-						>
-					<option value="">None</option>
-					<option value="0">No</option>
-					<option value="1">Yes</option>
-				</field>
-
+						name="category_image"
+						type="media"
+						label="imagine"
+						class="span8"
+						/>
 				<field
 						name="category_summary"
 						type="textarea"

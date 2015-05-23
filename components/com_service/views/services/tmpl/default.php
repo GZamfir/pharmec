@@ -12,70 +12,29 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 $doc = JFactory::getDocument();
-$doc->addStyleSheet('templates/citation/css/services/style.css');
+$doc->addStyleSheet('templates/pharmec/css/services.css');
 ?>
-<div class="row top_title_row">
-    <div class="small-12 columns top_service_title">
-    <h1>Serviciile Noastre</h1>
-    </div>
-</div>
-<div class="row top_description_row">
-    <div class="small-12 medium-6 columns top_service_description">
-        <?php if (!empty($this->header_info['service_description_text'])): ?>
-    <p><?php echo $this->header_info['service_description_text']; ?></p>
-<?php endif; ?>
-    </div>
-
-    <div class="small-12 medium-6 columns top_service_video">
-        <?php if (!empty($this->header_info['service_embeded_video'])): ?>
-    <div class="flex-video">
-        <iframe width="430" height="280" src="<?php echo $this->header_info['service_embeded_video'] ?>"
-                frameborder="0" allowfullscreen></iframe>
-    </div>
-    <p>View Our Service Video</p>
-<?php endif; ?>
-    </div>
-    <hr/>
-</div>
 <div class="row bottom_row">
-
-    <div class="small-12 columns categories-list" id="services-main-categories">
-
-        <div class="small-12 medium-6 columns categories-left-col">
-            <ul>
-                <?php foreach ($this->firsthalf as $item): ?>
-    <li>
-        <a href="<?php echo $item->href ?>">
-            <?php echo $item->title ?>
-        </a>
-    </li>
-<?php endforeach ?>
-            </ul>
+    <?php foreach($this->categories as $category): ?>
+        <?php
+        $cat_params = json_decode($category->params);
+        ?>
+    <div class="small-12 columns serviciu_single">
+        <div class="small-6 medium-6 large-6 columns end heading_text_bubble">
+            <h2><?php echo $category->title; ?></h2>
         </div>
-
-        <div class="small-12 medium-6 columns categories-right-col">
-            <ul>
-                <?php foreach ($this->secondhalf as $item): ?>
-    <li>
-        <a href="<?php echo $item->href ?>">
-            <?php echo $item->title ?>
-        </a>
-    </li>
-<?php endforeach ?>
-            </ul>
+        <div class="small-12 columns holder_bubble">
+                <p><?php echo (!empty($cat_params->category_summary))?$cat_params->category_summary:''; ?></p>
+            <div class="more_placeholder">
+                <div class="more_div">
+                    <a href="#">Mai Mult</a>
+                </div>
+            </div>
         </div>
     </div>
-
+    <?php endforeach; ?>
 </div>
 
-    </div>
-    </div>
-<div class="testimonials-div">
-        <?php
-$modName = 'mod_citation_testimonials ';
-$module = JModuleHelper::getModule($modName);
-$attribs = array();
-$module->id = 16;
-$moduleHtml = JModuleHelper::renderModule($module);
-echo $moduleHtml;
-?>
+<style>
+
+</style>

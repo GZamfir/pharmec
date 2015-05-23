@@ -28,21 +28,12 @@ class ServiceViewServices extends JViewLegacy {
         $app = JFactory::getApplication();
         JHtml::_('jquery.framework');
         $this->state = $this->get('State');
-        $items = $this->get('Items');
+        $this->categories = $this->get('Items');
 
         $this->params = $app->getParams('com_service');
 
-        $len = count($items);
-
-        //if the length is odd, push an element to the first column
-        if($len % 2 != 0) $len ++;
-
-        $this->firsthalf = array_slice($items, 0, $len / 2);
-        $this->secondhalf = array_slice($items, $len / 2);
-
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {
-;
             throw new Exception(implode("\n", $errors));
         }
 
