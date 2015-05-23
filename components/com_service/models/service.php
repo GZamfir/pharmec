@@ -70,48 +70,14 @@ class ServiceModelService extends JModelItem
             $id = $input->get('id');
             $db = JFactory::getDbo();
             $query = $db->getQuery(true);
-            $query->select('s.*, c.id as cat_id, c.title as cat_title, g.lat AS "lat", g.long AS "long"')
+            $query->select('s.*, c.id as cat_id, c.title as cat_title')
                 ->from($db->quoteName('#__service', 's'))
                 ->leftJoin('#__categories as c ON s.catid=c.id')
-                ->leftJoin('#__geolocation_coordinates as g ON s.geolocation_id=g.id')
                 ->where("s.id = {$id}");
             $db->setQuery($query);
             $item = $db->loadObject();
         }
         return $item;
-    }
-
-    public function getUpcomingServices()
-    {
-
-        $db = JFactory::getDbo();
-        $query = $db->getQuery(true);
-        $query->select('service.id, service.message, TIMESTAMPDIFF(second,NOW(),service.date_time) AS time_diff')
-            ->from($db->quoteName('#__service', 'service'))
-            ->where($db->quoteName('published').'=1')
-            ->where('TIMESTAMPDIFF(second,NOW(),service.date_time) > 0')
-            ->order('time_diff')
-            ->setLimit(11);
-
-        if (!isset($this->item)) {
-            $input = JFactory::getApplication()->input;
-            $id = $input->get('id');
-            $query->where("service.id != {$id}");
-        }
-
-        $db->setQuery($query);
-        $items = $db->loadObjectList();
-
-        foreach($items as $item){
-            $db = JFactory::getDbo();
-            $query = $db->getQuery(true);
-            $query->select("path as href")->from("#__menu")->where("link='index.php?option=com_service&view=service&id=$item->id'");
-
-            $db->SetQuery($query);
-            $item->href = $db->loadResult();
-        }
-
-        return $items;
     }
 
 }

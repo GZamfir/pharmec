@@ -26,16 +26,8 @@ class ServiceViewCategory extends JViewLegacy
      */
     function display($tpl = null)
     {
-        require_once JPATH_COMPONENT . '/helpers/HeaderHelper.php';
         // Assign data to the view
         $this->services_within_category = $this->get('ServicesWithinCategory');
-
-        $this->header_info = HeaderHelper::getHeaderInfo();
-
-        foreach($this->services_within_category as $k=>$individual_service){
-            $this->services_within_category[$k]->formated_date = date('l jS F Y', strtotime($this->services_within_category[$k]->service_date));
-            $this->services_within_category[$k]->date_for_title = date('d/m/Y', strtotime($this->services_within_category[$k]->service_date));
-        }
 
 
         //load in jquery

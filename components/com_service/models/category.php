@@ -72,10 +72,9 @@ class ServiceModelCategory extends JModelItem
         $cat_id = $input->get('catid');
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('s.*, c.id as cat_id, c.title as cat_title, g.lat AS "lat", g.long AS "long"')
+        $query->select('s.*, c.id as cat_id, c.title as cat_title')
             ->from($db->quoteName('#__service', 's'))
             ->leftJoin('#__categories as c ON s.catid=c.id')
-            ->leftJoin('#__geolocation_coordinates as g ON s.geolocation_id=g.id')
             ->where('s.catid=' . $cat_id)
             ->where('s.published=1');
         $db->setQuery($query);
@@ -107,64 +106,4 @@ class ServiceModelCategory extends JModelItem
         return $header;
     }
 
-
-    protected function convertAddressToLatAndLong($address)
-    {
-        $encoded_address = urlencode($address);
-
-        $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$encoded_address}&sensor=false&key=AIzaSyAKWXQplHdI-s_XmN1s6S_2SWkyhgUUt6c";
-        $ch = curl_init();
-
-        // set URL and other appropriate options
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        // grab URL and pass it to the browser
-
-        $output = curl_exec($ch);
-        var_dump(curl_error($ch));
-
-        //echo $output;
-
-        // close curl resource, and free up system resources
-        curl_close($ch);
-        var_dump($url);
-        $humanized_output = json_decode($output);
-        ini_set('xdebug.var_display_max_depth', 10);
-        ini_set('xdebug.var_display_max_children', 512);
-        ini_set('xdebug.var_display_max_data', 2048);
-        var_dump($humanized_output->results[0]->geometry->location);
-
-        $coordinates = array();
-
-        $coordinates['lat'] = $humanized_output->results[0]->geometry->location->lat;
-        $coordinates['long'] = $humanized_output->results[0]->geometry->location->lng;
-        $coordinates['address'] = $humanized_output->results[0]->formatted_address;
-        return $coordinates;
-    }
-
-    protected function bindCoordinatesToTable($coordinates)
-    {
-        // Get a db connection.
-        $db = JFactory::getDbo();
-
-        // Create a new query object.
-        $query = $db->getQuery(true);
-
-        // Insert columns.
-        $columns = array('address','lat','long');
-
-        // Insert values.
-        $values = array($db->quote($coordinates['address']), $db->quote($coordinates['lat']), $db->quote($coordinates['long']));
-
-        // Prepare the insert query.
-        $query->insert($db->quoteName('#__geolocation_coordinates'))
-            ->columns($db->quoteName($columns))
-            ->values(implode(',', $values));
-
-        // Set the query using our newly populated query object and execute it.
-        $db->setQuery($query);
-        $db->execute();
-    }
 }

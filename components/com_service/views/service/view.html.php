@@ -30,11 +30,6 @@ class ServiceViewService extends JViewLegacy
         //get the individual item
         $this->item = $this->get('Item');
 
-        //get the upcoming services
-        $this->upcoming_services = $this->get('UpcomingServices');
-
-        $this->item->date_for_title = date('l jS F Y', strtotime($this->item->service_date));
-
         //load in jquery
         JHtml::_('jquery.framework');
 

@@ -16,11 +16,7 @@ $doc->addStyleSheet('templates/citation/css/services/style.css');
 ?>
 <div class="row top_title_row">
     <div class="small-12 columns top_service_title">
-        <?php if (!empty($this->header_info['service_title_text'])): ?>
-    <h1><?php echo $this->header_info['service_title_text']; ?></h1>
-<?php else: ?>
-    <h1>Info on our services</h1>
-<?php endif; ?>
+    <h1>Serviciile Noastre</h1>
     </div>
 </div>
 <div class="row top_description_row">

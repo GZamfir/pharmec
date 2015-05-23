@@ -25,13 +25,10 @@ class ServiceViewServices extends JViewLegacy {
      * Display the view
      */
     public function display($tpl = null) {
-
-        require_once JPATH_COMPONENT . '/helpers/HeaderHelper.php';
         $app = JFactory::getApplication();
         JHtml::_('jquery.framework');
         $this->state = $this->get('State');
         $items = $this->get('Items');
-        $this->header_info = HeaderHelper::getHeaderInfo();
 
         $this->params = $app->getParams('com_service');
 
