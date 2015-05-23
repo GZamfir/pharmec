@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+		<fields name="params">
+			<fieldset label="Category Information" name="params">
+				<field
+						name="status"
+						type="list"
+						default=""
+						label="Status"
+						>
+					<option value="">None</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field
+						name="category_summary"
+						type="textarea"
+						label="Summary"
+						/>
+				<field
+						name="category_description"
+						type="editor"
+						label="Descriere"
+						/>
+
+			</fieldset>
+		</fields>
+</form>

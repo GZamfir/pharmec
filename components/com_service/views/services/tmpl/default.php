@@ -39,10 +39,9 @@ $doc->addStyleSheet('templates/citation/css/services/style.css');
 </div>
 <div class="row bottom_row">
 
-    <div class="small-12 columns categorys-list" id="services-main-categorys">
-        <h1>Categorys</h1>
+    <div class="small-12 columns categories-list" id="services-main-categories">
 
-        <div class="small-12 medium-6 columns categorys-left-col">
+        <div class="small-12 medium-6 columns categories-left-col">
             <ul>
                 <?php foreach ($this->firsthalf as $item): ?>
     <li>
@@ -54,7 +53,7 @@ $doc->addStyleSheet('templates/citation/css/services/style.css');
             </ul>
         </div>
 
-        <div class="small-12 medium-6 columns categorys-right-col">
+        <div class="small-12 medium-6 columns categories-right-col">
             <ul>
                 <?php foreach ($this->secondhalf as $item): ?>
     <li>

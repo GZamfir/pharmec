@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+		<fields name="params">
+			<fieldset label="Header Info" name="params">
+				<field
+						name="enable_custom_header"
+						type="list"
+						default=""
+						label="Enable Custom Header"
+						>
+					<option value="">None</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field
+						name="show_enquiry_box"
+						type="list"
+						default=""
+						label="Show Enquiry Box"
+						>
+					<option value="">None</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field
+						name="header_background_image"
+						type="media"
+						label="Header Background Image"
+						/>
+
+				<field
+						name="header_background_colour"
+						type="list"
+						default=""
+						label="Header Background Colour"
+						>
+					<option value="#818181">Grey</option>
+					<option value="#fdc352">Yellow</option>
+					<option value="#358ecc">Blue</option>
+					<option value="#fff">White</option>
+				</field>
+
+				<field
+						name="content_background_colour"
+						type="list"
+						default=""
+						label="Content Background Colour"
+						>
+					<option value="0,0,0">Black</option>
+					<option value="129,129,129">Grey</option>
+					<option value="253,195,82">Yellow</option>
+					<option value="53,142,204">Blue</option>
+					<option value="255,255,255">White</option>
+				</field>
+
+				<field
+						name="font_colour"
+						type="list"
+						default=""
+						label="Font Colour"
+						>
+					<option value="#818181">Grey</option>
+					<option value="#fdc352">Yellow</option>
+					<option value="#358ecc">Blue</option>
+					<option value="#fff">White</option>
+				</field>
+
+				<field
+						name="header_tagline"
+						type="textarea"
+						label="Header Tagline"
+						/>
+				<field
+						name="header_text"
+						type="textarea"
+						label="Header Text"
+						/>
+
+				<field
+						name="inherit_header_from_parent"
+						type="list"
+						default=""
+						label="Inherit Header From Parent"
+						>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+			</fieldset>
+		</fields>
+</form>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="plugin" group="content" method="upgrade">
+        <name>plg_menuitemlogo</name>
+        <files>
+                <filename plugin="menuitemlogo">menuitemlogo.php</filename>
+                <filename>index.html</filename>
+				<folder>forms</folder>
+        </files>
+</extension>

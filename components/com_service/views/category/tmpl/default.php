@@ -27,7 +27,7 @@ $doc->addStyleSheet('templates/citation/css/services/style.css');
 
 
 <div class="row bottom_row">
-    <div class="small-12 medium-6 columns categorys-list">
+    <div class="small-12 medium-6 columns categories-list">
         <?php if (count($this->services_within_category) > 0): ?>
     <ul>
         <?php foreach ($this->services_within_category as $service_within_category): ?>
