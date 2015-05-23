@@ -56,6 +56,15 @@ if (JUri::getInstance()->toString() == JUri::base()) { $home = true; } else { $h
         <jdoc:include type="modules" name="top" />
     </div>
 
+    <div class="row main-content">
+        <div class="small-12 medium-9 columns">
+            <jdoc:include type="component"/>
+        </div>
+    </div>
+
+    <div class="news">
+        <jdoc:include type="modules" name="news" />
+    </div>
     <div class="parteneri_home">
         <jdoc:include type="modules" name="middle" />
     </div>

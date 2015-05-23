@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_SERVICES_TITLE_LIST_VIEW_SERVICES" option="View">
+        <message>
+            <![CDATA[COM_SERVICES_TITLE_LIST_VIEW_SERVICES_DESC]]>
+        </message>
+
+        <fields name="params">
+            <fieldset label="Service Info" name="service_params">
+                <field
+                        name="service_title_text"
+                        type="textarea"
+                        label="Service Title Text"
+                        />
+                <field
+                        name="service_description_text"
+                        type="textarea"
+                        label="Service Description Text"
+                        />
+                <field
+                        name="service_embeded_video"
+                        type="textarea"
+                        label="Service Embeded Video"
+                        />
+            </fieldset>
+        </fields>
+    </layout>
+</metadata>

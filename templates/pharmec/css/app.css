@@ -44,6 +44,29 @@
     .separator {
         display:none;
     }
+
+
+    /* Bubble */
+    .heading_text_bubble {
+        border-top-right-radius: 25px;
+        border-top-left-radius: 25px;
+        border: 2px solid #05acb3;
+        background-color: #05acb3;
+        color: #FFFFFF;
+        text-align: center;
+    }
+
+    .heading_text_bubble h2 {
+        color: #FFFFFF;
+    }
+
+    .holder_bubble {
+        border-bottom-right-radius: 25px;
+        border-top-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        border: 2px solid #05acb3;
+        background-color: rgba(129, 130, 129, 0.100);
+    }
 }
 
 @media only screen and (min-width:40.063em) {

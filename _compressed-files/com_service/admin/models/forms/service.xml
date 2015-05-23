@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+        addrulepath="/administrator/components/com_service/models/rules">
+    <fieldset>
+        <field
+                name="id"
+                type="hidden"
+                />
+        <field
+                name="message"
+                type="textarea"
+                label="COM_SERVICE_SERVICE_MESSAGE_LABEL"
+                description="COM_SERVICE_SERVICE_MESSAGE_DESC"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="description"
+                type="editor"
+                label="COM_SERVICE_SERVICE_DESCRIPTION_LABEL"
+                description="COM_SERVICE_SERVICE_DESCRIPTION_DESC"
+                required="true"
+                default=""
+                class="inputbox editor"
+                filter="safehtml"
+                />
+
+        <field name="service_date" required="true" type="calendar" label="Select a date" description="" format="%d/%m/%Y"
+               default="0000-00-00"  />
+
+        <field name="time" required="true" type="input" label="Select a time (HH:MM)" class="inputbox validate-time"
+               validate="time"
+               description="The time should be in the following format : HH:MM"
+                 />
+
+        <field
+                name="duration"
+                type="input"
+                label="COM_SERVICE_SERVICE_DURATION_LABEL"
+                description="COM_SERVICE_SERVICE_DURATION_DESC"
+                default=""
+                class="span8"
+                />
+
+        <field
+                name="catid"
+                type="category"
+                extension="com_service"
+                class="inputbox"
+                default=""
+                label="COM_SERVICE_SERVICE_FIELD_CATID_LABEL"
+                description="COM_SERVICE_SERVICE_FIELD_CATID_DESC"
+                required="true"
+                >
+            <option value="">JOPTION_SELECT_CATEGORY</option>
+        </field>
+
+        <field
+                name="postcode"
+                type="input"
+                label="COM_SERVICE_SERVICE_POSTCODE_LABEL"
+                description="COM_SERVICE_SERVICE_POSTCODE_DESC"
+                default=""
+                class="span8"
+                />
+
+        <field
+                name="address"
+                type="textarea"
+                label="COM_SERVICE_SERVICE_ADDRESS_LABEL"
+                description="COM_SERVICE_SERVICE_ADDRESS_DESC"
+                default=""
+                class="span8"
+                />
+
+        <field
+                name="service_type"
+                type="list"
+                default=""
+                label="COM_SERVICE_SERVICE_FIELD_TYPE_LABEL"
+                description="COM_SERVICE_SERVICE_FIELD_TYPE_DESC"
+                >
+            <option value="0">None</option>
+            <option value="1">Health And Safety</option>
+            <option value="2">Employment Law</option>
+            <option value="3">Both</option>
+        </field>
+
+        <field
+                name="who_should_attend"
+                type="textarea"
+                label="COM_SERVICE_SERVICE_WHO_SHOULD_ATTEND_LABEL"
+                description="COM_SERVICE_SERVICE_WHO_SHOULD_ATTEND_DESC"
+                default=""
+                class="span8"
+                />
+
+        <field
+                name="start_text"
+                type="textarea"
+                label="COM_SERVICE_SERVICE_START_TEXT_LABEL"
+                description="COM_SERVICE_SERVICE_START_TEXT_DESC"
+                default=""
+                class="span8"
+                />
+
+        <field
+                name="finish_text"
+                type="textarea"
+                label="COM_SERVICE_SERVICE_FINISH_TEXT_LABEL"
+                description="COM_SERVICE_SERVICE_FINISH_TEXT_DESC"
+                default=""
+                class="span8"
+                />
+
+        <field
+                name="booking_link"
+                type="input"
+                label="COM_SERVICE_SERVICE_BOOKING_LINK_LABEL"
+                description="COM_SERVICE_SERVICE_BOOKING_LINK_DESC"
+                default=""
+                class="span8"
+                />
+
+        <field name="image1"
+                         type="media"
+                         directory="/services/"
+                         hide_none="1"
+                         label="COM_SERVICE_SERVICE_IMAGE_1_LABEL"
+                         description="COM_SERVICE_SERVICE_IMAGE_1_DESC"
+            />
+
+        <field name="image2"
+               type="media"
+               directory="/services/"
+               hide_none="1"
+               label="COM_SERVICE_SERVICE_IMAGE_2_LABEL"
+               description="COM_SERVICE_SERVICE_IMAGE_2_DESC"
+                />
+
+        <field name="image3"
+               type="media"
+               directory="/services/"
+               hide_none="1"
+               label="COM_SERVICE_SERVICE_IMAGE_3_LABEL"
+               description="COM_SERVICE_SERVICE_IMAGE_3_DESC"
+                />
+    </fieldset>
+</form>

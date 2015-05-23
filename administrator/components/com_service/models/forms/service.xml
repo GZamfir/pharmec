@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+        addrulepath="/administrator/components/com_service/models/rules">
+    <fieldset>
+        <field
+                name="id"
+                type="hidden"
+                />
+
+        <field
+                name="title"
+                type="input"
+                label="Titlu"
+                description="Titlul serviciului"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="summary"
+                type="textarea"
+                label="Summary"
+                description="O scurta descriere"
+                default=""
+                class="span8"
+                />
+        <field
+                name="description"
+                type="editor"
+                label="Descriere"
+                description="Descrierea completa a serviciului"
+                required="true"
+                default=""
+                buttons="true"
+
+                />
+
+        <field
+                name="catid"
+                type="category"
+                extension="com_service"
+                class="inputbox"
+                default=""
+                label="COM_SERVICE_SERVICE_FIELD_CATID_LABEL"
+                description="COM_SERVICE_SERVICE_FIELD_CATID_DESC"
+                >
+            <option value="">JOPTION_SELECT_CATEGORY</option>
+        </field>
+
+
+
+        <field name="image1"
+                         type="media"
+                         directory="/services/"
+                         hide_none="1"
+                         label="COM_SERVICE_SERVICE_IMAGE_1_LABEL"
+                         description="COM_SERVICE_SERVICE_IMAGE_1_DESC"
+            />
+
+    </fieldset>
+</form>
