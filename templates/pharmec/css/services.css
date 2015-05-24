@@ -19,6 +19,10 @@
         margin-top: 20px;
     }
 
+    .serviciu_single p {
+        padding: 15px 10px 10px 10px;
+    }
+
     .more_div a {
         color: white !important;
     }
