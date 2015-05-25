@@ -92,18 +92,27 @@ class ServiceModelCategory extends JModelItem
         return $items;
     }
 
-    public function getHeader()
+    public function getCategoryDetails()
     {
         $input = JFactory::getApplication()->input;
         $cat_id = $input->get('catid');
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('title')
+        $query->select('*')
             ->from($db->quoteName('#__categories', 'c'))
             ->where("c.id = {$cat_id}");
         $db->setQuery($query);
-        $header = $db->loadResult();
-        return $header;
+        $result = $db->loadObject();
+        //category params decoded
+        $cat_params = json_decode($result->params);
+
+
+        $category['title'] = $result->title;
+        $category['summary'] = $cat_params->category_summary;
+        $category['image'] = $cat_params->category_image;
+        $category['description'] = $cat_params->category_description;
+
+        return $category;
     }
 
 }

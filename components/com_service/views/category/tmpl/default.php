@@ -11,54 +11,77 @@
 defined('_JEXEC') or die('Restricted access');
 
 $doc = JFactory::getDocument();
-$doc->addStyleSheet('templates/citation/css/services/style.css');
+$doc->addStyleSheet('templates/pharmec/css/services.css');
 ?>
 
+<div class="row top_row">
+    <div class="small-12 columns title_and_image">
+        <img src="<?php echo $this->category_details['image']; ?>">
+        <div class="category_title">
+            <h2><?php echo $this->category_details['title'];?></h2>
+        </div>
+    </div>
 
-<div class="row top_title_row">
-    <div class="small-12 columns top_service_title">
-        <?php if (!empty($this->header_info['service_title_text'])): ?>
-    <h1><?php echo $this->header_info['service_title_text']; ?></h1>
-<?php else: ?>
-    <h1>Info on our services</h1>
-<?php endif; ?>
+    <div class="small-12 columns category_description">
+        <?php echo $this->category_details['description']; ?>
     </div>
 </div>
 
 
 <div class="row bottom_row">
-    <div class="small-12 medium-6 columns categories-list">
-        <?php if (count($this->services_within_category) > 0): ?>
-    <ul>
-        <?php foreach ($this->services_within_category as $service_within_category): ?>
-            <li>
-                <a href="<?php echo $service_within_category->href; ?>">
-                    <?php echo $service_within_category->title; ?>
-                </a>
-            </li>
-        <?php endforeach ?>
-    </ul>
-<?php else: ?>
-    <p>Niciun serviciu disponibil pentru aceasta categorie</p>
-<?php endif; ?>
-    </div>
+    <?php foreach ($this->services_within_category as $service): ?>
+        <div class="small-12 columns serviciu_single">
+            <div class="small-6 medium-6 large-6 columns end heading_text_bubble">
+                <h2><?php echo $service->title; ?></h2>
+            </div>
+            <div class="small-12 columns holder_bubble">
+                <div class="serviciu_description">
+                    <?php echo (!empty($service->description)) ? $service->description : ''; ?>
+                </div>
 
-    <div class="small-12 medium-6 columns map-div">
-        <div id="map-canvas">
-
+                <div class="more_placeholder">
+                    <div class="more_div">
+                        <a href="<?php echo (!empty($service->href)) ? $service->href : '#'; ?>">Mai Mult</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
+    <?php endforeach; ?>
 </div>
 
-    </div>
-    </div>
-<div class="testimonials-div">
-        <?php
-$modName = 'mod_citation_testimonials ';
-$module = JModuleHelper::getModule($modName);
-$attribs = array();
-$module->id = 16;
-$moduleHtml = JModuleHelper::renderModule($module);
-echo $moduleHtml;
-?>
+<style>
+    .top_row img{
+        width: 100%;
+    }
+
+    .top_row{
+        margin-top: 6%!important;
+        margin-bottom: 6%!important;
+    }
+
+    .category_description{
+        margin-top: 4%!important;
+        font-weight: bold;
+    }
+
+
+
+    .category_title {
+        position: absolute;
+        width: 450px;
+        height: 90px;
+        bottom: 0;
+        left: 2%;
+        padding: 20px 20px 40px 20px;
+
+        background-color: rgba(144, 144, 141, 0.8);
+    }
+
+    .category_title h2{
+        text-align: center;
+        line-height: 60px;
+        text-transform: uppercase;
+        font-size: 2.5rem;
+        color: #FFFFFF;
+    }
+</style>
