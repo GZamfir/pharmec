@@ -28,6 +28,7 @@ class ServiceViewCategory extends JViewLegacy
     {
         // Assign data to the view
         $this->services_within_category = $this->get('ServicesWithinCategory');
+        
         $this->category_details = $this->get('CategoryDetails');
 
         //load in jquery

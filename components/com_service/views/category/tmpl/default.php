@@ -17,13 +17,21 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
 <div class="row top_row">
     <div class="small-12 columns title_and_image">
         <img src="<?php echo $this->category_details['image']; ?>">
-        <div class="category_title">
-            <h2><?php echo $this->category_details['title'];?></h2>
+
+        <div class="visible-for-large-up">
+            <div class="category_title">
+                <h2><?php echo $this->category_details['title']; ?></h2>
+            </div>
         </div>
     </div>
 
-    <div class="small-12 columns category_description">
+    <div class="small-12 columns">
+        <div class="category_description">
+        <div class="visible-for-medium-down">
+            <h2><?php echo $this->category_details['title']; ?></h2>
+        </div>
         <?php echo $this->category_details['description']; ?>
+        </div>
     </div>
 </div>
 
@@ -50,21 +58,24 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
 </div>
 
 <style>
-    .top_row img{
+    .top_row img {
         width: 100%;
     }
 
-    .top_row{
-        margin-top: 6%!important;
-        margin-bottom: 6%!important;
+    .top_row {
+        margin-top: 6% !important;
+        margin-bottom: 6% !important;
     }
 
-    .category_description{
-        margin-top: 4%!important;
+    .category_description {
         font-weight: bold;
+
+        padding: 15px;
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        border: 2px solid #05acb3;
+        background-color: rgba(129, 130, 129, 0.100);
     }
-
-
 
     .category_title {
         position: absolute;
@@ -77,7 +88,7 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
         background-color: rgba(144, 144, 141, 0.8);
     }
 
-    .category_title h2{
+    .category_title h2 {
         text-align: center;
         line-height: 60px;
         text-transform: uppercase;
