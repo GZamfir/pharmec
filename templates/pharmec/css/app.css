@@ -121,14 +121,18 @@
 
 @media only screen and (min-width:64.063em) {
     /* Header */
-
-
+    .top-bar {
+        height:70px;
+        margin-left:-30px;
+    }
+    .top-bar .name {
+        height:70px;
+    }
     .top-bar-section li {
         padding:0px;
         position:relative;
 
     }
-
     .top-bar-section ul li a {
         color:#9f9e9e;
         -o-transition:.5s;
@@ -140,64 +144,52 @@
         padding-left:15px;
         padding-right:15px!important;
     }
-
     .top-bar-section .has-dropdown > a:after {
         content: "";
     }
-
     .top-bar-section li:not(.has-form) a:not(.button) {
         background-color:#fff;
     }
-
     .top-bar-section li:not(.has-form) a:hover:not(.button) {
         background-color:#4c4d4d;
         color:#fec352;
     }
-
     .top-bar-section li.active:not(.has-form) a:hover:not(.button) {
         background-color:#4c4d4d;
         color:#fec352;
     }
-
     .top-bar-section li.active:not(.has-form) a:not(.button) {
         background-color:#fff;
         color:#818181;
         line-height: 45px;
         padding: 0 15px;
     }
-
     .top-bar-section li.active:not(.has-form) a:not(.button) {
         background-color:#4c4d4d;
         color:#fff;
     }
-
     .top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
         background-color:#4c4d4d;
         color:#fff;
         border-bottom: 1px solid #ccc;
     }
-
     .top-bar-section .dropdown li:hover:not(.has-form):not(.active) > a:not(.button) {
         background-color:#fec352;
         color:#000;
     }
-
     .top-bar-section li.active:not(.has-form) a:not(.button) {
         background-color: #fff;
         color: #9f9e9e;
     }
-
     .top-bar-section .dropdown li.active:not(.has-form) a:not(.button) {
         background-color:#4c4d4d;
         color:#fff;
         border-bottom:  1px solid #ccc;
     }
-
     .top-bar-section .dropdown li.active:hover:not(.has-form) a:not(.button) {
         background-color:#fec352;
         color:#000;
     }
-
     .top-bar-section .separator {
         position:absolute;
         top:13px;
@@ -206,12 +198,28 @@
         font-size:14px;
         color:#ccc;
     }
-
     .dropdown .separator {
         display:none;
     }
-
     .item-107 .separator {
         display:none;
+    }
+    #roksearch_results {
+        display:block;
+    }
+    .breadcrumbs-container {
+        padding-left:100px;
+        padding-right:100px;
+    }
+    /* Home Page */
+    .tag-cloud {
+        text-align:center;
+    }
+    .tag-cloud p {
+        font-size:1.2em;
+    }
+    #tag-cloud-list {
+        margin-top: -50px!important;
+        margin-bottom:-50px;
     }
 }
