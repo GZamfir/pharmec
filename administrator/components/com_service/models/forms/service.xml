@@ -28,11 +28,14 @@
                 name="description"
                 type="editor"
                 label="Descriere"
+
                 description="Descrierea completa a serviciului"
                 required="true"
                 default=""
                 buttons="true"
 
+                class="inputbox"
+                filter="JComponentHelper::filterText"
                 />
 
         <field

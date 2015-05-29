@@ -30,6 +30,7 @@ class ServiceViewServices extends JViewLegacy {
         $this->state = $this->get('State');
         $this->categories = $this->get('Items');
 
+        $this->uncategorized_items = $this->get('UncategorizedItems');
         $this->params = $app->getParams('com_service');
 
         // Check for errors.

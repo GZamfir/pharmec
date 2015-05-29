@@ -36,6 +36,28 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
     <?php endforeach; ?>
 </div>
 
+<div class="row bottom_row">
+    <?php foreach ($this->uncategorized_items as $uncategorized_item): ?>
+        <?php
+        $cat_params = json_decode($category->params);
+        ?>
+        <div class="small-12 columns serviciu_single">
+            <div class="small-6 medium-6 large-6 columns end heading_text_bubble">
+                <h2><?php echo $uncategorized_item->title; ?></h2>
+            </div>
+            <div class="small-12 columns holder_bubble">
+                <p><?php echo (!empty($uncategorized_item->summary)) ?$uncategorized_item->summary : ''; ?></p>
+
+                <div class="more_placeholder">
+                    <div class="more_div">
+                        <a href="<?php echo (!empty($uncategorized_item->href)) ? $uncategorized_item->href : '#'; ?>">Mai Mult</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
 <style>
 
 </style>
