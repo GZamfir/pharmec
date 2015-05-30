@@ -16,13 +16,17 @@ $input = JFactory::getApplication()->input;
 $title = strtolower($doc->getTitle());
 $id = $input->get('id');
 $viewType = $input->get('view');
-if (JUri::getInstance()->toString() == JUri::base()) { $home = true; } else { $home = false;}
+if (JUri::getInstance()->toString() == JUri::base()) {
+    $home = true;
+} else {
+    $home = false;
+}
 ?>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <jdoc:include type="head" />
+    <jdoc:include type="head"/>
 </head>
 <body>
 <header>
@@ -30,7 +34,7 @@ if (JUri::getInstance()->toString() == JUri::base()) { $home = true; } else { $h
         <div class="medium-3 columns">
             <div class="row hide-for-small-down columns">
                 <a href="/">
-                    <img class="logo" src="/templates/<?php echo $this->template;?>/images/pharmec_logo.png"/>
+                    <img class="logo" src="/templates/<?php echo $this->template; ?>/images/pharmec_logo.png"/>
                 </a>
             </div>
         </div>
@@ -47,26 +51,41 @@ if (JUri::getInstance()->toString() == JUri::base()) { $home = true; } else { $h
                     </li>
                 </ul>
                 <section class="top-bar-section">
-                    <jdoc:include type="modules" name="mainmenu" title="Main Menu" />
+                    <jdoc:include type="modules" name="mainmenu" title="Main Menu"/>
                 </section>
             </nav>
         </div>
     </div>
     <div class="top_slider">
-        <jdoc:include type="modules" name="top" />
+        <jdoc:include type="modules" name="top"/>
     </div>
 
+    <?php if ($this->countModules('right')) {
+        $right_module_loaded = true;
+    } else {
+        $right_module_loaded = false;
+    } ?>
+
     <div class="row main-content">
+        <?php if($right_module_loaded): ?>
         <div class="small-12 medium-9 columns">
             <jdoc:include type="component"/>
         </div>
+        <div class="visible-for-medium-up medium-3 columns">
+            <jdoc:include type="modules" name="right"/>
+        </div>
+        <?php else: ?>
+        <div class="small-12 columns">
+            <jdoc:include type="component"/>
+        </div>
+        <?php endif; ?>
     </div>
 
     <div class="news">
-        <jdoc:include type="modules" name="news" />
+        <jdoc:include type="modules" name="news"/>
     </div>
     <div class="parteneri_home">
-        <jdoc:include type="modules" name="middle" />
+        <jdoc:include type="modules" name="middle"/>
     </div>
 
 
