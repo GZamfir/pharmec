@@ -40,55 +40,41 @@ if (JUri::getInstance()->toString() == JUri::base()) {
         </div>
     </div>
 
-    <div class="row collapse">
-        <div class="small-12 columns">
-            <nav id="top-bar-id" class="top-bar" data-topbar role="navigation">
-                <ul class="title-area">
-                    <li class="toggle-topbar menu-icon hide-for-medium-up">
-                        <a href="#">
-                            <span></span>
-                        </a>
-                    </li>
-                </ul>
-                <section class="top-bar-section">
-                    <jdoc:include type="modules" name="mainmenu" title="Main Menu"/>
-                </section>
-            </nav>
+    <div class="row main_menu">
+        <jdoc:include type="modules" name="mainmenu" title="Main Menu"/>
         </div>
-    </div>
-    <div class="top_slider">
-        <jdoc:include type="modules" name="top"/>
-    </div>
+</header>
 
-    <?php if ($this->countModules('right')) {
-        $right_module_loaded = true;
-    } else {
-        $right_module_loaded = false;
-    } ?>
+<div class="top_slider">
+    <jdoc:include type="modules" name="top"/>
+</div>
 
-    <div class="row main-content">
-        <?php if($right_module_loaded): ?>
+<?php if ($this->countModules('right')) {
+    $right_module_loaded = true;
+} else {
+    $right_module_loaded = false;
+} ?>
+
+<div class="row main-content">
+    <?php if ($right_module_loaded): ?>
         <div class="small-12 medium-9 columns">
             <jdoc:include type="component"/>
         </div>
         <div class="visible-for-medium-up medium-3 columns">
             <jdoc:include type="modules" name="right"/>
         </div>
-        <?php else: ?>
+    <?php else: ?>
         <div class="small-12 columns">
             <jdoc:include type="component"/>
         </div>
-        <?php endif; ?>
-    </div>
+    <?php endif; ?>
+</div>
 
-    <div class="news">
-        <jdoc:include type="modules" name="news"/>
-    </div>
-    <div class="parteneri_home">
-        <jdoc:include type="modules" name="middle"/>
-    </div>
-
-
-</header>
+<div class="news">
+    <jdoc:include type="modules" name="news"/>
+</div>
+<div class="parteneri_home">
+    <jdoc:include type="modules" name="middle"/>
+</div>
 </body>
 </html>

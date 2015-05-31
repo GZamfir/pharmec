@@ -58,41 +58,5 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
 </div>
 
 <style>
-    .top_row img {
-        width: 100%;
-    }
 
-    .top_row {
-        margin-top: 6% !important;
-        margin-bottom: 6% !important;
-    }
-
-    .category_description {
-        font-weight: bold;
-
-        padding: 15px;
-        border-bottom-right-radius: 25px;
-        border-bottom-left-radius: 25px;
-        border: 2px solid #05acb3;
-        background-color: rgba(129, 130, 129, 0.100);
-    }
-
-    .category_title {
-        position: absolute;
-        width: 450px;
-        height: 90px;
-        bottom: 0;
-        left: 2%;
-        padding: 20px 20px 40px 20px;
-
-        background-color: rgba(144, 144, 141, 0.8);
-    }
-
-    .category_title h2 {
-        text-align: center;
-        line-height: 60px;
-        text-transform: uppercase;
-        font-size: 2.5rem;
-        color: #FFFFFF;
-    }
 </style>

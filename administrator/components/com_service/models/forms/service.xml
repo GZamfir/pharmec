@@ -39,6 +39,18 @@
                 />
 
         <field
+                name="just_description"
+                type="list"
+                class="inputbox"
+                default=""
+                label="Doar Publicitate (alt site)"
+                description="Aceasta optiune v-a arata doar ce scrieti in descriere (de obicei iFrame al altui site)"
+                >
+            <option value="0">Nu</option>
+            <option value="1">Da</option>
+        </field>
+
+        <field
                 name="catid"
                 type="category"
                 extension="com_service"
@@ -52,7 +64,7 @@
 
 
 
-        <field name="image1"
+        <field name="title_image"
                          type="media"
                          directory="/services/"
                          hide_none="1"
