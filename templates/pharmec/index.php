@@ -76,5 +76,42 @@ if (JUri::getInstance()->toString() == JUri::base()) {
 <div class="parteneri_home">
     <jdoc:include type="modules" name="middle"/>
 </div>
+
+
+<footer>
+    <div class="row footer_div">
+        <div class="small-12 medium-6 columns left_column">
+            <h3>Contact</h3>
+                <div class="small-12 columns contact_details">
+                    <div class="row address_row">
+                    <div class="small-2 columns">
+                        <img src="/templates/<?php echo $this->template; ?>/images/footer_images/home.png" alt="adresa"/>
+                    </div>
+                        <div class="small-10 columns end">
+                            <p>Adresa ta</p>
+                        </div>
+                    </div>
+
+                    <div class="row phone_row">
+                        <div class="small-2 columns">
+                            <img src="/templates/<?php echo $this->template; ?>/images/footer_images/phone.png" alt="adresa"/>
+                        </div>
+                        <div class="small-10 columns end">
+                            <p>Adresa ta</p>
+                        </div>
+                    </div>
+
+                    <div class="row email_row">
+                        <div class="small-2 columns">
+                            <img src="/templates/<?php echo $this->template; ?>/images/footer_images/email.png" alt="adresa"/>
+                        </div>
+                        <div class="small-10 columns end">
+                            <p>Adresa ta</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
