@@ -16,7 +16,7 @@ $doc->addStyleSheet('templates/citation/css/services/style.css');
 ?>
 
 <div class="row left-collapse top_row">
-    <div class="small-12 medium-8 columns end title_and_image title_and_image_single">
+    <div class="small-12 columns end title_and_image title_and_image_single">
         <img src="<?php echo $this->item->title_image; ?>">
 
         <div class="visible-for-large-up">
@@ -26,12 +26,11 @@ $doc->addStyleSheet('templates/citation/css/services/style.css');
         </div>
     </div>
 
-    <div class="small-12 medium-8 columns end">
-        <div class="category_description">
-            <div class="visible-for-medium-down">
+    <div class="small-12 columns end single_item_holder visible-for-small-down">
+        <div class="category_description small-12 columns">
+            <div>
                 <h2><?php echo $this->item->title; ?></h2>
             </div>
-            <?php echo $this->item->summary; ?>
         </div>
     </div>
 </div>
@@ -48,6 +47,8 @@ $doc->addStyleSheet('templates/citation/css/services/style.css');
 
 
     <?php else: ?>
-
+        <div class="small-12 columns single_service_description">
+            <?php echo $this->item->description; ?>
+        </div>
     <?php endif; ?>
 </div>

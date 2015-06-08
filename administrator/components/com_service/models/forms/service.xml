@@ -18,11 +18,15 @@
                 />
         <field
                 name="summary"
-                type="textarea"
+                type="editor"
                 label="Summary"
                 description="O scurta descriere"
+                required="true"
                 default=""
-                class="span8"
+                buttons="true"
+
+                class="inputbox"
+                filter="JComponentHelper::filterText"
                 />
         <field
                 name="description"

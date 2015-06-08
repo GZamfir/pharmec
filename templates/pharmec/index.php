@@ -10,6 +10,7 @@ $doc->addScript('/templates/' . $this->template . '/js/modernizr.js', 'text/java
 $doc->addScript('/templates/' . $this->template . '/js/foundation.min.js', 'text/javascript');
 $doc->addScript('/templates/' . $this->template . '/js/citation.js', 'text/javascript');
 $doc->addScript('/templates/' . $this->template . '/slider/slick.min.js', 'text/javascript');
+$doc->addScript('/templates/' . $this->template . '/js/jquery.sticky-kit.min.js', 'text/javascript');
 // Get some base joomla stuff
 $renderer = $doc->loadRenderer('module');
 $input = JFactory::getApplication()->input;
@@ -57,11 +58,13 @@ if (JUri::getInstance()->toString() == JUri::base()) {
 
 <div class="row main-content">
     <?php if ($right_module_loaded): ?>
-        <div class="small-12 medium-9 columns">
+        <div class="small-12 medium-9 columns component_column">
             <jdoc:include type="component"/>
         </div>
-        <div class="visible-for-medium-up medium-3 columns">
+        <div class="small-12 medium-3 columns purchase_column">
+            <div class="stick">
             <jdoc:include type="modules" name="right"/>
+            </div>
         </div>
     <?php else: ?>
         <div class="small-12 columns">
@@ -84,34 +87,35 @@ if (JUri::getInstance()->toString() == JUri::base()) {
             <h3>Contact</h3>
                 <div class="small-12 columns contact_details">
                     <div class="row address_row">
-                    <div class="small-2 columns">
+                    <div class="small-2 columns contact_icon">
                         <img src="/templates/<?php echo $this->template; ?>/images/footer_images/home.png" alt="adresa"/>
                     </div>
-                        <div class="small-10 columns end">
-                            <p>Adresa ta</p>
+                        <div class="small-10 columns end contact_text">
+                            <p>Strada Tudor Vladimirescu, Constanța, Romania</p>
                         </div>
                     </div>
 
                     <div class="row phone_row">
-                        <div class="small-2 columns">
+                        <div class="small-2 columns contact_icon">
                             <img src="/templates/<?php echo $this->template; ?>/images/footer_images/phone.png" alt="adresa"/>
                         </div>
-                        <div class="small-10 columns end">
-                            <p>Adresa ta</p>
+                        <div class="small-10 columns end contact_text">
+                            <a href="tel:+40726327192">0726-327-192</a>
                         </div>
                     </div>
 
                     <div class="row email_row">
-                        <div class="small-2 columns">
+                        <div class="small-2 columns contact_icon">
                             <img src="/templates/<?php echo $this->template; ?>/images/footer_images/email.png" alt="adresa"/>
                         </div>
-                        <div class="small-10 columns end">
-                            <p>Adresa ta</p>
+                        <div class="small-10 columns end contact_text">
+                            <a href="mail:constanta@psw.ro">constanta@psw.ro</a>
                         </div>
                     </div>
                 </div>
         </div>
     </div>
 </footer>
+
 </body>
 </html>

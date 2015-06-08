@@ -44,7 +44,7 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
             </div>
             <div class="small-12 columns holder_bubble">
                 <div class="serviciu_description">
-                    <?php echo (!empty($service->description)) ? $service->description : ''; ?>
+                    <?php echo (!empty($service->summary)) ? $service->summary : ''; ?>
                 </div>
 
                 <div class="more_placeholder">
@@ -56,7 +56,3 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
         </div>
     <?php endforeach; ?>
 </div>
-
-<style>
-
-</style>

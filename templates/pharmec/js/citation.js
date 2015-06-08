@@ -45,5 +45,7 @@ j(document).ready(function(){
             j(this).parent().find(".content").slideToggle("slow");
     });
 
-	
+    j(".purchase_column").css({'height':(j(".component_column").height()+'px')});
+
+    j('.stick').stick_in_parent();
 });
