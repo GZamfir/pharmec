@@ -18,6 +18,17 @@
 						type="editor"
 						label="Descriere"
 						/>
+				<field
+						name="show_in_slider"
+						type="list"
+						class="inputbox"
+						default=""
+						label="Arata in slider (carousel)"
+						description="Arata detaliile in sliderul de imagini"
+						>
+					<option value="0">Nu</option>
+					<option value="1">Da</option>
+				</field>
 
 			</fieldset>
 		</fields>

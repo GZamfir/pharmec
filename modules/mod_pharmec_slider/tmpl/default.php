@@ -32,7 +32,7 @@ JHtml::_('jquery.framework', false);
                 <div>
                     <img u="image" src2="<?php echo $slide['image']?>"/>
 
-                    <a href="www.google.com"><div class="slider_text"><h2><?php echo $slide['title']?></h2>
+                    <a href="<?php echo $slide['href'] ?>"><div class="slider_text"><h2><?php echo $slide['title']?></h2>
                     </div></a>
                 </div>
                 <?php endforeach; ?>
