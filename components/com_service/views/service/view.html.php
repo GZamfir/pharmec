@@ -26,6 +26,29 @@ class ServiceViewService extends JViewLegacy
      */
     function display($tpl = null)
     {
+        // testing out email
+        $mailer = JFactory::getMailer();
+        $config = JFactory::getConfig();
+        $sender = array(
+            $config->get( 'mailfrom' ),
+            $config->get( 'fromname' )
+        );
+
+        $mailer->setSender($sender);
+
+        $mailer->addRecipient("zamfir.gaby@gmail.com");
+
+        $body   = "Your body string\nin double quotes if you want to parse the \nnewlines etc";
+        $mailer->setSubject('Your subject string');
+        $mailer->setBody($body);
+        $send = $mailer->Send();
+        if ( $send !== true ) {
+            echo 'Error sending email: ' . $send->__toString();
+        } else {
+            echo 'Mail sent';
+        }
+
+
         // Assign data to the view
         //get the individual item
         $this->item = $this->get('Item');
