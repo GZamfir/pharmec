@@ -24,14 +24,14 @@ $listDirn = $this->escape($this->filter_order_Dir);?>
             <th width="2%">
                 <?php echo JHtml::_('grid.checkall'); ?>
             </th>
-            <th width="65%">
-                <?php echo JHtml::_('grid.sort', 'COM_BOOKING_BOOKINGS_NAME', 'message', $listDirn, $listOrder); ?>            </th>
-            <th width="15%">
-                <?php echo JHtml::_('grid.sort', 'COM_BOOKING_BOOKINGS_CLIENT', 'client', $listDirn, $listOrder); ?>            </th>
+            <th width="20%">
+                <?php echo JHtml::_('grid.sort', 'Nume si Prenume', 'name_surname', $listDirn, $listOrder); ?>            </th>
+            <th width="30%">
+                <?php echo JHtml::_('grid.sort', 'Companie', 'company', $listDirn, $listOrder); ?>            </th>
+            <th width="30%">
+                <?php echo JHtml::_('grid.sort', 'Serviciu', 'service_title', $listDirn, $listOrder); ?>            </th>
             <th width="5%">
-                <?php echo JHtml::_('grid.sort', 'COM_BOOKING_BOOKINGS_TAGS', 'published', $listDirn, $listOrder); ?>            </th>
-            <th width="5%">
-                <?php echo JHtml::_('grid.sort', 'COM_BOOKING_PUBLISHED', 'published', $listDirn, $listOrder); ?>            </th>
+                <?php echo JHtml::_('grid.sort', 'Rezolvat', 'published', $listDirn, $listOrder); ?>            </th>
             <th width="2%">
                 <?php echo JHtml::_('grid.sort', 'COM_BOOKING_ID', 'id', $listDirn, $listOrder); ?>            </th>
         </tr>
@@ -56,18 +56,17 @@ $listDirn = $this->escape($this->filter_order_Dir);?>
                     <td>
                         <a href="<?php echo $link; ?>"
                            title="<?php echo JText::_('COM_BOOKING_EDIT_BOOKING'); ?>">
-                            <?php echo $row->message; ?>
+                            <?php echo $row->name_surname; ?>
                         </a>
                     </td>
                     <td>
                         <p>
-                            <?php echo $row->client; ?>
+                            <?php echo $row->company; ?>
                         </p>
                     </td>
                     <td>
                         <p>
-
-                            <?php echo $row->tags; ?>
+                            <?php echo $row->service_title; ?>
                         </p>
                     </td>
                     <td align="center">
