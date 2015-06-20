@@ -5,7 +5,7 @@
 	<version>1.0.0</version>
 	<description>Modulul pentru rezervare din partea dreapta</description>
 	<files>
-		<filename>mod_pharmec_slider.xml</filename>
+		<filename>mod_pharmec_footer_booking.xml</filename>
 		<filename module="mod_pharmec_right_booking">mod_pharmec_right_booking.php</filename>
 		<filename>index.html</filename>
 		<filename>helper.php</filename>

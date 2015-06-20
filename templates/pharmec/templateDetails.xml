@@ -29,5 +29,6 @@
         <position>user3</position>
         <position>user4</position>
         <position>footer</position>
+        <position>footer_booking</position>
     </positions>
 </extension>

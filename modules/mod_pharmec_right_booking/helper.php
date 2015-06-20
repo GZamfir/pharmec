@@ -113,7 +113,8 @@ class modPharmecRightBookingHelper {
 		$query = $db->getQuery(true);
 		$query->select('title')
 			->from($db->quoteName('#__categories', 'c'))
-			->where("c.published = 1");
+			->where("c.published = 1")
+			->where('c.extension = "com_service"');
 		$db->setQuery($query);
 		$list_of_categories = $db->loadObjectList();
 
@@ -126,5 +127,6 @@ class modPharmecRightBookingHelper {
 		$list_of_services = $db->loadObjectList();
 
 		$returned_result = array_merge($list_of_categories,$list_of_services);
+		return $returned_result;
 	}
 }

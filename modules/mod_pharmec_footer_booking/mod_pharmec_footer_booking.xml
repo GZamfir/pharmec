@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.1.0" client="site" method="upgrade">
-	<name>Pharmec Right Booking</name>
+	<name>Pharmec Footer Booking</name>
 	<author>Gaby Zamfir</author>
 	<version>1.0.0</version>
-	<description>Modulul pentru rezervare din partea dreapta</description>
+	<description>Modulul pentru rezervare din footer</description>
 	<files>
-		<filename>mod_pharmec_slider.xml</filename>
-		<filename module="mod_pharmec_right_booking">mod_pharmec_right_booking.php</filename>
+		<filename>mod_pharmec_footer_booking.xml</filename>
+		<filename module="mod_pharmec_footer_booking">mod_pharmec_footer_booking.php</filename>
 		<filename>index.html</filename>
 		<filename>helper.php</filename>
 		<filename>tmpl/default.php</filename>

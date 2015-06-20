@@ -114,8 +114,11 @@ if (JUri::getInstance()->toString() == JUri::base()) {
                     </div>
                 </div>
         </div>
+        <div class="small-12 medium-6 columns">
+            <jdoc:include type="modules" name="footer_booking"/>
+        </div>
     </div>
 </footer>
-
+<div class="visible-for-small-down" id="mobile_identifier"></div>
 </body>
 </html>

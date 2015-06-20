@@ -1,5 +1,8 @@
 j = jQuery.noConflict();
 j(document).ready(function(){
+    var is_mobile = isMobile();
+    console.log(is_mobile);
+
     j('.accreditation-logos-slider').slick({
         dots: false,
         arrows: true,
@@ -45,7 +48,19 @@ j(document).ready(function(){
             j(this).parent().find(".content").slideToggle("slow");
     });
 
-    j(".purchase_column").css({'height':(j(".component_column").height()+'px')});
 
-    j('.stick').stick_in_parent();
+
+
+    if(is_mobile == false) {
+        j(".purchase_column").css({'height':(j(".component_column").height()+'px')});
+        j('.stick').stick_in_parent();
+    }
 });
+
+function isMobile(){
+    if(j('#mobile_identifier').css('width') == "1px" && j('#mobile_identifier').css('height') == "1px"){
+        return false;
+    } else {
+        return true;
+    }
+}

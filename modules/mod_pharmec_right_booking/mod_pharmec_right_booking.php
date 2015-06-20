@@ -7,7 +7,7 @@ $helper = new modPharmecRightBookingHelper();
 $service_title = $helper->getCurrentService();
 //if we don't have a title, then we need to get a list of services (including the categories)
 if(empty($service_title)) {
-	$list_of_services = $helper->getListOfServicese();
+	$list_of_services = $helper->getListOfServices();
 }
 
 $document = JFactory::getDocument();
