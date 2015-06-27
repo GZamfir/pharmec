@@ -41,7 +41,7 @@ class PlgButtonTwocolumn extends JPlugin
 		$button->modal = true;
 		$button->class = 'btn';
 		$button->link  = $link;
-		$button->text  = JText::_('Insert two columns');
+		$button->text  = JText::_('Insert iFrame');
 		$button->name  = 'copy';
 		$button->options = "{handler: 'iframe', size: {x: 500, y: 300}}";
 
