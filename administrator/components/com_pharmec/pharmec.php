@@ -1,0 +1,2 @@
+<p>This component is only use for configuration. Please press the following link to set up the values.</p>
+<a href="/administrator/index.php?option=com_config&view=component&component=com_pharmec">Go To Configuration</a>

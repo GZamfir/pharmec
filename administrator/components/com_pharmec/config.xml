@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset label="Front Page" name="home_page">
+        <field
+                name="header_title" type="input" component="com_citation"
+                class="inputbox"
+                label="Header Main Title"
+                section="component"/>
+        <field
+                name="header_description" type="textarea" component="com_citation"
+                class="textarea"
+                label="Header Description"
+                section="component"/>
+
+        <field
+                name="box_1_header" type="textarea" component="com_citation"
+                class="textarea"
+                label="Box 1 Header"
+                section="component"/>
+        <field
+                name="box_1_description" type="textarea" component="com_citation"
+                class="textarea"
+                label="Box 1 Description"
+                section="component"/>
+
+        <field
+                name="box_2_header" type="textarea" component="com_citation"
+                class="textarea"
+                label="Box 2 Header"
+                section="component"/>
+        <field
+                name="box_2_description" type="textarea" component="com_citation"
+                class="textarea"
+                label="Box 2 Description"
+                section="component"/>
+
+        <field
+                name="box_3_header" type="textarea" component="com_citation"
+                class="textarea"
+                label="Box 3 Header"
+                section="component"/>
+        <field
+                name="box_3_description" type="textarea" component="com_citation"
+                class="textarea"
+                label="Box 3 Description"
+                section="component"/>
+        <field
+                name="phone_number" type="input" component="com_citation"
+                class="inputbox"
+                label="Phone Number"
+                section="component"/>
+    </fieldset>
+
+    <fieldset label="Seminar Countdown Plugin" name="seminar_countdown_plugin">
+        <field
+                name="seminars_title_white_text" type="input" component="com_citation"
+                class="textarea"
+                label="Seminars Title White Text"
+                section="component"/>
+
+        <field
+                name="seminars_title_yellow_text" type="input" component="com_citation"
+                class="textarea"
+                label="Seminars Title yellow Text"
+                section="component"/>
+
+        <field
+                name="seminars_description" type="textarea" component="com_citation"
+                class="textarea"
+                label="Seminars Description"
+                section="component"/>
+        <field
+                name="seminars_button_text" type="textarea" component="com_citation"
+                class="textarea"
+                label="Seminars Button Text"
+                section="component"/>
+    </fieldset>
+
+    <fieldset label="Enquiry Box" name="enquiry_box">
+        <field
+                name="enquiry_box_title" type="input" component="com_citation"
+                class="inputbox"
+                label="Enquiry Box Title"
+                section="component"/>
+        <field
+                name="enquiry_box_description" type="textarea" component="com_citation"
+                class="textarea"
+                label="Enquiry Box Description"
+                section="component"/>
+        <field
+                name="enquiry_box_button_text" type="input" component="com_citation"
+                class="inputbox"
+                label="Enquiry Box Button Text"
+                section="component"/>
+        <field
+                name="enquiry_box_bottom_text" type="textarea" component="com_citation"
+                class="textarea"
+                label="Enquiry Box Bottom Text"
+                section="component"/>
+        <field
+                name="enquiry_box_success_message" type="textarea" component="com_citation"
+                class="textarea"
+                label="Enquiry Box Success Message"
+                section="component"/>
+    </fieldset>
+
+    <fieldset label="Footer" name="footer">
+        <field
+                name="newsletter_title" type="input" component="com_citation"
+                class="inputbox"
+                label="Newsletter Title"
+                section="component"/>
+        <field
+                name="newsletter_description" type="textarea" component="com_citation"
+                class="textarea"
+                label="Newsletter Description"
+                section="component"/>
+        <field
+                name="newsletter_button_text" type="input" component="com_citation"
+                class="inputbox"
+                label="Newsletter Button Text"
+                section="component"/>
+        <field
+                name="newsletter_bottom_text" type="textarea" component="com_citation"
+                class="textarea"
+                label="Newsletter Bottom Text"
+                section="component"/>
+    </fieldset>
+
+
+    <fieldset
+            name="permissions"
+            description="JCONFIG_PERMISSIONS_DESC"
+            label="JCONFIG_PERMISSIONS_LABEL">
+        <field
+                name="rules" type="rules" component="com_careers"
+                class="inputbox" filter="rules" validate="rules"
+                label="JCONFIG_PERMISSIONS_LABEL"
+                section="component"/>
+    </fieldset>
+</config>
