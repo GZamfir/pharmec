@@ -115,5 +115,5 @@ JFactory::getDocument()->addScriptDeclaration($script);
 		<?php echo JText::_('Please insert iframe link'); ?>
 		<input type="text" id="link" name="link"/>
 	</div>
-	<button onclick="insertColumns();" class="btn btn-primary"><?php echo JText::_('Insert columns'); ?></button>
+	<button onclick="insertColumns();" class="btn btn-primary"><?php echo JText::_('Insert iFrame'); ?></button>
 </form>
