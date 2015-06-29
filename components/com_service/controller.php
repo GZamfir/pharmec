@@ -8,6 +8,7 @@
  */
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
+
 /**
  *  Service Component Controller
  *
@@ -19,13 +20,14 @@ class ServiceController extends JControllerLegacy
     /**
      * Method to display a view.
      *
-     * @param	boolean			$cachable	If true, the view output will be cached
-     * @param	array			$urlparams	An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
+     * @param    boolean $cachable If true, the view output will be cached
+     * @param    array $urlparams An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
      *
-     * @return	JController		This object to support chaining.
-     * @since	1.5
+     * @return    JController        This object to support chaining.
+     * @since    1.5
      */
-    public function display($cachable = false, $urlparams = false) {
+    public function display($cachable = false, $urlparams = false)
+    {
         $view = JFactory::getApplication()->input->getCmd('view', 'services');
         JFactory::getApplication()->input->set('view', $view);
 
@@ -44,7 +46,7 @@ class ServiceController extends JControllerLegacy
         $postData = $app->input->post;
         $data_array = array();
 
-        if(empty($user)) {
+        if (empty($user)) {
             $data_array['first_last_name'] = $postData->get('first_last_name', '', 'STRING');
             $data_array['company'] = $postData->get('company', '', 'STRING');
             $data_array['email'] = $postData->get('email', '', 'STRING');
@@ -112,12 +114,12 @@ class ServiceController extends JControllerLegacy
         $email_array['Serviciu'] = $data_array['service_title'];
         $email_array['Mesaj'] = $data_array['message'];
 
-        if($this->sendEmail($email_array) == true){
+        if ($this->sendEmail($email_array, 'O cerere pentru serviciu a fost adaugata') == true) {
             $return['status'] = "success";
             $return['message'] = "Cererea a fost trimisa. Va multumim";
 
             //if everything is fine, set the session so that the user doesn't have to complete the form again
-            if(empty($user)) {
+            if (empty($user)) {
                 $session_array = array();
                 $session_array['first_last_name'] = $data_array['first_last_name'];
                 $session_array['company'] = $data_array['company'];
@@ -136,51 +138,52 @@ class ServiceController extends JControllerLegacy
         }
     }
 
-    public function validate_input($data_array){
+    public function validate_input($data_array)
+    {
         //let's check the name is only letters
         $errors = array();
-        if(empty($data_array['first_last_name'])){
+        if (empty($data_array['first_last_name'])) {
             $errors[] = "Completati numele si prenumele";
         } else {
-            if(!preg_match('/[a-z|A-Z|\s]$/',$data_array['first_last_name'])){
+            if (!preg_match('/[a-z|A-Z|\s]$/', $data_array['first_last_name'])) {
                 $errors[] = "Caractere nepermise in nume";
             }
         }
 
         //let's check the email now
-        if(empty($data_array['email'])){
+        if (empty($data_array['email'])) {
             $errors[] = "Completati adresa de email";
         } else {
-            if(filter_var($data_array['email'], FILTER_VALIDATE_EMAIL) != TRUE){
+            if (filter_var($data_array['email'], FILTER_VALIDATE_EMAIL) != TRUE) {
                 $errors[] = "Adresa de email este invalida";
             }
         }
 
         //let's check the phone now
-        if(empty($data_array['phone'])){
+        if (empty($data_array['phone'])) {
             $errors[] = "Completati numarul de telefon";
         } else {
-            if(!preg_match('/^[0-9]+$/',$data_array['phone'])){
+            if (!preg_match('/^[0-9]+$/', $data_array['phone'])) {
                 $errors[] = "Numarul de telefon trebuie sa contina doar cifre.";
             }
         }
 
         //let's check the company now
-        if(empty($data_array['company'])){
+        if (empty($data_array['company'])) {
             $errors[] = "Completati compania";
         }
 
         //let's check the city now
-        if(empty($data_array['city'])){
+        if (empty($data_array['city'])) {
             $errors[] = "Completati orasul / judetul";
         } else {
-            if(!preg_match('/[a-z|A-Z|\s]$/',$data_array['city'])){
-                $errors[] = "Caractere oras / judet";
+            if (!preg_match('/[a-z|A-Z|\s]$/', $data_array['city'])) {
+                $errors[] = "Caractere interzise oras / judet";
             }
         }
 
         //let's recheck the captcha, just to be sure
-        if(empty($data_array['captcha']) || $data_array['captcha'] == ''){
+        if (empty($data_array['captcha']) || $data_array['captcha'] == '') {
             $errors[] = "Completati captcha";
         }
 
@@ -188,13 +191,14 @@ class ServiceController extends JControllerLegacy
         return $errors;
     }
 
-    public function sendEmail($array_of_data){
+    public function sendEmail($array_of_data,$subject)
+    {
         // testing out email
         $mailer = JFactory::getMailer();
         $config = JFactory::getConfig();
         $sender = array(
-            $config->get( 'mailfrom' ),
-            $config->get( 'fromname' )
+            $config->get('mailfrom'),
+            $config->get('fromname')
         );
 
         $mailer->setSender($sender);
@@ -204,18 +208,74 @@ class ServiceController extends JControllerLegacy
         $body = "<html><body>";
         $body .= "<table border='1'>";
 
-        foreach($array_of_data as $key=>$row){
+        foreach ($array_of_data as $key => $row) {
             $body .= "<tr><td>{$key}</td><td>{$row}</td></tr>";
         }
         $body .= "</table></body></html>";
 
-        $mailer->setSubject('Serviciu adaugat');
+        $mailer->setSubject($subject);
         $mailer->setBody($body);
         $send = $mailer->Send();
-        if ( $send !== true ) {
+        if ($send !== true) {
             echo 'Error sending email: ' . $send->__toString();
         } else {
             return true;
         }
+    }
+
+    public function registerNewsletter()
+    {
+        //get the post data
+        $app = JFactory::getApplication();
+        $postData = $app->input->post;
+        $data_array = array();
+
+        $data_array['email'] = $postData->get('email', '', 'STRING');
+        $data_array['city'] = $postData->get('city', '', 'STRING');
+        $data_array['newsletter_type'] = $postData->get('newsletter_type', '', 'STRING');
+
+        $validation_errors = $this->validate_newsletter_input($data_array);
+        if (!empty($validation_errors)) {
+            $return['status'] = "error";
+            $return['message'] = $validation_errors;
+            die(json_encode($return));
+        }
+
+        $email_array = array();
+        $email_array['Email'] = $data_array['email'];
+        $email_array['Oras/Judet'] = $data_array['city'];
+        $email_array['Tipul Newsletterului'] = $data_array['newsletter_type'];
+        if ($this->sendEmail($email_array, 'Cerere pentru Newsletter adaugata') == true) {
+            $return['status'] = "success";
+            $return['message'] = "Cererea a fost trimisa. Va multumim.";
+            die(json_encode($return));
+        } else {
+            $return['status'] = "error";
+            $return['message'] = "A fost o problema cu trimiterea cererii. Va rugam incercati mai tarziu.";
+            die(json_encode($return));
+        }
+    }
+
+    public function validate_newsletter_input($data_array){
+        $errors = array();
+        //let's check the email now
+        if (empty($data_array['email'])) {
+            $errors[] = "Completati adresa de email";
+        } else {
+            if (filter_var($data_array['email'], FILTER_VALIDATE_EMAIL) != TRUE) {
+                $errors[] = "Adresa de email este invalida";
+            }
+        }
+
+        //let's check the city now
+        if (empty($data_array['city'])) {
+            $errors[] = "Completati orasul / judetul";
+        } else {
+            if (!preg_match('/[a-z|A-Z|\s]$/', $data_array['city'])) {
+                $errors[] = "Caractere interzise in oras / judet";
+            }
+        }
+
+        return $errors;
     }
 }

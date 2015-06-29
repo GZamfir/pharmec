@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field
+                name="id"
+                type="hidden"
+                />
+        <field
+                name="name_surname"
+                type="textarea"
+                label="Nume si Prenume"
+                description="Numele si prenumele persoanei care a facut rezervarea"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="company"
+                type="textarea"
+                label="Companie (cabinet/farmacie)"
+                description="Compania"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="phone"
+                type="input"
+                label="Telefon"
+                description="Numar de telefon"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="city"
+                type="textarea"
+                label="Judet / Oras"
+                description="Judetul sau orasul oficiului"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="email"
+                type="input"
+                label="Email"
+                description="Emailul de contact al persoanei"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="service_title"
+                type="textarea"
+                label="Titlul serviciului"
+                description="Titlul Serviciului Selectat"
+                default=""
+                class="span8"
+                />
+    </fieldset>
+</form>

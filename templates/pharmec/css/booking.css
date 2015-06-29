@@ -14,13 +14,16 @@
     }
 
     .errors,
+    .newsletter_errors,
+    .newsletter_success,
     .success{
         text-align: left;
         margin-bottom: 5px;
         background-color: rgba(238, 238, 238, 0.81);
     }
 
-    .errors p{
+    .errors p,
+    .newsletter_errors p{
         margin-bottom: 1px;
         font-size: 1em;
         color: #e00000;
@@ -28,7 +31,8 @@
         padding-left: 10px;
     }
 
-    .success p{
+    .success p,
+    .newsletter_success p{
         margin-top: 10px;
         margin-bottom: 10px;
         font-size: 1.2em;
@@ -36,12 +40,23 @@
         padding: 2px;
         padding-left: 10px;
     }
+
+    .newsletter_success p,
+    .newsletter_errors p{
+        font-size: 1.0em;
+    }
 }
 
 @media only screen and (min-width: 40.063em) {
     .errors p,
     .success p{
         font-size: 0.8em;
+    }
+
+
+    .newsletter_errors p,
+    .newsletter_success p{
+        font-size: 1.2em;
     }
 }
 
