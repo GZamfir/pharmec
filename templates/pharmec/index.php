@@ -22,6 +22,8 @@ if (JUri::getInstance()->toString() == JUri::base()) {
 } else {
     $home = false;
 }
+
+$componentParams = JComponentHelper::getParams('com_pharmec');
 ?>
 
 <html>
@@ -35,7 +37,7 @@ if (JUri::getInstance()->toString() == JUri::base()) {
         <div class="medium-3 columns">
             <div class="row hide-for-small-down columns">
                 <a href="/">
-                    <img class="logo" src="/templates/<?php echo $this->template; ?>/images/pharmec_logo.png"/>
+                    <img class="logo" src="<?php echo $componentParams->get('header_image', '/templates/'.$this->template.'/images/pharmec_logo.png'); ?>"/>
                 </a>
             </div>
         </div>
