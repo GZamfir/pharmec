@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class PartnerModelPartner extends JModelItem
+class PartnerModelPartners extends JModelItem
 {
     /**
      *
@@ -63,30 +63,16 @@ class PartnerModelPartner extends JModelItem
     /**     * Get the message
      * @return object The message to be displayed to the user
      */
-    public function getItem()
+    public function getPartners()
     {
-        if (!isset($this->item)) {
-            $id = $this->getState('message.id');
             $db = JFactory::getDbo();
             $query = $db->getQuery(true);
-            $query->select('h.message, h.params, c.title as category')
-                ->from('#__partner as h')
-                ->leftJoin('#__categories as c ON h.catid=c.id')
-                ->where('h.id=' . (int)$id);
-            $db->setQuery((string)$query);
+            $query->select('name, website, image')
+                ->from('#__partner')
+                ->where('published = 1');
+            $db->setQuery($query);
 
-            if ($this->item = $db->loadObject()) {
-                // Load the JSON string
-                $params = new JRegistry;
-                $params->loadString($this->item->params, 'JSON');
-                $this->item->params = $params;
-
-                // Merge global params with item params
-                $params = clone $this->getState('params');
-                $params->merge($this->item->params);
-                $this->item->params = $params;
-            }
-        }
-        return $this->item;
+            return $db->loadObjectList();
     }
+
 }

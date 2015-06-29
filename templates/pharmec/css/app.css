@@ -84,6 +84,33 @@
     .single_item_holder{
         width: 100% !important;
     }
+
+    /* Parteneri */
+    .pharmec_parteneri {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    /* added the following to give the background color of the arrows as red for visibility, the default which can be found in the slick-theme.css was white */
+    .slick-prev:before,
+    .slick-next:before {
+        color: #05acb3;
+    }
+
+    .slick-next{
+        right: 3px;
+    }
+
+    .slick-prev{
+        left: 3px;
+    }
+
+    .individual_partner_page{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        float:left!important;
+        text-align: center;
+    }
 }
 
 @media only screen and (min-width:40.063em) {

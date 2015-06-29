@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class PartnerViewPartner extends JViewLegacy
+class PartnerViewPartners extends JViewLegacy
 {
     /**
      * Display the  Partner view
@@ -27,7 +27,7 @@ class PartnerViewPartner extends JViewLegacy
     function display($tpl = null)
     {
         // Assign data to the view
-        $this->item = $this->get('Item');
+        $this->parteneri = $this->get('Partners');
 
         // Check for errors.
         if (count($errors = $this->get('Errors')))

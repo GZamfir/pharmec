@@ -23,26 +23,3 @@ JHtml::_('jquery.framework', false);
 </div>
 
 
-<style>
-
-
-    .pharmec_parteneri {
-        margin-top: 25px;
-        margin-bottom: 25px;
-    }
-
-    /* added the following to give the background color of the arrows as red for visibility, the default which can be found in the slick-theme.css was white */
-    .slick-prev:before,
-    .slick-next:before {
-        color: #05acb3;
-    }
-
-    .slick-next{
-        right: 3px;
-    }
-
-    .slick-prev{
-        left: 3px;
-    }
-</style>
-
