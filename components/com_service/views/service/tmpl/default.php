@@ -12,7 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 <?php
 $doc = JFactory::getDocument();
-$doc->addStyleSheet('templates/citation/css/services/style.css');
+$doc->addStyleSheet('templates/pharmec/css/services.css');
 ?>
 
 <div class="row left-collapse top_row">

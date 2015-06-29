@@ -1,0 +1,50 @@
+@media only screen {
+    .holder {
+        background: rgba(83, 83, 83, 0.95);
+        text-align: center;
+    }
+
+    .book_btn,
+    .form_book_button {
+        margin-top: 10px;
+    }
+
+    .form_content {
+        margin-top: 10px;
+    }
+
+    .errors,
+    .success{
+        text-align: left;
+        margin-bottom: 5px;
+        background-color: rgba(238, 238, 238, 0.81);
+    }
+
+    .errors p{
+        margin-bottom: 1px;
+        font-size: 1em;
+        color: #e00000;
+        padding: 2px;
+        padding-left: 10px;
+    }
+
+    .success p{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        color: #009800;
+        padding: 2px;
+        padding-left: 10px;
+    }
+}
+
+@media only screen and (min-width: 40.063em) {
+    .errors p,
+    .success p{
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (min-width: 64.063em) {
+
+}

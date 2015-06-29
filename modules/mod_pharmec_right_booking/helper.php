@@ -81,6 +81,12 @@ class modPharmecRightBookingHelper {
 		$input = JFactory::getApplication()->input;
 		$id = $input->get('id');
 		$cat_id = $input->get('catid');
+		$option = $input->get('option');
+
+		//don't bother if not on the service page
+		if($option != "com_service"){
+			return false;
+		}
 		if(!empty($id)) {
 			//if we have an id, get the service title
 			$db = JFactory::getDbo();
