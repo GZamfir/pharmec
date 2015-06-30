@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 $doc = JFactory::getDocument();
-$doc->addStyleSheet('templates/citation/css/services/style.css');
+$doc->addStyleSheet('templates/pharmec/css/services/style.css');
 ?>
 <div class="row top_title_row">
     <div class="small-12 columns top_service_title">
@@ -77,7 +77,7 @@ $doc->addStyleSheet('templates/citation/css/services/style.css');
     </div>
 <div class="testimonials-div">
         <?php
-$modName = 'mod_citation_testimonials ';
+$modName = 'mod_pharmec_testimonials ';
 $module = JModuleHelper::getModule($modName);
 $attribs = array();
 $module->id = 16;

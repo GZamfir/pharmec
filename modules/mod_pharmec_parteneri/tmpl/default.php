@@ -10,7 +10,7 @@ JHtml::_('jquery.framework', false);
         <div class="small-6 medium-4 large-3 columns end heading_text_bubble">
             <h2>Parteneri</h2>
         </div>
-        <div class="small-12 columns holder_bubble accreditation-logos-slider">
+        <div class="small-12 columns holder_bubble partners-logos-slider">
             <?php foreach ($parteneri as $partener): ?>
                 <div class="individual_partner medium-4 small-12 columns testimonial-slide">
                     <a href="<?php echo $partener->website; ?>">

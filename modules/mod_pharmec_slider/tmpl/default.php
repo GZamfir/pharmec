@@ -30,7 +30,7 @@ JHtml::_('jquery.framework', false);
             overflow: hidden;">
                 <?php foreach($slides as $slide):?>
                 <div>
-                    <img u="image" src2="<?php echo $slide['image']?>"/>
+                    <img u="image" src2="/<?php echo $slide['image']?>"/>
 
                     <a href="<?php echo $slide['href'] ?>"><div class="slider_text"><h2><?php echo $slide['title']?></h2>
                     </div></a>

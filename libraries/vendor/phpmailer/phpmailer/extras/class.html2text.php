@@ -567,7 +567,7 @@ class Html2Text
                         // Convert blockquote content
                         $body = trim($body);
                         $this->_converter($body);
-                        // Add citation markers and create PRE block
+                        // Add pharmec markers and create PRE block
                         $body = preg_replace('/((^|\n)>*)/', '\\1> ', trim($body));
                         $body = '<pre>' . htmlspecialchars($body) . '</pre>';
                         // Re-set text width

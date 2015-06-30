@@ -23,11 +23,11 @@ j(document).ready(function(){
           }
         ]
     });
-    j('.citation-testimonials-slider').slick({
+    j('.pharmec-testimonials-slider').slick({
         slide: "div",
         dots: true
     });
-    j('.citation-staff-slider').slick({
+    j('.pharmec-staff-slider').slick({
         slide: "div"
     });
     var words = [

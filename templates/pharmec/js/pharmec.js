@@ -14,11 +14,13 @@ j(document).ready(function(){
         }
     },200);
 
-    j('.accreditation-logos-slider').slick({
+    j('.partners-logos-slider').slick({
         dots: false,
         arrows: true,
         slidesToShow: 3,
         slidesToScroll:1,
+        autoplay:true,
+        autoplaySpeed:2000,
         infinite: true,
         responsive: [
           {
@@ -37,7 +39,7 @@ j(document).ready(function(){
           }
         ]
     });
-    j('.citation-testimonials-slider').slick({
+    j('.pharmec-testimonials-slider').slick({
         slide: "div",
         dots: true
     });

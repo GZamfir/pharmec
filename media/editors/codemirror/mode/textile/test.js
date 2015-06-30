@@ -74,7 +74,7 @@
       'Percentage 25% is not a span.');
 
   MT('citeBogus',
-      'Question? is not a citation.');
+      'Question? is not a pharmec.');
 
   MT('codeBogus',
       'user@example.com');

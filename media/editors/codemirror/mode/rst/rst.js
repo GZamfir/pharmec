@@ -116,14 +116,14 @@ CodeMirror.defineMode('rst-base', function (config) {
     format('^\\|{0}\\|{1}{2}::{3}', TEXT1, SEPA, REF_NAME, TAIL));
   var rx_footnote = new RegExp(
     format('^\\[(?:\\d+|#{0}?|\\*)]{1}', REF_NAME, TAIL));
-  var rx_citation = new RegExp(
+  var rx_pharmec = new RegExp(
     format('^\\[{0}\\]{1}', REF_NAME, TAIL));
 
   var rx_substitution_ref = new RegExp(
     format('^\\|{0}\\|', TEXT1));
   var rx_footnote_ref = new RegExp(
     format('^\\[(?:\\d+|#{0}?|\\*)]_', REF_NAME));
-  var rx_citation_ref = new RegExp(
+  var rx_pharmec_ref = new RegExp(
     format('^\\[{0}\\]_', REF_NAME));
   var rx_link_ref1 = new RegExp(
     format('^{0}__?', REF_NAME));
@@ -303,7 +303,7 @@ CodeMirror.defineMode('rst-base', function (config) {
     } else if (stream.match(rx_footnote_ref)) {
       change(state, to_normal);
       token = 'quote';
-    } else if (stream.match(rx_citation_ref)) {
+    } else if (stream.match(rx_pharmec_ref)) {
       change(state, to_normal);
       token = 'quote';
     } else if (stream.match(rx_link_ref1)) {
@@ -438,7 +438,7 @@ CodeMirror.defineMode('rst-base', function (config) {
     } else if (stream.match(rx_footnote)) {
       change(state, to_normal);
       token = 'quote';
-    } else if (stream.match(rx_citation)) {
+    } else if (stream.match(rx_pharmec)) {
       change(state, to_normal);
       token = 'quote';
     }

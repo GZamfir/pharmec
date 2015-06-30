@@ -39,9 +39,9 @@ $info    = $params->get('info_block_position', 0);
         </div>
         <div class="small-6 columns">
             <ul class="inline-list blog-list-icons">
-                <li><img src="/templates/citation/images/twitter-black-icon.png"/></li>
-                <li><img src="/templates/citation/images/facebook-black-icon.png"/></li>
-                <li><img src="/templates/citation/images/linkedin-black-icon.png"/></li>
+                <li><img src="/templates/pharmec/images/twitter-black-icon.png"/></li>
+                <li><img src="/templates/pharmec/images/facebook-black-icon.png"/></li>
+                <li><img src="/templates/pharmec/images/linkedin-black-icon.png"/></li>
             </ul>
         </div>
     </div>

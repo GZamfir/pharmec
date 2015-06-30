@@ -13,7 +13,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 JHtml::_('behavior.caption');
 $doc = JFactory::getDocument();
-$doc->addStyleSheet('templates/citation/css/news/news.css');
+$doc->addStyleSheet('templates/pharmec/css/news/news.css');
 $searchModule = JModuleHelper::getModule('mod_search');
 $renderer = $doc->loadRenderer('module');
 ?>

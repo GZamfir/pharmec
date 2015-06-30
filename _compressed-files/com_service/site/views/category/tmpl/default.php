@@ -11,7 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 $doc = JFactory::getDocument();
-$doc->addStyleSheet('templates/citation/css/services/style.css');
+$doc->addStyleSheet('templates/pharmec/css/services/style.css');
 ?>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
@@ -142,7 +142,7 @@ if (!empty($this->services_within_category)) {
     </div>
 <div class="testimonials-div">
         <?php
-$modName = 'mod_citation_testimonials ';
+$modName = 'mod_pharmec_testimonials ';
 $module = JModuleHelper::getModule($modName);
 $attribs = array();
 $module->id = 16;

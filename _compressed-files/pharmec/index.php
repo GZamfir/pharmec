@@ -41,7 +41,7 @@ if (JUri::getInstance()->toString() == JUri::base()) { $home = true; } else { $h
                 <ul class="title-area">
                     <li class="name">
                         <a href="/">
-                            <img class="hide-for-medium-up logo" src="/templates/<?php echo $this->template;?>/images/citation_logo.png"/>
+                            <img class="hide-for-medium-up logo" src="/templates/<?php echo $this->template;?>/images/pharmec_logo.png"/>
                         </a>
                         <div id="show-search">
                             <img class="mag-glass hide-for-medium-up" src="/templates/<?php echo $this->template;?>/images/mag_glass.png" />
@@ -60,7 +60,7 @@ if (JUri::getInstance()->toString() == JUri::base()) { $home = true; } else { $h
         </div>
         <div class="small-6 small-offset-3 medium-offset-0 medium-3 columns end hide-for-medium-only">
             <div id="search-box">
-                <jdoc:include type="modules" name="citation-search" title="Search" />
+                <jdoc:include type="modules" name="pharmec-search" title="Search" />
                 <div class="search-icon">
                     <img src="/templates/<?php echo $this->template;?>/images/search-icon.png"/>
                 </div>
