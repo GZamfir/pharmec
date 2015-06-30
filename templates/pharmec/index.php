@@ -34,12 +34,10 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
 <body>
 <header>
     <div class="row collapse">
-        <div class="medium-3 columns">
-            <div class="row hide-for-small-down columns">
+        <div class="medium-3 small-12 columns">
                 <a href="/">
                     <img class="logo" src="<?php echo $componentParams->get('header_image', '/templates/'.$this->template.'/images/pharmec_logo.png'); ?>"/>
                 </a>
-            </div>
         </div>
     </div>
 
@@ -93,7 +91,7 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
                         <img src="/templates/<?php echo $this->template; ?>/images/footer_images/home.png" alt="adresa"/>
                     </div>
                         <div class="small-10 columns end contact_text">
-                            <p>Strada Tudor Vladimirescu, Constanța, Romania</p>
+                            <p><?php echo $componentParams->get('footer_address') ?></p>
                         </div>
                     </div>
 
@@ -102,7 +100,7 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
                             <img src="/templates/<?php echo $this->template; ?>/images/footer_images/phone.png" alt="adresa"/>
                         </div>
                         <div class="small-10 columns end contact_text">
-                            <a href="tel:+40726327192">0726-327-192</a>
+                            <a href="tel:<?php echo $componentParams->get('footer_phone')?>"><?php echo $componentParams->get('footer_phone') ?></a>
                         </div>
                     </div>
 
@@ -111,7 +109,7 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
                             <img src="/templates/<?php echo $this->template; ?>/images/footer_images/email.png" alt="adresa"/>
                         </div>
                         <div class="small-10 columns end contact_text">
-                            <a href="mail:constanta@psw.ro">constanta@psw.ro</a>
+                            <a href="mail:<?php echo $componentParams->get('footer_email') ?>"><?php echo $componentParams->get('footer_email') ?></a>
                         </div>
                     </div>
                 </div>

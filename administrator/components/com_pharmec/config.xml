@@ -10,6 +10,36 @@
                 />
     </fieldset>
 
+    <fieldset label="Footer" name="footer">
+        <field
+                name="footer_address"
+                type="input"
+                label="Adresa"
+                description="Adresa din footer a sediului"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="footer_phone"
+                type="input"
+                label="Telefon"
+                description="Numarul de telefon din footer"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="footer_email"
+                type="input"
+                label="E-mail"
+                description="Adresa de email din footer"
+                required="true"
+                default=""
+                class="span8"
+                />
+    </fieldset>
+
     <fieldset
             name="permissions"
             description="JCONFIG_PERMISSIONS_DESC"

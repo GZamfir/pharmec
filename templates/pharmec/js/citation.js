@@ -2,6 +2,10 @@ j = jQuery.noConflict();
 j(document).ready(function(){
     var is_mobile = isMobile();
     console.log(is_mobile);
+    setInterval(function(){
+        is_mobile = isMobile();
+        console.log(is_mobile)
+    },200);
 
     j('.accreditation-logos-slider').slick({
         dots: false,
@@ -49,11 +53,11 @@ j(document).ready(function(){
     });
 
 
-
-
     if(is_mobile == false) {
         j(".purchase_column").css({'height':(j(".component_column").height()+'px')});
         j('.stick').stick_in_parent();
+    } else {
+        j(".stick").trigger("sticky_kit:detach");
     }
 });
 
