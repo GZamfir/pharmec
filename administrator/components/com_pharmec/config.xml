@@ -40,6 +40,16 @@
                 />
     </fieldset>
 
+    <fieldset label="Noutati" name="noutati">
+        <field name="news_image"
+               type="media"
+               directory="/"
+               hide_none="1"
+               label="Imagine Banner"
+               description="Imaginea de pe pagina de news"
+                />
+    </fieldset>
+
     <fieldset
             name="permissions"
             description="JCONFIG_PERMISSIONS_DESC"

@@ -22,19 +22,25 @@ JHtml::_('behavior.caption');
 $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
 	|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author'));
 
+
+$componentParams = JComponentHelper::getParams('com_pharmec');
 ?>
 <div itemscope itemtype="http://schema.org/Article">
 	<?php if ($useDefList && ($info == 0 || $info == 2)) : ?>
+		<div class="row news_banner_image">
+			<div class="small-12 columns">
+				<img src="<?php echo $componentParams->get('news_image') ?>" alt="news banner"/>
+			</div>
+		</div>
 		<div class="article-info muted">
 			<dl class="article-info">
-			<dt class="article-info-term"><?php echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?></dt>
 
 
 			<?php if ($params->get('show_publish_date')) : ?>
 				<dd class="published">
 					<span class="icon-calendar"></span>
 					<time datetime="<?php echo JHtml::_('date', $this->item->publish_up, 'c'); ?>" itemprop="datePublished">
-						<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC3'))); ?>
+						<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC6'))); ?>
 					</time>
 				</dd>
 			<?php endif; ?>

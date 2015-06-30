@@ -111,6 +111,26 @@
         float:left!important;
         text-align: center;
     }
+    
+    
+    /* NEWS */
+    .news_description p{
+        margin-bottom: 5px;
+    }
+
+    .individual_news{
+        margin-bottom: 20px!important;
+        margin-top: 20px!important;
+    }
+
+    .news_banner_image img{
+        width: 100%!important;
+        max-height: 280px!important;
+    }
+
+    .news_banner_image {
+        margin-bottom: 20px!important;
+    }
 }
 
 @media only screen and (min-width:40.063em) {
@@ -169,6 +189,11 @@
 
     .single_service_description h2{
         margin-top: 30px;
+    }
+
+    .individual_news{
+        margin-bottom: 3%!important;
+        margin-top: 2%!important;
     }
 
 }

@@ -1,10 +1,17 @@
 j = jQuery.noConflict();
 j(document).ready(function(){
     var is_mobile = isMobile();
-    console.log(is_mobile);
+    var old_is_mobile;
+
+    setup_trimmed_text();
+    reduce_text_from_news();
+
     setInterval(function(){
+        old_is_mobile = is_mobile;
         is_mobile = isMobile();
-        console.log(is_mobile)
+        if(old_is_mobile != is_mobile){
+            reduce_text_from_news();
+        }
     },200);
 
     j('.accreditation-logos-slider').slick({
@@ -67,4 +74,39 @@ function isMobile(){
     } else {
         return true;
     }
+}
+
+j.desktop_news_array = {};
+j.mobile_news_array = {};
+
+function reduce_text_from_news(){
+    if(isMobile()){
+        j('.news_description').each(function(index, element) {
+            j(this).children().first().html(j.mobile_news_array[index]);
+            j(this).children().first().siblings().hide();
+        });
+    } else {
+        j('.news_description').each(function(index, element) {
+            j(this).children().first().html(j.desktop_news_array[index]);
+            j(this).children().first().siblings().hide();
+        });
+    }
+
+}
+
+function setup_trimmed_text(){
+    var trimmed_mobile_array= {};
+    var trimmed_desktop_array = {};
+    j('.news_description').each(function(index, element){
+        var full_text = j(this).children().first().html();
+        var trimmed_text_for_mobile = full_text.slice(0,150);
+        var trimmed_text_for_desktop = full_text.slice(0,366);
+        trimmed_text_for_mobile += " ...";
+        trimmed_text_for_desktop += " ...";
+        trimmed_mobile_array[index] = trimmed_text_for_mobile;
+        trimmed_desktop_array[index] = trimmed_text_for_desktop;
+    })
+
+    j.mobile_news_array = trimmed_mobile_array;
+    j.desktop_news_array = trimmed_desktop_array;
 }
