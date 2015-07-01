@@ -244,6 +244,31 @@ class ServiceController extends JControllerLegacy
             die(json_encode($return));
         }
 
+        $db = JFactory::getDbo();
+
+        $query = $db->getQuery(true);
+        $columns = array('email',
+            'newsletter_type',
+            'city',
+            'published');
+
+        // Insert values.
+        $values = array(
+            $db->quote($data_array['email']),
+            $db->quote($data_array['newsletter_type']),
+            $db->quote($data_array['city']),
+            0);
+
+        // Prepare the insert query.
+        $query
+            ->insert($db->quoteName('#__newsletter'))
+            ->columns($db->quoteName($columns))
+            ->values(implode(',', $values));
+
+        // Set the query using our newly populated query object and execute it.
+        $db->setQuery($query);
+        $db->execute();
+
         $email_array = array();
         $email_array['Email'] = $data_array['email'];
         $email_array['Oras/Judet'] = $data_array['city'];

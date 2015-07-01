@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field
+                name="id"
+                type="hidden"
+                />
+
+        <field
+                name="email"
+                type="input"
+                label="Email"
+                description="Emailul de contact al persoanei"
+                required="true"
+                default=""
+                class="span8"
+                />
+
+        <field
+                name="city"
+                type="textarea"
+                label="Judet / Oras"
+                description="Judetul sau orasul oficiului"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="newsletter_type"
+                type="list"
+                default=""
+                label="Tipul De Newsletter"
+                description="Tipul newsletterului"
+                >
+                <option value="Cabinet">Cabinet</option>
+                <option value="Farmacie">Farmacie</option>
+        </field>
+
+    </fieldset>
+</form>
