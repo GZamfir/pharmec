@@ -29,13 +29,13 @@ CREATE TABLE IF NOT EXISTS `ph_assets` (
   UNIQUE KEY `idx_asset_name` (`name`),
   KEY `idx_lft_rgt` (`lft`,`rgt`),
   KEY `idx_parent_id` (`parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_assets: ~70 rows (aproximativ)
+-- Dumping data for table pharmec.ph_assets: ~73 rows (aproximativ)
 DELETE FROM `ph_assets`;
 /*!40000 ALTER TABLE `ph_assets` DISABLE KEYS */;
 INSERT INTO `ph_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
-	(1, 0, 0, 143, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
+	(1, 0, 0, 145, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
 	(2, 1, 1, 2, 1, 'com_admin', 'com_admin', '{}'),
 	(3, 1, 3, 6, 1, 'com_banners', 'com_banners', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 	(4, 1, 7, 8, 1, 'com_cache', 'com_cache', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
@@ -106,7 +106,8 @@ INSERT INTO `ph_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 	(72, 18, 92, 93, 2, 'com_modules.module.92', 'Pharmec Right Booking', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
 	(73, 18, 94, 95, 2, 'com_modules.module.93', 'Footer Newsletter', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
 	(74, 1, 141, 142, 1, 'com_pharmec', 'Pharmec', '{}'),
-	(75, 27, 19, 20, 3, 'com_content.article.5', '404 Aceasta Pagina Nu Exista', '{"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1}}');
+	(75, 27, 19, 20, 3, 'com_content.article.5', '404 Aceasta Pagina Nu Exista', '{"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1}}'),
+	(76, 1, 143, 144, 1, 'com_newsletter', 'COM_NEWSLETTER', '{}');
 /*!40000 ALTER TABLE `ph_assets` ENABLE KEYS */;
 
 
@@ -234,29 +235,9 @@ CREATE TABLE IF NOT EXISTS `ph_booking` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_booking: 19 rows
+-- Dumping data for table pharmec.ph_booking: 0 rows
 DELETE FROM `ph_booking`;
 /*!40000 ALTER TABLE `ph_booking` DISABLE KEYS */;
-INSERT INTO `ph_booking` (`id`, `name_surname`, `company`, `phone`, `city`, `email`, `message`, `service_title`, `published`) VALUES
-	(30, 'Test Chrome', 'Test', '0720121467', 'Test', 'test@yahoo.com', 'Test', 'Servicii Hardware', 0),
-	(29, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Hardware', 0),
-	(28, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Hardware', 0),
-	(27, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Hardware', 0),
-	(26, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Pharmec', 0),
-	(25, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Pharmec', 0),
-	(24, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Pharmec', 0),
-	(23, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Pharmec', 0),
-	(22, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Pharmec', 0),
-	(21, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Pharmec', 0),
-	(20, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Pharmec', 0),
-	(16, 'Zamfir Gabriel', 'test', '0231234124', 'Constanta', 'zamfir.gaby@gmail.com', 'Acesta este ultimul test pe care il fac', '', 0),
-	(17, 'Zamfir Gabriel', 'test', '0231234124', 'Constanta', 'zamfir.gaby@gmail.com', 'Acesta este ultimul test pe care il fac', '', 0),
-	(18, 'Test', 'Test', '0123123', 'Constanta', 'test@yahoo.com', '', 'Servicii Pharmec', 0),
-	(19, 'Test Final', 'test', '0123123', 'teste', 'test@yahoo.com', 'Trst', 'Servicii Pharmec', 0),
-	(31, 'Testul Dropdown', 'Test', '012312', 'Test', 'test@yahoo.com', 'Test', 'Servicii Avast', 0),
-	(32, 'Testul Dropdown', 'Test', '012312', 'Test', 'test@yahoo.com', 'Test', 'Servicii Hardware', 0),
-	(33, 'Testul Dropdown', 'Test', '012312', 'Test', 'test@yahoo.com', 'Test', 'Servicii Avast', 0),
-	(34, 'Test Dynamic', 'Test', '01231', 'Test', 'test@gmail.com', 'Test', 'Servicii Pharmec', 0);
 /*!40000 ALTER TABLE `ph_booking` ENABLE KEYS */;
 
 
@@ -299,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `ph_categories` (
   KEY `idx_language` (`language`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_categories: ~10 rows (aproximativ)
+-- Dumping data for table pharmec.ph_categories: ~8 rows (aproximativ)
 DELETE FROM `ph_categories`;
 /*!40000 ALTER TABLE `ph_categories` DISABLE KEYS */;
 INSERT INTO `ph_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `extension`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `modified_user_id`, `modified_time`, `hits`, `language`, `version`) VALUES
@@ -310,8 +291,6 @@ INSERT INTO `ph_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level
 	(5, 30, 1, 13, 14, 1, 'uncategorised', 'com_newsfeeds', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
 	(7, 32, 1, 15, 16, 1, 'uncategorised', 'com_users', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
 	(8, 58, 1, 17, 18, 1, 'noutati', 'com_content', 'Noutati', 'noutati', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":"","image_alt":""}', '', '', '{"author":"","robots":""}', 502, '2015-05-17 13:33:20', 0, '2015-05-17 13:33:20', 0, '*', 1),
-	(9, 65, 1, 3, 4, 1, 'servicii-telekom', 'com_service', 'Servicii Telekom', 'servicii-telekom', '', '', 0, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":"","image_alt":""}', '', '', '{"author":"","robots":""}', 502, '2015-05-23 11:02:40', 0, '2015-05-23 11:02:40', 0, '*', 1),
-	(10, 66, 1, 5, 6, 1, 'servicii-avast', 'com_service', 'Servicii Avast', 'servicii-avast', '', '', 0, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":"","image_alt":""}', '', '', '{"author":"","robots":""}', 502, '2015-05-23 11:34:19', 0, '2015-05-23 11:34:19', 0, '*', 1),
 	(11, 67, 1, 9, 10, 1, 'servicii-pharmec', 'com_service', 'Servicii Pharmec', 'servicii-pharmec', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":"","image_alt":"","category_image":"images\\/servicii\\/servicii_pharmec.jpg","category_summary":"O lista a serviciilor pharmec poate include Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.","category_description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","show_in_slider":"1"}', '', '', '{"author":"","robots":""}', 502, '2015-05-23 13:06:05', 502, '2015-06-14 16:42:56', 0, '*', 1);
 /*!40000 ALTER TABLE `ph_categories` ENABLE KEYS */;
 
@@ -421,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `ph_content` (
   KEY `idx_xreference` (`xreference`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_content: ~4 rows (aproximativ)
+-- Dumping data for table pharmec.ph_content: ~5 rows (aproximativ)
 DELETE FROM `ph_content`;
 /*!40000 ALTER TABLE `ph_content` DISABLE KEYS */;
 INSERT INTO `ph_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
@@ -429,7 +408,7 @@ INSERT INTO `ph_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `full
 	(2, 60, 'Noutate 2', 'noutate-2', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '', 1, 8, '2015-05-17 13:34:21', 502, '', '2015-05-17 13:35:13', 502, 0, '0000-00-00 00:00:00', '2015-05-17 13:34:21', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 2, 0, '', '', 1, 1, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 	(3, 61, 'Noutate 3', 'noutate-3', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '', 1, 8, '2015-05-17 13:34:33', 502, '', '2015-05-17 13:34:33', 0, 0, '0000-00-00 00:00:00', '2015-05-17 13:34:33', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 1, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 	(4, 62, 'Noutate 4', 'noutate-4', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '', 1, 8, '2015-05-17 13:34:47', 502, '', '2015-05-17 13:34:47', 0, 0, '0000-00-00 00:00:00', '2015-05-17 13:34:47', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 0, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
-	(5, 75, '404 Aceasta Pagina Nu Exista', '404-aceasta-pagina-nu-exista', '<h3>Ne pare rau dar pagina pe care ati accesat-o este inexistenta. Va rugam sa reveniti la pagina principala.</h3>\r\n<h3><a href="index.php?option=com_content&amp;view=featured&amp;Itemid=101">Inapoi La Pagina Principala</a></h3>', '', 1, 2, '2015-07-01 07:09:33', 502, '', '2015-07-01 07:20:40', 502, 502, '2015-07-01 07:20:40', '2015-07-01 07:09:33', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"pharmec:error","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 0, '', '', 1, 8, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
+	(5, 75, '404 Aceasta Pagina Nu Exista', '404-aceasta-pagina-nu-exista', '<h3>Ne pare rau dar pagina pe care ati accesat-o este inexistenta. Va rugam sa reveniti la pagina principala.</h3>\r\n<h3><a href="index.php?option=com_content&amp;view=featured&amp;Itemid=101">Inapoi La Pagina Principala</a></h3>', '', 1, 2, '2015-07-01 07:09:33', 502, '', '2015-07-01 07:20:40', 502, 0, '0000-00-00 00:00:00', '2015-07-01 07:09:33', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"pharmec:error","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 0, '', '', 1, 8, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
 /*!40000 ALTER TABLE `ph_content` ENABLE KEYS */;
 
 
@@ -555,9 +534,9 @@ CREATE TABLE IF NOT EXISTS `ph_extensions` (
   KEY `element_clientid` (`element`,`client_id`),
   KEY `element_folder_clientid` (`element`,`folder`,`client_id`),
   KEY `extension` (`type`,`element`,`folder`,`client_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10017 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10018 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_extensions: ~139 rows (aproximativ)
+-- Dumping data for table pharmec.ph_extensions: ~149 rows (aproximativ)
 DELETE FROM `ph_extensions`;
 /*!40000 ALTER TABLE `ph_extensions` DISABLE KEYS */;
 INSERT INTO `ph_extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
@@ -593,7 +572,7 @@ INSERT INTO `ph_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 	(32, 'com_postinstall', 'component', 'com_postinstall', '', 1, 1, 1, 1, '{"name":"com_postinstall","type":"component","creationDate":"September 2013","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.2.0","description":"COM_POSTINSTALL_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 	(101, 'SimplePie', 'library', 'simplepie', '', 0, 1, 1, 1, '{"name":"SimplePie","type":"library","creationDate":"2004","author":"SimplePie","copyright":"Copyright (c) 2004-2009, Ryan Parman and Geoffrey Sneddon","authorEmail":"","authorUrl":"http:\\/\\/simplepie.org\\/","version":"1.2","description":"LIB_SIMPLEPIE_XML_DESCRIPTION","group":"","filename":"simplepie"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 	(102, 'phputf8', 'library', 'phputf8', '', 0, 1, 1, 1, '{"name":"phputf8","type":"library","creationDate":"2006","author":"Harry Fuecks","copyright":"Copyright various authors","authorEmail":"hfuecks@gmail.com","authorUrl":"http:\\/\\/sourceforge.net\\/projects\\/phputf8","version":"0.5","description":"LIB_PHPUTF8_XML_DESCRIPTION","group":"","filename":"phputf8"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-	(103, 'Joomla! Platform', 'library', 'joomla', '', 0, 1, 1, 1, '{"name":"Joomla! Platform","type":"library","creationDate":"2008","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"http:\\/\\/www.joomla.org","version":"13.1","description":"LIB_JOOMLA_XML_DESCRIPTION","group":"","filename":"joomla"}', '{"mediaversion":"a2fbad566dd0ea3adc3e14491316b2d1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+	(103, 'Joomla! Platform', 'library', 'joomla', '', 0, 1, 1, 1, '{"name":"Joomla! Platform","type":"library","creationDate":"2008","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"http:\\/\\/www.joomla.org","version":"13.1","description":"LIB_JOOMLA_XML_DESCRIPTION","group":"","filename":"joomla"}', '{"mediaversion":"7b6c30a72eb276ce437077384d6ac403"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 	(104, 'IDNA Convert', 'library', 'idna_convert', '', 0, 1, 1, 1, '{"name":"IDNA Convert","type":"library","creationDate":"2004","author":"phlyLabs","copyright":"2004-2011 phlyLabs Berlin, http:\\/\\/phlylabs.de","authorEmail":"phlymail@phlylabs.de","authorUrl":"http:\\/\\/phlylabs.de","version":"0.8.0","description":"LIB_IDNA_XML_DESCRIPTION","group":"","filename":"idna_convert"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 	(105, 'FOF', 'library', 'fof', '', 0, 1, 1, 1, '{"name":"FOF","type":"library","creationDate":"2015-03-11 11:59:00","author":"Nicholas K. Dionysopoulos \\/ Akeeba Ltd","copyright":"(C)2011-2015 Nicholas K. Dionysopoulos","authorEmail":"nicholas@akeebabackup.com","authorUrl":"https:\\/\\/www.akeebabackup.com","version":"2.4.2","description":"LIB_FOF_XML_DESCRIPTION","group":"","filename":"fof"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 	(106, 'PHPass', 'library', 'phpass', '', 0, 1, 1, 1, '{"name":"PHPass","type":"library","creationDate":"2004-2006","author":"Solar Designer","copyright":"","authorEmail":"solar@openwall.com","authorUrl":"http:\\/\\/www.openwall.com\\/phpass\\/","version":"0.3","description":"LIB_PHPASS_XML_DESCRIPTION","group":"","filename":"phpass"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -708,7 +687,8 @@ INSERT INTO `ph_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 	(10013, 'COM_BOOKING', 'component', 'com_booking', '', 1, 1, 0, 0, '{"name":"COM_BOOKING","type":"component","creationDate":"February 2015","author":"John Doe","copyright":"Copyright Info","authorEmail":"john.doe@example.org","authorUrl":"http:\\/\\/www.example.org","version":"0.1.2","description":"COM_BOOKING_DESCRIPTION","group":"","filename":"booking"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 	(10014, 'Pharmec Right Booking', 'module', 'mod_pharmec_right_booking', '', 0, 1, 1, 0, '{"name":"Pharmec Right Booking","type":"module","creationDate":"Unknown","author":"Gaby Zamfir","copyright":"","authorEmail":"","authorUrl":"","version":"1.0.0","description":"Modulul pentru rezervare din partea dreapta","group":"","filename":"mod_pharmec_right_booking"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 	(10015, 'Pharmec Footer Booking', 'module', 'mod_pharmec_footer_booking', '', 0, 1, 1, 0, '{"name":"Pharmec Footer Booking","type":"module","creationDate":"Unknown","author":"Gaby Zamfir","copyright":"","authorEmail":"","authorUrl":"","version":"1.0.0","description":"Modulul pentru rezervare din footer","group":"","filename":"mod_pharmec_footer_booking"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-	(10016, 'Pharmec', 'component', 'com_pharmec', '', 1, 1, 0, 0, '{"name":"Pharmec","type":"component","creationDate":"December 2013","author":"John Doe","copyright":"Copyright Info","authorEmail":"john.doe@example.org","authorUrl":"http:\\/\\/www.example.org","version":"0.1.5","description":"This component is just to set the global custom values","group":"","filename":"pharmec"}', '{"header_image":"","footer_address":"Strada Tudor Vladimirescu, Constanța, Romania","footer_phone":"0726-327-192","footer_email":"constanta@psw.ro","news_image":"images\\/banners\\/News.jpg","recipient_email":"zamfir.gaby@gmail.com"}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+	(10016, 'Pharmec', 'component', 'com_pharmec', '', 1, 1, 0, 0, '{"name":"Pharmec","type":"component","creationDate":"December 2013","author":"John Doe","copyright":"Copyright Info","authorEmail":"john.doe@example.org","authorUrl":"http:\\/\\/www.example.org","version":"0.1.5","description":"This component is just to set the global custom values","group":"","filename":"pharmec"}', '{"header_image":"","footer_address":"Strada Tudor Vladimirescu, Constanța, Romania","footer_phone":"0726-327-192","footer_email":"constanta@psw.ro","news_image":"images\\/banners\\/News.jpg","recipient_email":"zamfir.gaby@gmail.com"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+	(10017, 'COM_NEWSLETTER', 'component', 'com_newsletter', '', 1, 1, 0, 0, '{"name":"COM_NEWSLETTER","type":"component","creationDate":"February 2015","author":"John Doe","copyright":"Copyright Info","authorEmail":"john.doe@example.org","authorUrl":"http:\\/\\/www.example.org","version":"0.1.2","description":"COM_NEWSLETTER_DESCRIPTION","group":"","filename":"newsletter"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 /*!40000 ALTER TABLE `ph_extensions` ENABLE KEYS */;
 
 
@@ -1045,7 +1025,7 @@ CREATE TABLE IF NOT EXISTS `ph_finder_taxonomy` (
   KEY `idx_parent_published` (`parent_id`,`state`,`access`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_finder_taxonomy: ~0 rows (aproximativ)
+-- Dumping data for table pharmec.ph_finder_taxonomy: ~1 rows (aproximativ)
 DELETE FROM `ph_finder_taxonomy`;
 /*!40000 ALTER TABLE `ph_finder_taxonomy` DISABLE KEYS */;
 INSERT INTO `ph_finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `access`, `ordering`) VALUES
@@ -1302,7 +1282,7 @@ CREATE TABLE IF NOT EXISTS `ph_languages` (
   KEY `idx_ordering` (`ordering`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_languages: ~0 rows (aproximativ)
+-- Dumping data for table pharmec.ph_languages: ~1 rows (aproximativ)
 DELETE FROM `ph_languages`;
 /*!40000 ALTER TABLE `ph_languages` DISABLE KEYS */;
 INSERT INTO `ph_languages` (`lang_id`, `lang_code`, `title`, `title_native`, `sef`, `image`, `description`, `metakey`, `metadesc`, `sitename`, `published`, `access`, `ordering`) VALUES
@@ -1344,13 +1324,13 @@ CREATE TABLE IF NOT EXISTS `ph_menu` (
   KEY `idx_alias` (`alias`),
   KEY `idx_path` (`path`(255)),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_menu: ~39 rows (aproximativ)
+-- Dumping data for table pharmec.ph_menu: ~41 rows (aproximativ)
 DELETE FROM `ph_menu`;
 /*!40000 ALTER TABLE `ph_menu` DISABLE KEYS */;
 INSERT INTO `ph_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-	(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 79, 0, '*', 0),
+	(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 81, 0, '*', 0),
 	(2, 'menu', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 0, 1, 1, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 1, 10, 0, '*', 1),
 	(3, 'menu', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners', 'component', 0, 2, 2, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 2, 3, 0, '*', 1),
 	(4, 'menu', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&extension=com_banners', 'component', 0, 2, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-cat', 0, '', 4, 5, 0, '*', 1),
@@ -1389,7 +1369,8 @@ INSERT INTO `ph_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 	(127, 'mainmenu', 'Parteneri', 'parteneri', '', 'parteneri', 'index.php?option=com_partner&view=partners', 'component', 1, 1, 1, 10004, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 71, 72, 0, '*', 0),
 	(128, 'main', 'COM_BOOKING_MENU', 'com-booking-menu', '', 'com-booking-menu', 'index.php?option=com_booking', 'component', 0, 1, 1, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '', 73, 74, 0, '', 1),
 	(129, 'main', 'PHARMEC DO NOT USE', 'pharmec-do-not-use', '', 'pharmec-do-not-use', 'index.php?option=com_pharmec', 'component', 0, 1, 1, 10016, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '', 75, 76, 0, '', 1),
-	(130, 'hidden', '404', '404', '', '404', 'index.php?option=com_content&view=article&id=5', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_tags":"","show_noauth":"","urls_position":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 77, 78, 0, '*', 0);
+	(130, 'hidden', '404', '404', '', '404', 'index.php?option=com_content&view=article&id=5', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_tags":"","show_noauth":"","urls_position":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 77, 78, 0, '*', 0),
+	(135, 'main', 'COM_NEWSLETTER_MENU', 'com-newsletter-menu', '', 'com-newsletter-menu', 'index.php?option=com_newsletter', 'component', 0, 1, 1, 10017, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '', 79, 80, 0, '', 1);
 /*!40000 ALTER TABLE `ph_menu` ENABLE KEYS */;
 
 
@@ -1596,6 +1577,27 @@ DELETE FROM `ph_newsfeeds`;
 /*!40000 ALTER TABLE `ph_newsfeeds` ENABLE KEYS */;
 
 
+-- Dumping structure for table pharmec.ph_newsletter
+CREATE TABLE IF NOT EXISTS `ph_newsletter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `newsletter_type` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `published` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table pharmec.ph_newsletter: 4 rows
+DELETE FROM `ph_newsletter`;
+/*!40000 ALTER TABLE `ph_newsletter` DISABLE KEYS */;
+INSERT INTO `ph_newsletter` (`id`, `email`, `newsletter_type`, `city`, `published`) VALUES
+	(1, 'Test', 'Cabinet', '', 0),
+	(2, 'Test 1', 'Cabinet', 'Test', 0),
+	(3, 'Test', 'Farmacie', 'Test', 0),
+	(4, 'test_last@yahoo.com', 'Test', 'Farmacie', 0);
+/*!40000 ALTER TABLE `ph_newsletter` ENABLE KEYS */;
+
+
 -- Dumping structure for table pharmec.ph_overrider
 CREATE TABLE IF NOT EXISTS `ph_overrider` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
@@ -1605,7 +1607,7 @@ CREATE TABLE IF NOT EXISTS `ph_overrider` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2803 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_overrider: ~2.793 rows (aproximativ)
+-- Dumping data for table pharmec.ph_overrider: ~2.802 rows (aproximativ)
 DELETE FROM `ph_overrider`;
 /*!40000 ALTER TABLE `ph_overrider` DISABLE KEYS */;
 INSERT INTO `ph_overrider` (`id`, `constant`, `string`, `file`) VALUES
@@ -4431,7 +4433,7 @@ INSERT INTO `ph_partner` (`id`, `name`, `website`, `image`, `published`) VALUES
 	(1, 'Pharmec', 'http://www.pharmec.ro', 'images/parteneri/pharmec_logo.png', 1),
 	(2, 'Avast', 'https://www.avast.com', 'images/parteneri/avast_logo.png', 1),
 	(3, 'Telekom', 'https://www.telekom.ro', 'images/parteneri/telekom_logo.png', 1),
-	(4, 'Test', 'Test', 'images/parteneri/telekom_logo.png', 1);
+	(4, 'Test', 'Test', 'images/parteneri/telekom_logo.png', 0);
 /*!40000 ALTER TABLE `ph_partner` ENABLE KEYS */;
 
 
@@ -4493,14 +4495,15 @@ CREATE TABLE IF NOT EXISTS `ph_schemas` (
   PRIMARY KEY (`extension_id`,`version_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_schemas: ~4 rows (aproximativ)
+-- Dumping data for table pharmec.ph_schemas: ~5 rows (aproximativ)
 DELETE FROM `ph_schemas`;
 /*!40000 ALTER TABLE `ph_schemas` DISABLE KEYS */;
 INSERT INTO `ph_schemas` (`extension_id`, `version_id`) VALUES
 	(700, '3.4.0-2015-02-26'),
 	(10004, '0.0.16'),
 	(10006, '0.0.16'),
-	(10013, '');
+	(10013, ''),
+	(10017, '');
 /*!40000 ALTER TABLE `ph_schemas` ENABLE KEYS */;
 
 
@@ -4522,7 +4525,7 @@ CREATE TABLE IF NOT EXISTS `ph_service` (
 DELETE FROM `ph_service`;
 /*!40000 ALTER TABLE `ph_service` DISABLE KEYS */;
 INSERT INTO `ph_service` (`id`, `title`, `summary`, `description`, `title_image`, `catid`, `just_description`, `show_in_slider`, `published`) VALUES
-	(8, 'Servicii Hardware', '<p>Acestea sunt cateva din optiunile pe care le puteti avea pentru serviciile noastre:</p>\r\n<ul>\r\n<li>cititoare carduri</li>\r\n<li>case de marcat</li>\r\n<li>asistenta tehnica</li>\r\n</ul>', '<h3>Pharmec Software pune la dispozitia clientilor lor o gama variata de servicii hardware.</h3>\r\n<h2>Cititoare Carduri</h2>\r\n<p>Conform noilor cereri din cadrul ministerului sanatatii, fiecare institutie publica de sanatate va fi nevoita sa achizitioneze un cititor de carduri. Pharmec Software va face aceasta tranzitie mai usoara si ofera clientilor lor aceste dispozitive, incluzand softwareul necesar instalarii acestui dispozitiv, cat si pregatirea si explicatiile necesare pentru a il folosi.</p>\r\n<p>Stocul pentru acest produs este improspatat zilnic. <strong>Preturile variaza intre 200 - 400 de lei.</strong></p>\r\n<h2>Case de marcat</h2>\r\n<p>Pharmec Software dispune de case de marcat pentru Cabinete, Farmacii, Cabinete Dentare. Pe langa achizitionarea acestui serviciu, veti beneficia gratuit si de instalarea acestuia cat si de instalarea softwareului necesar.</p>\r\n<p><strong>Preturile pentru acest serviciu sunt cuprinse intre 150 - 300 de lei.</strong></p>', 'images/servicii/card.jpg', 11, 0, 1, 1),
+	(8, 'Servicii Hardware', '<p>Acestea sunt cateva din optiunile pe care le puteti avea pentru serviciile noastre:</p>\r\n<ul>\r\n<li>cititoare carduri</li>\r\n<li>case de marcat</li>\r\n<li>asistenta tehnica</li>\r\n</ul>', '<h3>Pharmec Software pune la dispozitia clientilor lor o gama variata de servicii hardware.</h3>\r\n<h2>Cititoare Carduri</h2>\r\n<p>Conform noilor cereri din cadrul ministerului sanatatii, fiecare institutie publica de sanatate va fi nevoita sa achizitioneze un cititor de carduri. Pharmec Software va face aceasta tranzitie mai usoara si ofera clientilor lor aceste dispozitive, incluzand softwareul necesar instalarii acestui dispozitiv, cat si pregatirea si explicatiile necesare pentru a il folosi.</p>\r\n<p>Stocul pentru acest produs este improspatat zilnic. <strong>Preturile variaza intre 200 - 400 de lei.</strong></p>\r\n<h2>Case de marcat</h2>\r\n<p>Pharmec Software dispune de case de marcat pentru Cabinete, Farmacii, Cabinete Dentare. Pe langa achizitionarea acestui serviciu, veti beneficia gratuit si de instalarea acestuia cat si de instalarea softwareului necesar.</p>\r\n<p><strong>Preturile pentru acest serviciu sunt cuprinse intre 150 - 300 de lei.</strong></p>\r\n<p><a href="images/documents/LH_WEBCKI.RO.STANDALONE.JIVZFold5qNiy2Ny1GSNq6.pdf">Descarcati Fisa De Service</a></p>', 'images/servicii/card.jpg', 11, 0, 1, 1),
 	(6, 'Servicii Avast', '<p>Test servicii Avast</p>', '<div class="row">\r\n<div class="small-12 columns">\r\n<div class="row">\r\n<div class="small-12 columns"><iframe src="http://www.getavast.net/support/managing-exceptions" width="100%" height="500px"></iframe></div>\r\n&nbsp;</div>\r\n</div>\r\n&nbsp;</div>', 'images/parteneri/avast_logo.png', 0, 1, 0, 1),
 	(7, 'Servicii Telekom', 'Pharmec Software este in parteneriat cu Telekom. Serviciile Telekom pot fi achizitionate si din centrul Pharmec ', '<div class="small-12 columns"><iframe src="https://www.telekom.ro/" width="100%" height="500px"></iframe></div>\r\n<h2 class="row"> </h2>\r\n<h3 style="text-align: center;"><strong>Vrei unul din serviciile Telekom ? Il poti achizitiona chiar de aici, de la Pharmec.</strong></h3>', 'images/servicii/telekom.jpg', 0, 1, 0, 1);
 /*!40000 ALTER TABLE `ph_service` ENABLE KEYS */;
@@ -4546,8 +4549,8 @@ CREATE TABLE IF NOT EXISTS `ph_session` (
 DELETE FROM `ph_session`;
 /*!40000 ALTER TABLE `ph_session` DISABLE KEYS */;
 INSERT INTO `ph_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-	('jl89g1sn9nouqkn4k4li06nrj6', 1, 0, '1435735243', '__default|a:8:{s:15:"session.counter";i:40;s:19:"session.timer.start";i:1435733330;s:18:"session.timer.last";i:1435735240;s:17:"session.timer.now";i:1435735240;s:22:"session.client.browser";s:72:"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":4:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:5:"en-GB";}s:11:"com_content";O:8:"stdClass":1:{s:4:"edit";O:8:"stdClass":1:{s:7:"article";O:8:"stdClass":2:{s:4:"data";N;s:2:"id";a:1:{i:0;i:5;}}}}s:9:"com_menus";O:8:"stdClass":2:{s:5:"items";O:8:"stdClass":3:{s:8:"menutype";s:6:"hidden";s:10:"limitstart";i:0;s:4:"list";a:4:{s:9:"direction";s:3:"asc";s:5:"limit";s:2:"20";s:8:"ordering";s:5:"a.lft";s:5:"start";d:0;}}s:4:"edit";O:8:"stdClass":1:{s:4:"item";O:8:"stdClass":4:{s:4:"data";N;s:4:"type";N;s:4:"link";N;s:2:"id";a:0:{}}}}s:4:"item";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:8:"menutype";s:6:"hidden";}}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"502";s:4:"name";s:10:"Super User";s:8:"username";s:11:"zamfir.gaby";s:5:"email";s:21:"zamfir.gaby@gmail.com";s:8:"password";s:60:"$2y$10$CGWBxrHMSBReDPC99wOAQuacGhfmBkwWbumkHPjax2kGB8VCgJd8C";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2015-05-07 18:49:28";s:13:"lastvisitDate";s:19:"2015-06-30 11:17:55";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"0988823bd9dbcc79a84c4a733f05e14b";}__wf|a:1:{s:13:"session.token";s:32:"b9dc2204f740082648783e4fea9ae314";}', 502, 'zamfir.gaby'),
-	('sc6ie6tlm9smut1q3i8b52feh2', 0, 1, '1435735272', '__default|a:7:{s:15:"session.counter";i:12;s:19:"session.timer.start";i:1435734862;s:18:"session.timer.last";i:1435735271;s:17:"session.timer.now";i:1435735272;s:22:"session.client.browser";s:72:"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":26:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:1:{i:0;s:1:"9";}s:5:"guest";i:1;s:13:"lastResetTime";N;s:10:"resetCount";N;s:12:"requireReset";N;s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:9;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:5;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}}', 0, '');
+	('is978vee72buif1qqdcdvsjui0', 1, 0, '1435747770', '__default|a:8:{s:15:"session.counter";i:50;s:19:"session.timer.start";i:1435746641;s:18:"session.timer.last";i:1435747349;s:17:"session.timer.now";i:1435747769;s:22:"session.client.browser";s:72:"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":6:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:5:"en-GB";}s:11:"com_modules";O:8:"stdClass":1:{s:7:"modules";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:18:"client_id_previous";i:0;}}}s:13:"com_installer";O:8:"stdClass":3:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";s:12:"redirect_url";N;}s:11:"com_booking";O:8:"stdClass":1:{s:8:"bookings";O:8:"stdClass":2:{s:8:"ordercol";N;s:4:"list";a:4:{s:9:"direction";N;s:5:"limit";s:2:"20";s:8:"ordering";N;s:5:"start";i:0;}}}s:14:"com_newsletter";O:8:"stdClass":2:{s:11:"newsletters";O:8:"stdClass":4:{s:8:"ordercol";N;s:4:"list";a:1:{s:12:"fullordering";s:8:"null ASC";}s:6:"filter";a:2:{s:6:"search";s:0:"";s:9:"published";s:0:"";}s:10:"limitstart";s:1:"0";}s:4:"edit";O:8:"stdClass":1:{s:10:"newsletter";O:8:"stdClass":1:{s:4:"data";N;}}}s:10:"newsletter";O:8:"stdClass":1:{s:4:"list";O:8:"stdClass":1:{s:5:"admin";O:8:"stdClass":2:{s:22:"newsletterfilter_order";s:7:"message";s:26:"newsletterfilter_order_Dir";s:3:"asc";}}}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"502";s:4:"name";s:10:"Super User";s:8:"username";s:11:"zamfir.gaby";s:5:"email";s:21:"zamfir.gaby@gmail.com";s:8:"password";s:60:"$2y$10$CGWBxrHMSBReDPC99wOAQuacGhfmBkwWbumkHPjax2kGB8VCgJd8C";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2015-05-07 18:49:28";s:13:"lastvisitDate";s:19:"2015-07-01 08:12:16";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"7509b4555aebc8fc32593c2a207aa428";}', 502, 'zamfir.gaby'),
+	('sc6ie6tlm9smut1q3i8b52feh2', 0, 1, '1435747761', '__default|a:7:{s:15:"session.counter";i:5;s:19:"session.timer.start";i:1435746997;s:18:"session.timer.last";i:1435747313;s:17:"session.timer.now";i:1435747758;s:22:"session.client.browser";s:72:"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":26:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:1:{i:0;s:1:"9";}s:5:"guest";i:1;s:13:"lastResetTime";N;s:10:"resetCount";N;s:12:"requireReset";N;s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:9;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:5;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}}', 0, '');
 /*!40000 ALTER TABLE `ph_session` ENABLE KEYS */;
 
 
@@ -4593,7 +4596,7 @@ CREATE TABLE IF NOT EXISTS `ph_tags` (
   KEY `idx_language` (`language`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_tags: ~0 rows (aproximativ)
+-- Dumping data for table pharmec.ph_tags: ~1 rows (aproximativ)
 DELETE FROM `ph_tags`;
 /*!40000 ALTER TABLE `ph_tags` DISABLE KEYS */;
 INSERT INTO `ph_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `created_by_alias`, `modified_user_id`, `modified_time`, `images`, `urls`, `hits`, `language`, `version`, `publish_up`, `publish_down`) VALUES
@@ -4716,7 +4719,7 @@ CREATE TABLE IF NOT EXISTS `ph_ucm_history` (
   KEY `idx_save_date` (`save_date`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_ucm_history: ~8 rows (aproximativ)
+-- Dumping data for table pharmec.ph_ucm_history: ~11 rows (aproximativ)
 DELETE FROM `ph_ucm_history`;
 /*!40000 ALTER TABLE `ph_ucm_history` DISABLE KEYS */;
 INSERT INTO `ph_ucm_history` (`version_id`, `ucm_item_id`, `ucm_type_id`, `version_note`, `save_date`, `editor_user_id`, `character_count`, `sha1_hash`, `version_data`, `keep_forever`) VALUES
@@ -4751,72 +4754,13 @@ CREATE TABLE IF NOT EXISTS `ph_updates` (
   `infourl` text NOT NULL,
   `extra_query` varchar(1000) DEFAULT '',
   PRIMARY KEY (`update_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COMMENT='Available Updates';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Available Updates';
 
--- Dumping data for table pharmec.ph_updates: ~60 rows (aproximativ)
+-- Dumping data for table pharmec.ph_updates: ~1 rows (aproximativ)
 DELETE FROM `ph_updates`;
 /*!40000 ALTER TABLE `ph_updates` DISABLE KEYS */;
 INSERT INTO `ph_updates` (`update_id`, `update_site_id`, `extension_id`, `name`, `description`, `element`, `type`, `folder`, `client_id`, `version`, `data`, `detailsurl`, `infourl`, `extra_query`) VALUES
-	(1, 3, 0, 'Armenian', '', 'pkg_hy-AM', 'package', '', 0, '3.4.1.2', '', 'http://update.joomla.org/language/details3/hy-AM_details.xml', '', ''),
-	(2, 3, 0, 'Malay', '', 'pkg_ms-MY', 'package', '', 0, '3.4.1.2', '', 'http://update.joomla.org/language/details3/ms-MY_details.xml', '', ''),
-	(3, 3, 0, 'Romanian', '', 'pkg_ro-RO', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/ro-RO_details.xml', '', ''),
-	(4, 3, 0, 'Flemish', '', 'pkg_nl-BE', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/nl-BE_details.xml', '', ''),
-	(5, 3, 0, 'Chinese Traditional', '', 'pkg_zh-TW', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/zh-TW_details.xml', '', ''),
-	(6, 3, 0, 'French', '', 'pkg_fr-FR', 'package', '', 0, '3.4.1.2', '', 'http://update.joomla.org/language/details3/fr-FR_details.xml', '', ''),
-	(7, 3, 0, 'Galician', '', 'pkg_gl-ES', 'package', '', 0, '3.3.1.2', '', 'http://update.joomla.org/language/details3/gl-ES_details.xml', '', ''),
-	(8, 3, 0, 'German', '', 'pkg_de-DE', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/de-DE_details.xml', '', ''),
-	(9, 3, 0, 'Greek', '', 'pkg_el-GR', 'package', '', 0, '3.4.2.1', '', 'http://update.joomla.org/language/details3/el-GR_details.xml', '', ''),
-	(10, 3, 0, 'Japanese', '', 'pkg_ja-JP', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/ja-JP_details.xml', '', ''),
-	(11, 3, 0, 'Hebrew', '', 'pkg_he-IL', 'package', '', 0, '3.1.1.1', '', 'http://update.joomla.org/language/details3/he-IL_details.xml', '', ''),
-	(12, 3, 0, 'EnglishAU', '', 'pkg_en-AU', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/en-AU_details.xml', '', ''),
-	(13, 3, 0, 'EnglishUS', '', 'pkg_en-US', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/en-US_details.xml', '', ''),
-	(14, 3, 0, 'Hungarian', '', 'pkg_hu-HU', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/hu-HU_details.xml', '', ''),
-	(15, 3, 0, 'Afrikaans', '', 'pkg_af-ZA', 'package', '', 0, '3.2.0.2', '', 'http://update.joomla.org/language/details3/af-ZA_details.xml', '', ''),
-	(16, 3, 0, 'Arabic Unitag', '', 'pkg_ar-AA', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/ar-AA_details.xml', '', ''),
-	(17, 3, 0, 'Belarusian', '', 'pkg_be-BY', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/be-BY_details.xml', '', ''),
-	(18, 3, 0, 'Bulgarian', '', 'pkg_bg-BG', 'package', '', 0, '3.3.0.1', '', 'http://update.joomla.org/language/details3/bg-BG_details.xml', '', ''),
-	(19, 3, 0, 'Catalan', '', 'pkg_ca-ES', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/ca-ES_details.xml', '', ''),
-	(20, 3, 0, 'Chinese Simplified', '', 'pkg_zh-CN', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/zh-CN_details.xml', '', ''),
-	(21, 3, 0, 'Croatian', '', 'pkg_hr-HR', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/hr-HR_details.xml', '', ''),
-	(22, 3, 0, 'Czech', '', 'pkg_cs-CZ', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/cs-CZ_details.xml', '', ''),
-	(23, 3, 0, 'Danish', '', 'pkg_da-DK', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/da-DK_details.xml', '', ''),
-	(24, 3, 0, 'Dutch', '', 'pkg_nl-NL', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/nl-NL_details.xml', '', ''),
-	(25, 3, 0, 'Estonian', '', 'pkg_et-EE', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/et-EE_details.xml', '', ''),
-	(26, 3, 0, 'Italian', '', 'pkg_it-IT', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/it-IT_details.xml', '', ''),
-	(27, 3, 0, 'Korean', '', 'pkg_ko-KR', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/ko-KR_details.xml', '', ''),
-	(28, 3, 0, 'Latvian', '', 'pkg_lv-LV', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/lv-LV_details.xml', '', ''),
-	(29, 3, 0, 'Macedonian', '', 'pkg_mk-MK', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/mk-MK_details.xml', '', ''),
-	(30, 3, 0, 'Norwegian Bokmal', '', 'pkg_nb-NO', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/nb-NO_details.xml', '', ''),
-	(31, 3, 0, 'Norwegian Nynorsk', '', 'pkg_nn-NO', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/nn-NO_details.xml', '', ''),
-	(32, 3, 0, 'Persian', '', 'pkg_fa-IR', 'package', '', 0, '3.4.1.2', '', 'http://update.joomla.org/language/details3/fa-IR_details.xml', '', ''),
-	(33, 3, 0, 'Polish', '', 'pkg_pl-PL', 'package', '', 0, '3.4.1.3', '', 'http://update.joomla.org/language/details3/pl-PL_details.xml', '', ''),
-	(34, 3, 0, 'Portuguese', '', 'pkg_pt-PT', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/pt-PT_details.xml', '', ''),
-	(35, 3, 0, 'Russian', '', 'pkg_ru-RU', 'package', '', 0, '3.4.1.3', '', 'http://update.joomla.org/language/details3/ru-RU_details.xml', '', ''),
-	(36, 3, 0, 'Slovak', '', 'pkg_sk-SK', 'package', '', 0, '3.4.1.2', '', 'http://update.joomla.org/language/details3/sk-SK_details.xml', '', ''),
-	(37, 3, 0, 'Swedish', '', 'pkg_sv-SE', 'package', '', 0, '3.4.1.3', '', 'http://update.joomla.org/language/details3/sv-SE_details.xml', '', ''),
-	(38, 3, 0, 'Syriac', '', 'pkg_sy-IQ', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/sy-IQ_details.xml', '', ''),
-	(39, 3, 0, 'Tamil', '', 'pkg_ta-IN', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/ta-IN_details.xml', '', ''),
-	(40, 3, 0, 'Thai', '', 'pkg_th-TH', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/th-TH_details.xml', '', ''),
-	(41, 3, 0, 'Turkish', '', 'pkg_tr-TR', 'package', '', 0, '3.4.1.3', '', 'http://update.joomla.org/language/details3/tr-TR_details.xml', '', ''),
-	(42, 3, 0, 'Ukrainian', '', 'pkg_uk-UA', 'package', '', 0, '3.3.3.15', '', 'http://update.joomla.org/language/details3/uk-UA_details.xml', '', ''),
-	(43, 3, 0, 'Uyghur', '', 'pkg_ug-CN', 'package', '', 0, '3.3.0.1', '', 'http://update.joomla.org/language/details3/ug-CN_details.xml', '', ''),
-	(44, 3, 0, 'Albanian', '', 'pkg_sq-AL', 'package', '', 0, '3.1.1.1', '', 'http://update.joomla.org/language/details3/sq-AL_details.xml', '', ''),
-	(45, 3, 0, 'Hindi', '', 'pkg_hi-IN', 'package', '', 0, '3.3.6.1', '', 'http://update.joomla.org/language/details3/hi-IN_details.xml', '', ''),
-	(46, 3, 0, 'Portuguese Brazil', '', 'pkg_pt-BR', 'package', '', 0, '3.4.1.3', '', 'http://update.joomla.org/language/details3/pt-BR_details.xml', '', ''),
-	(47, 3, 0, 'Serbian Latin', '', 'pkg_sr-YU', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/sr-YU_details.xml', '', ''),
-	(48, 3, 0, 'Spanish', '', 'pkg_es-ES', 'package', '', 0, '3.4.1.2', '', 'http://update.joomla.org/language/details3/es-ES_details.xml', '', ''),
-	(49, 3, 0, 'Bosnian', '', 'pkg_bs-BA', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/bs-BA_details.xml', '', ''),
-	(50, 3, 0, 'Serbian Cyrillic', '', 'pkg_sr-RS', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/sr-RS_details.xml', '', ''),
-	(51, 3, 0, 'Vietnamese', '', 'pkg_vi-VN', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/vi-VN_details.xml', '', ''),
-	(52, 3, 0, 'Bahasa Indonesia', '', 'pkg_id-ID', 'package', '', 0, '3.3.0.2', '', 'http://update.joomla.org/language/details3/id-ID_details.xml', '', ''),
-	(53, 3, 0, 'Finnish', '', 'pkg_fi-FI', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/fi-FI_details.xml', '', ''),
-	(54, 3, 0, 'Swahili', '', 'pkg_sw-KE', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/sw-KE_details.xml', '', ''),
-	(55, 3, 0, 'Montenegrin', '', 'pkg_srp-ME', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/srp-ME_details.xml', '', ''),
-	(56, 3, 0, 'EnglishCA', '', 'pkg_en-CA', 'package', '', 0, '3.3.6.1', '', 'http://update.joomla.org/language/details3/en-CA_details.xml', '', ''),
-	(57, 3, 0, 'FrenchCA', '', 'pkg_fr-CA', 'package', '', 0, '3.3.6.1', '', 'http://update.joomla.org/language/details3/fr-CA_details.xml', '', ''),
-	(58, 3, 0, 'Welsh', '', 'pkg_cy-GB', 'package', '', 0, '3.3.0.2', '', 'http://update.joomla.org/language/details3/cy-GB_details.xml', '', ''),
-	(59, 3, 0, 'Sinhala', '', 'pkg_si-LK', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/si-LK_details.xml', '', ''),
-	(60, 3, 0, 'Dari Persian', '', 'pkg_prs-AF', 'package', '', 0, '3.4.1.2', '', 'http://update.joomla.org/language/details3/prs-AF_details.xml', '', '');
+	(1, 1, 700, 'Joomla', '', 'joomla', 'file', '', 0, '3.4.2', '', 'http://update.joomla.org/core/sts/extension_sts.xml', '', '');
 /*!40000 ALTER TABLE `ph_updates` ENABLE KEYS */;
 
 
@@ -4832,15 +4776,15 @@ CREATE TABLE IF NOT EXISTS `ph_update_sites` (
   PRIMARY KEY (`update_site_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Update Sites';
 
--- Dumping data for table pharmec.ph_update_sites: ~4 rows (aproximativ)
+-- Dumping data for table pharmec.ph_update_sites: ~5 rows (aproximativ)
 DELETE FROM `ph_update_sites`;
 /*!40000 ALTER TABLE `ph_update_sites` DISABLE KEYS */;
 INSERT INTO `ph_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-	(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1435664021, ''),
-	(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1435664021, ''),
-	(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1435664021, ''),
-	(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1435664021, ''),
-	(5, 'JCE Editor Updates', 'extension', 'https://www.joomlacontenteditor.net/index.php?option=com_updates&view=update&format=xml&id=1&file=extension.xml', 1, 1435664021, '');
+	(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1435743041, ''),
+	(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1435743041, ''),
+	(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
+	(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 0, ''),
+	(5, 'JCE Editor Updates', 'extension', 'https://www.joomlacontenteditor.net/index.php?option=com_updates&view=update&format=xml&id=1&file=extension.xml', 1, 0, '');
 /*!40000 ALTER TABLE `ph_update_sites` ENABLE KEYS */;
 
 
@@ -4851,7 +4795,7 @@ CREATE TABLE IF NOT EXISTS `ph_update_sites_extensions` (
   PRIMARY KEY (`update_site_id`,`extension_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Links extensions to update sites';
 
--- Dumping data for table pharmec.ph_update_sites_extensions: ~4 rows (aproximativ)
+-- Dumping data for table pharmec.ph_update_sites_extensions: ~5 rows (aproximativ)
 DELETE FROM `ph_update_sites_extensions`;
 /*!40000 ALTER TABLE `ph_update_sites_extensions` DISABLE KEYS */;
 INSERT INTO `ph_update_sites_extensions` (`update_site_id`, `extension_id`) VALUES
@@ -4916,13 +4860,14 @@ CREATE TABLE IF NOT EXISTS `ph_users` (
   KEY `idx_block` (`block`),
   KEY `username` (`username`),
   KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=503 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=504 DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_users: ~0 rows (aproximativ)
+-- Dumping data for table pharmec.ph_users: ~2 rows (aproximativ)
 DELETE FROM `ph_users`;
 /*!40000 ALTER TABLE `ph_users` DISABLE KEYS */;
 INSERT INTO `ph_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-	(502, 'Super User', 'zamfir.gaby', 'zamfir.gaby@gmail.com', '$2y$10$CGWBxrHMSBReDPC99wOAQuacGhfmBkwWbumkHPjax2kGB8VCgJd8C', 0, 1, '2015-05-07 18:49:28', '2015-07-01 06:48:54', '0', '', '0000-00-00 00:00:00', 0, '', '', 0);
+	(502, 'Super User', 'zamfir.gaby', 'zamfir.gaby@gmail.com', '$2y$10$CGWBxrHMSBReDPC99wOAQuacGhfmBkwWbumkHPjax2kGB8VCgJd8C', 0, 1, '2015-05-07 18:49:28', '2015-07-01 10:30:48', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
+	(503, 'Pharmec User', 'pharmec', 'constanta@psw.ro', '$2y$10$xAJkWWwmy47afP3lJi6uGOS1ijZbhztxO.exPQDXiUf7KdPsg3i5a', 0, 1, '2015-07-01 08:11:52', '2015-07-01 08:12:24', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
 /*!40000 ALTER TABLE `ph_users` ENABLE KEYS */;
 
 
@@ -4998,11 +4943,12 @@ CREATE TABLE IF NOT EXISTS `ph_user_usergroup_map` (
   PRIMARY KEY (`user_id`,`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table pharmec.ph_user_usergroup_map: ~0 rows (aproximativ)
+-- Dumping data for table pharmec.ph_user_usergroup_map: ~2 rows (aproximativ)
 DELETE FROM `ph_user_usergroup_map`;
 /*!40000 ALTER TABLE `ph_user_usergroup_map` DISABLE KEYS */;
 INSERT INTO `ph_user_usergroup_map` (`user_id`, `group_id`) VALUES
-	(502, 8);
+	(502, 8),
+	(503, 8);
 /*!40000 ALTER TABLE `ph_user_usergroup_map` ENABLE KEYS */;
 
 
