@@ -193,6 +193,9 @@ class ServiceController extends JControllerLegacy
 
     public function sendEmail($array_of_data,$subject)
     {
+        $componentParams = JComponentHelper::getParams('com_pharmec');
+        $recipient = $componentParams->get('recipient_email');
+
         // testing out email
         $mailer = JFactory::getMailer();
         $config = JFactory::getConfig();
@@ -203,7 +206,7 @@ class ServiceController extends JControllerLegacy
 
         $mailer->setSender($sender);
 
-        $mailer->addRecipient("zamfir.gaby@gmail.com");
+        $mailer->addRecipient($recipient);
         $mailer->isHTML(TRUE);
         $body = "<html><body>";
         $body .= "<table border='1'>";

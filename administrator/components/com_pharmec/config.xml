@@ -50,6 +50,18 @@
                 />
     </fieldset>
 
+    <fieldset label="E-mail" name="email">
+    <field
+            name="recipient_email"
+            type="input"
+            label="Adresa E-mail destinatar"
+            description="Aceasta este adresa la care vor fi trimise e-mailurile pentru notificarea despre newsletter/cerere serviciu"
+            required="true"
+            default=""
+            class="span8"
+            />
+    </fieldset>
+
     <fieldset
             name="permissions"
             description="JCONFIG_PERMISSIONS_DESC"
