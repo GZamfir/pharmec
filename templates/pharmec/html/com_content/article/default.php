@@ -32,6 +32,11 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
 				<img src="<?php echo $componentParams->get('news_image') ?>" alt="news banner"/>
 			</div>
 		</div>
+		<div class="article-title row">
+			<div class="small-12 columns">
+				<h2><?php echo $this->item->title ?></h2>
+			</div>
+		</div>
 		<div class="article-info muted">
 			<dl class="article-info">
 

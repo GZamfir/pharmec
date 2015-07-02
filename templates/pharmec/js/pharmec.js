@@ -63,7 +63,9 @@ j(document).ready(function(){
 
 
     if(is_mobile == false) {
-        j(".purchase_column").css({'height':(j(".component_column").height()+'px')});
+        var height = j(".component_column").height() - j(".footer_holder").height()
+        j(".purchase_column").css({'height':(height+'px')});
+        j(".stick").css({'max-height':(height+'px')});
         j('.stick').stick_in_parent();
     } else {
         j(".stick").trigger("sticky_kit:detach");
