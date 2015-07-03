@@ -10,7 +10,6 @@ $doc->addScript('/templates/' . $this->template . '/js/modernizr.js', 'text/java
 $doc->addScript('/templates/' . $this->template . '/js/foundation.min.js', 'text/javascript');
 $doc->addScript('/templates/' . $this->template . '/js/pharmec.js', 'text/javascript');
 $doc->addScript('/templates/' . $this->template . '/slider/slick.min.js', 'text/javascript');
-$doc->addScript('/templates/' . $this->template . '/js/jquery.sticky-kit.min.js', 'text/javascript');
 // Get some base joomla stuff
 $renderer = $doc->loadRenderer('module');
 $input = JFactory::getApplication()->input;
