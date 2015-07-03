@@ -60,9 +60,13 @@ $doc->addStyleSheet('templates/pharmec/css/booking.css');
                 success: function (html) {
                     var data_array = JSON.parse(html);
                     if (data_array['status'] == "error") {
-                        $.each(data_array['message'], function (key, value) {
-                            $('.newsletter_errors').append('<p>' + value + '</p>');
-                        })
+                        if(j.type(data_array['message'])!='string') {
+                            $.each(data_array['message'], function (key, value) {
+                                $('.newsletter_errors').append('<p>' + value + '</p>');
+                            })
+                        } else {
+                            $('.newsletter_errors').append('<p>' + data_array['message'] + '</p>');
+                        }
                     } else {
                         console.log(data_array)
                         //if everything went well, hide the form and display the message

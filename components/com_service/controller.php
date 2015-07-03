@@ -46,6 +46,8 @@ class ServiceController extends JControllerLegacy
         $postData = $app->input->post;
         $data_array = array();
 
+        $return = array();
+
         if (empty($user)) {
             $data_array['first_last_name'] = $postData->get('first_last_name', '', 'STRING');
             $data_array['company'] = $postData->get('company', '', 'STRING');
@@ -114,7 +116,8 @@ class ServiceController extends JControllerLegacy
         $email_array['Serviciu'] = $data_array['service_title'];
         $email_array['Mesaj'] = $data_array['message'];
 
-        if ($this->sendEmail($email_array, 'O cerere pentru serviciu a fost adaugata') == true) {
+        $email_result = $this->sendEmail($email_array, 'O cerere pentru serviciu a fost adaugata');
+        if ($email_result === true) {
             $return['status'] = "success";
             $return['message'] = "Cererea a fost trimisa. Va multumim";
 
@@ -134,6 +137,7 @@ class ServiceController extends JControllerLegacy
         } else {
             $return['status'] = "error";
             $return['message'] = "A fost o problema cu trimiterea mailului dar cererea a fost inregistrata.";
+            $return['developer_message'] = $email_result;
             die(json_encode($return));
         }
     }
@@ -220,7 +224,7 @@ class ServiceController extends JControllerLegacy
         $mailer->setBody($body);
         $send = $mailer->Send();
         if ($send !== true) {
-            echo 'Error sending email: ' . $send->__toString();
+            return 'Error sending email: ' . $send->__toString();
         } else {
             return true;
         }
@@ -273,13 +277,16 @@ class ServiceController extends JControllerLegacy
         $email_array['Email'] = $data_array['email'];
         $email_array['Oras/Judet'] = $data_array['city'];
         $email_array['Tipul Newsletterului'] = $data_array['newsletter_type'];
-        if ($this->sendEmail($email_array, 'Cerere pentru Newsletter adaugata') == true) {
+
+        $email_result = $this->sendEmail($email_array, 'Cerere pentru Newsletter adaugata');
+        if ($email_result === true) {
             $return['status'] = "success";
             $return['message'] = "Cererea a fost trimisa. Va multumim.";
             die(json_encode($return));
         } else {
             $return['status'] = "error";
             $return['message'] = "A fost o problema cu trimiterea cererii. Va rugam incercati mai tarziu.";
+            $return['developer_message'] = $email_result;
             die(json_encode($return));
         }
     }
