@@ -36,5 +36,14 @@
                 <option value="Farmacie">Farmacie</option>
         </field>
 
+        <field
+                name="phone"
+                type="input"
+                label="Telefon (Optional)"
+                description="Numarul de telefon al clientului."
+                default=""
+                class="span8"
+                />
+
     </fieldset>
 </form>
