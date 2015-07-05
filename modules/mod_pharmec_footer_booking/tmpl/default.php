@@ -27,6 +27,9 @@ $doc->addStyleSheet('templates/pharmec/css/booking.css');
                 <div class="small-12 medium-6 columns end">
                     <input type="text" id="newsletter_city" placeholder="Oras/Judet"/>
                 </div>
+                <div class="small-12 medium-6 columns end">
+                    <input type="text" id="newsletter_phone" placeholder="Telefon (optional)"/>
+                </div>
             </div>
             <div class="button_placeholder small-2 medium-offset-7 small-offset-3 columns">
                 <input type="submit" class="button info newsletter_book_button" value="Aboneaza-te!"/>
@@ -46,6 +49,7 @@ $doc->addStyleSheet('templates/pharmec/css/booking.css');
             var email = jQuery('#newsletter_email').val();
             var newsletter_type = jQuery('#newsletter_type').val();
             var city = jQuery('#newsletter_city').val();
+            var phone = jQuery('#newsletter_phone').val();
 
             jQuery.ajax
             ({
@@ -54,6 +58,7 @@ $doc->addStyleSheet('templates/pharmec/css/booking.css');
                 data: {
                     email: email,
                     city: city,
+                    phone: phone,
                     newsletter_type: newsletter_type
                 },
                 cache: false,

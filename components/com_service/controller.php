@@ -240,6 +240,7 @@ class ServiceController extends JControllerLegacy
         $data_array['email'] = $postData->get('email', '', 'STRING');
         $data_array['city'] = $postData->get('city', '', 'STRING');
         $data_array['newsletter_type'] = $postData->get('newsletter_type', '', 'STRING');
+        $data_array['phone'] = $postData->get('phone', '', 'STRING');
 
         $validation_errors = $this->validate_newsletter_input($data_array);
         if (!empty($validation_errors)) {
@@ -254,6 +255,7 @@ class ServiceController extends JControllerLegacy
         $columns = array('email',
             'newsletter_type',
             'city',
+            'phone',
             'published');
 
         // Insert values.
@@ -261,6 +263,7 @@ class ServiceController extends JControllerLegacy
             $db->quote($data_array['email']),
             $db->quote($data_array['newsletter_type']),
             $db->quote($data_array['city']),
+            $db->quote($data_array['phone']),
             0);
 
         // Prepare the insert query.
@@ -277,6 +280,7 @@ class ServiceController extends JControllerLegacy
         $email_array['Email'] = $data_array['email'];
         $email_array['Oras/Judet'] = $data_array['city'];
         $email_array['Tipul Newsletterului'] = $data_array['newsletter_type'];
+        $email_array['Telefon (Optional)'] = $data_array['phone'];
 
         $email_result = $this->sendEmail($email_array, 'Cerere pentru Newsletter adaugata');
         if ($email_result === true) {
@@ -302,12 +306,20 @@ class ServiceController extends JControllerLegacy
             }
         }
 
+
         //let's check the city now
         if (empty($data_array['city'])) {
             $errors[] = "Completati orasul / judetul";
         } else {
             if (!preg_match('/[a-z|A-Z|\s]$/', $data_array['city'])) {
                 $errors[] = "Caractere interzise in oras / judet";
+            }
+        }
+
+        //let's check the phone now
+        if (!empty($data_array['phone'])) {
+            if (!preg_match('/^[0-9]+$/', $data_array['phone'])) {
+                $errors[] = "Numarul de telefon trebuie sa contina doar cifre.";
             }
         }
 
