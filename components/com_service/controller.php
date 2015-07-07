@@ -9,6 +9,9 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+include(JPATH_ROOT.'/mpdf/mpdf.php');
+require_once(JPATH_ROOT.'/dompdf/dompdf_config.inc.php');
+
 /**
  *  Service Component Controller
  *
@@ -28,6 +31,44 @@ class ServiceController extends JControllerLegacy
      */
     public function display($cachable = false, $urlparams = false)
     {
+        $app = JFactory::getApplication();
+        $post_array = $app->input->post->getArray();
+        if(!empty($post_array['label'])){
+
+            $html = "<hrml><body>
+<style>
+.content_holder{
+    border: solid 2px #000000;
+    font-size: 1.1em;
+}
+
+.content_holder p{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+h3{
+font-size: 1.4em;
+}
+</style>
+<h3>FISA DE PRELUARE ECHIPAMENT IN SERVICE SAU GARANTIE</h3>
+<div class='content_holder'>";
+            foreach($post_array['label'] as $key=>$label){
+                if($label != "break") {
+                    $html .= "<p>" . $label . " " . $post_array['field'][$key] . "</p>";
+                } else {
+                    $html .= "<hr/>";
+                }
+            }
+            $html .= "</div></body></hrml>";
+
+            $dompdf = new DOMPDF();
+            $dompdf->load_html($html);
+            $dompdf->render();
+            $dompdf->stream("sample.pdf");
+
+            $this->display();
+        }
         $view = JFactory::getApplication()->input->getCmd('view', 'services');
         JFactory::getApplication()->input->set('view', $view);
 

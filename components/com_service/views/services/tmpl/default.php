@@ -58,6 +58,3 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
     <?php endforeach; ?>
 </div>
 
-<style>
-
-</style>

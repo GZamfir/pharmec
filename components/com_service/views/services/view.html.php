@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
+
 /**
  * View class for a list of Services.
  */
@@ -26,9 +27,11 @@ class ServiceViewServices extends JViewLegacy {
      */
     public function display($tpl = null) {
         $app = JFactory::getApplication();
+
         JHtml::_('jquery.framework');
         $this->state = $this->get('State');
         $this->categories = $this->get('Items');
+
 
         $this->uncategorized_items = $this->get('UncategorizedItems');
         $this->params = $app->getParams('com_service');
