@@ -48,8 +48,8 @@ JHtml::_('jquery.framework', false);
         $('.vote').on('click', function (event) {
             event.preventDefault();
 
-            $('.success_message').hide().html();
-            $('.error_message').hide().html();
+            $('.success_message').slideUp().html();
+            $('.error_message').slideUp().html();
             //start passing the variables through
             var book_id = $(this).prev('.book_id').val();
             var vote = $(this).val();
@@ -73,9 +73,9 @@ JHtml::_('jquery.framework', false);
                             votes_text = data_array['current_votes'] + " Voturi";
                         }
                         $('#votes_for_book_'+data_array['book_id']).html("<p>"+votes_text+"</p>");
-                        $('.success_message').html('<p>Votul dumneavoastra a fost adaugat. Va multumim. </p>').show();
+                        $('.success_message').html('<p>Votul dumneavoastra a fost adaugat. Va multumim. </p>').slideDown();
                     } else {
-                        $('.error_message').html('<p>A fost o problema in procesul de votare. Va rugam sa reincercati.</p>').show();
+                        $('.error_message').html('<p>A fost o problema in procesul de votare. Va rugam sa reincercati.</p>').slideDown();
                     }
                 }
             });
