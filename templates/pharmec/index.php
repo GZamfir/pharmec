@@ -22,7 +22,12 @@ if (JUri::getInstance()->toString() == JUri::base()) {
     $home = false;
 }
 
+$jinput = JFactory::getApplication()->input;
+$current_component = $jinput->get('option');
+
 $componentParams = JComponentHelper::getParams('com_pharmec');
+
+$logged_in_user = JFactory::getUser();
 ?>
 
 <html>
@@ -38,6 +43,24 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
                     <img class="logo" src="<?php echo $componentParams->get('header_image', '/templates/'.$this->template.'/images/pharmec_logo.png'); ?>"/>
                 </a>
         </div>
+        <?php if(!empty($logged_in_user->id)): ?>
+        <div class="small-12 medium-3 medium-offset-6 columns">
+            Sunteti logat(a) ca <?php echo $logged_in_user->username; ?>
+            <a href="index.php?option=com_users&task=user.logout&<?php echo JSession::getFormToken(); ?>=1">
+                <input  type="button" name="Submit" class="button logout_button" value="Logout">
+            </a>
+        </div>
+        <?php else: ?>
+
+        <div class="small-12 medium-2 medium-offset-7 columns end">
+            <a href="/login" class="button login_button show-for-small-down">Login</a>
+            <div class="show-for-medium-up">
+                <a href="/login">
+            <img src="/templates/<?php echo $this->template; ?>/images/login_button.png" alt="login"/>
+                </a>
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
 
     <div class="row main_menu">
@@ -55,6 +78,7 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
     $right_module_loaded = false;
 } ?>
 
+<?php if($current_component !="com_users"):?>
 <div class="row main-content">
     <?php if ($right_module_loaded): ?>
         <div class="small-12 medium-9 columns component_column">
@@ -71,6 +95,16 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
         </div>
     <?php endif; ?>
 </div>
+<?php else: ?>
+<div class="row main-content">
+    <div class="small-12 medium-4 medium-offset-4 columns">
+        <div class="error_message" style="color: red">
+        <jdoc:include type="message" />
+        </div>
+        <jdoc:include type="component"/>
+    </div>
+</div>
+<?php endif; ?>
 
 <div class="news">
     <jdoc:include type="modules" name="news"/>
@@ -78,6 +112,7 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
 <div class="parteneri_home">
     <jdoc:include type="modules" name="middle"/>
 </div>
+
 
 
 <footer>

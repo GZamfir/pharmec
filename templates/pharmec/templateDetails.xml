@@ -30,5 +30,6 @@
         <position>user4</position>
         <position>footer</position>
         <position>footer_booking</position>
+        <position>login_form</position>
     </positions>
 </extension>

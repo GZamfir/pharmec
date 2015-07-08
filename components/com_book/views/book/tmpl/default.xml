@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Adauga Carte">
+        <message>Aceasta optiune adauga o carte citita</message>
+    </layout>
+    <fields
+            name="request"
+            addfieldpath="/administrator/components/com_book/models/fields"
+            >
+        <fieldset name="request">
+            <field
+                    name="id"
+                    type="book"
+                    label="COM_BOOK_BOOK_FIELD_MESSAGE_LABEL"
+                    description="COM_BOOK_BOOK_FIELD_MESSAGE_DESC"
+                    />
+        </fieldset>
+    </fields>
+</metadata>

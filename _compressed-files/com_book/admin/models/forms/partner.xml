@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field
+                name="id"
+                type="hidden"
+                />
+        <field
+                name="message"
+                type="textarea"
+                label="COM_PARTNER_PARTNER_MESSAGE_LABEL"
+                description="COM_PARTNER_PARTNER_MESSAGE_DESC"
+                size="148"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="client"
+                type="textarea"
+                label="COM_PARTNER_PARTNER_CLIENT_LABEL"
+                description="COM_PARTNER_PARTNER_CLIENT_DESC"
+                size="148"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field name="tags" type="tag" mode="ajax"
+               label="JTAG" description="JTAG_DESC"
+               class="inputbox span8 small" multiple="true"
+                >
+        </field>
+    </fieldset>
+</form>

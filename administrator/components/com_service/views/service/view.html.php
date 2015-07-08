@@ -78,6 +78,8 @@ class ServiceViewService extends JViewLegacy
         }
 
         JToolBarHelper::title($title, 'service');
+
+        JToolBarHelper::apply('service.apply');
         JToolBarHelper::save('service.save');
 
         //save to copy

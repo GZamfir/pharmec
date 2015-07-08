@@ -9,7 +9,6 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-include(JPATH_ROOT.'/mpdf/mpdf.php');
 require_once(JPATH_ROOT.'/dompdf/dompdf_config.inc.php');
 
 /**

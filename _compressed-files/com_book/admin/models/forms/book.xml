@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field
+                name="id"
+                type="hidden"
+                />
+        <field
+                name="title"
+                type="textarea"
+                label="Titlu"
+                description="Titlul cartii citite"
+                size="148"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="author"
+                type="input"
+                label="Autor"
+                description="Autorul cartii citite"
+                size="148"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="genre"
+                type="input"
+                label="Gen"
+                description="Genul cartii citite(SF, Roman Politist, etc)"
+                size="148"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="cover"
+                type="media"
+                label="Imagine (Cover)"
+                description="Coverul cartii"
+                size="148"
+                default=""
+                class="span8"
+                />
+        <field
+                name="reader"
+                type="input"
+                label="Cititor"
+                description="Numele persoanei care a citit cartea"
+                size="148"
+                required="true"
+                default=""
+                class="span8"
+                />
+        <field
+                name="summady"
+                type="editor"
+                label="Rezumat"
+
+                description="Rezumatul cartii citite"
+                required="true"
+                default=""
+                buttons="true"
+
+                class="inputbox"
+                filter="JComponentHelper::filterText"
+                />
+    </fieldset>
+</form>

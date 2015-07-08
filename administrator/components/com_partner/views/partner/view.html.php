@@ -80,7 +80,9 @@ class PartnerViewPartner extends JViewLegacy
         }
 
         JToolBarHelper::title($title, 'partner');
+        JToolBarHelper::apply('partner.apply');
         JToolBarHelper::save('partner.save');
+        JToolBarHelper::save2new('partner.save2new');
         JToolBarHelper::cancel(
             'partner.cancel',
             $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE'
