@@ -69,24 +69,33 @@ class BookModelBook extends JModelItem
             $id = $this->getState('message.id');
             $db = JFactory::getDbo();
             $query = $db->getQuery(true);
-            $query->select('h.message, h.params, c.title as category')
-                ->from('#__book as h')
-                ->leftJoin('#__categories as c ON h.catid=c.id')
-                ->where('h.id=' . (int)$id);
+            $query->select('*')
+                ->from('#__book')
+                ->where('id=' . (int)$id);
             $db->setQuery((string)$query);
 
-            if ($this->item = $db->loadObject()) {
-                // Load the JSON string
-                $params = new JRegistry;
-                $params->loadString($this->item->params, 'JSON');
-                $this->item->params = $params;
+            $this->item = $db->loadObject();
 
-                // Merge global params with item params
-                $params = clone $this->getState('params');
-                $params->merge($this->item->params);
-                $this->item->params = $params;
-            }
         }
         return $this->item;
+    }
+
+    public function canVoteThisBook($user_id){
+            $book_id = $this->item->id;
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true);
+            $query->select('COUNT(id)')
+                ->from('#__book_votes')
+                ->where('user_id=' . (int)$user_id)
+                ->where('book_id=' . (int)$book_id);
+            $db->setQuery((string)$query);
+
+            $votes = $db->loadResult();
+            if($votes == "0"){
+                //if there are no votes, it means he can vote
+                return true;
+            } else {
+                return false;
+            }
     }
 }

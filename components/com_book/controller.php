@@ -25,6 +25,7 @@ class BookController extends JControllerLegacy
             $returned_array = array();
 
             if($result == true){
+                //insert into the middle table
                 $updated_votes = $model->getCurrentVotes($post_array['book_id']);
                 $returned_array['status'] = "success";
                 $returned_array['book_id'] = $post_array['book_id'];

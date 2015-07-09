@@ -71,10 +71,24 @@ class BookModelBooks extends JModelItem
                 ->from('#__book')
                 ->where('published = 1');
             $db->setQuery((string)$query);
-            return $db->loadObjectList();
+            $items = $db->loadObjectList();
+
+        foreach ($items as $item) {
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true);
+            $query->select("path as href")->from("#__menu")->where("link='index.php?option=com_book&view=book&id=$item->id'");
+
+            $db->SetQuery($query);
+            $menu_item = $db->loadResult();
+            if(empty($menu_item)){
+                $menu_item = "index.php?option=com_book&view=book&id={$item->id}";
+            }
+            $item->href = $menu_item;
+        }
+        return $items;
     }
 
-    public function updateVotes($id){
+    public function updateVotes($book_id){
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         // Fields to update.
@@ -84,7 +98,7 @@ class BookModelBooks extends JModelItem
 
 // Conditions for which records should be updated.
         $conditions = array(
-            $db->quoteName('id') . " = {$id}"
+            $db->quoteName('id') . " = {$book_id}"
         );
 
         $query->update($db->quoteName('#__book'))->set($fields)->where($conditions);
@@ -92,7 +106,16 @@ class BookModelBooks extends JModelItem
         $db->setQuery($query);
 
         $result = $db->execute();
-        return $result;
+
+
+        $logged_in_user = JFactory::getUser();
+        $user_id = $logged_in_user->id;
+        if($result){
+            $final_result = $this->insertVotingInfo($book_id,$user_id);
+            return $final_result;
+        } else {
+            return false;
+        }
     }
 
     public function getCurrentVotes($id)
@@ -105,5 +128,28 @@ class BookModelBooks extends JModelItem
             ->where("id = {$id}");
         $db->setQuery((string)$query);
         return $db->loadResult();
+    }
+
+    private function insertVotingInfo($book_id,$user_id){
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $columns = array('book_id','user_id');
+
+        // Insert values.
+        $values = array(
+            'book_id' => $db->quote($book_id),
+            'user_id' => $db->quote($user_id)
+        );
+
+        // Prepare the insert query.
+        $query
+            ->insert($db->quoteName('#__book_votes'))
+            ->columns($db->quoteName($columns))
+            ->values(implode(',', $values));
+
+        // Set the query using our newly populated query object and execute it.
+        $db->setQuery($query);
+
+        return $db->execute();
     }
 }

@@ -14,22 +14,36 @@ JHtml::_('jquery.framework', false);
 <div class="row pharmec_books">
     <div class="small-12 columns">
         <div class="messages">
-            <div class="success_message">
+            <div class="books_success_message">
 
             </div>
-            <div class="error_message">
+            <div class="books_error_message">
 
+            </div>
+        </div>
+        <div class="headings">
+            <div class="small-7 medium-5 columns">
+                <h5>Titlu</h5>
+            </div>
+            <div class="small-3 columns">
+                <h5>Autor</h5>
+            </div>
+            <div class="small-2 columns end">
+                <h5>Voturi</h5>
             </div>
         </div>
         <div class="books_content_holder">
             <?php foreach($this->books as $book):?>
-            <div class="small-8 columns">
-                <a href="#"><?php echo $book->title ?></a>
+            <div class="small-7 medium-5 columns">
+                <a href="/<?php echo $book->href ?>"><?php echo $book->title ?></a>
             </div>
+                <div class="small-3 columns">
+                    <p><?php echo $book->author ?></p>
+                </div>
             <div class="small-2 columns" id="votes_for_book_<?php echo $book->id; ?>">
                 <p><?php echo $book->votes ?> <?php echo ($book->votes == 1)?"Vot":"Voturi" ?></p>
             </div>
-                <div class="small-2 columns">
+                <div class="medium-2 columns show-for-medium-up voting_button">
                     <form method="post">
                         <input type="hidden" name="book_id" class="book_id" value="<?php echo $book->id?>">
                         <input type="submit" name="vote" class="vote" value="Voteaza">
@@ -43,13 +57,13 @@ JHtml::_('jquery.framework', false);
 <script>
     jQuery(document).ready(function ($) {
 
-        $('.success_message').hide();
-        $('.error_message').hide();
+        $('.books_success_message').hide();
+        $('.books_error_message').hide();
         $('.vote').on('click', function (event) {
             event.preventDefault();
 
-            $('.success_message').slideUp().html();
-            $('.error_message').slideUp().html();
+            $('.books_success_message').slideUp().html();
+            $('.books_error_message').slideUp().html();
             //start passing the variables through
             var book_id = $(this).prev('.book_id').val();
             var vote = $(this).val();
@@ -73,9 +87,10 @@ JHtml::_('jquery.framework', false);
                             votes_text = data_array['current_votes'] + " Voturi";
                         }
                         $('#votes_for_book_'+data_array['book_id']).html("<p>"+votes_text+"</p>");
-                        $('.success_message').html('<p>Votul dumneavoastra a fost adaugat. Va multumim. </p>').slideDown();
+                        $('.books_success_message').html('<p>Votul dumneavoastra a fost adaugat. Va multumim. </p>').slideDown();
+                        $('.voting_button').hide();
                     } else {
-                        $('.error_message').html('<p>A fost o problema in procesul de votare. Va rugam sa reincercati.</p>').slideDown();
+                        $('.books_error_message').html('<p>A fost o problema in procesul de votare. Va rugam sa reincercati.</p>').slideDown();
                     }
                 }
             });

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin-ext);
+/* @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin-ext); */
 
 @media only screen {
     html * {
@@ -155,7 +155,7 @@
     }
 
     /* VOTING MESSAGES */
-    .error_message {
+    .books_error_message {
         background-color: #e6c0c0;
         color: #c00;
         border-top: 3px solid #DE7A7B;
@@ -165,7 +165,7 @@
         margin-bottom: 20px;
     }
 
-    .success_message {
+    .books_success_message {
         background-color: #d6e6d6;
         color: #00cc01;
         border-top: 3px solid #81de88;
@@ -175,9 +175,32 @@
         margin-bottom: 20px;
     }
 
-    .success_message p,
-    .error_message p{
+    .books_success_message p,
+    .books_error_message p{
         margin-top: 20px;
+    }
+
+    .book_details p{
+        margin-bottom: 3px;
+        font-size: 1.2em;
+    }
+
+    .book_details{
+        margin-bottom: 10px;
+    }
+
+    .book_action_buttons{
+        margin-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .individual_voting_button{
+        width: 100%;
+    }
+
+    .individual_voting_div{
+        padding: 0!important;
     }
 }
 
@@ -259,6 +282,13 @@
         margin-top: 2% !important;
     }
 
+    .book_content{
+        padding-left: 20px;
+    }
+
+    .book_action_buttons{
+        padding-left: 20px;
+    }
 }
 
 @media only screen and (min-width: 64.063em) {
