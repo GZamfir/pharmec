@@ -202,6 +202,45 @@
     .individual_voting_div{
         padding: 0!important;
     }
+
+    /* SEARCH BOX DIV */
+    .search_box{
+        border-top-right-radius: 25px;
+        border-top-left-radius: 25px;
+        border: 2px solid #05acb3;
+        background-color: rgba(129, 130, 129, 0.100);
+        padding-top: 15px;
+        padding-left: 0!important;
+        padding-right: 0!important;
+    }
+
+    .books_content_holder{
+        background-color: rgba(129, 130, 129, 0.100);
+        padding-left: 0!important;
+        padding-right: 0!important;
+    }
+
+    .books_full_holder{
+        padding-left: 0!important;
+        padding-right: 0!important;
+    }
+
+    .books_content_holder .headings div{
+        border-bottom: 2px solid #05acb3;
+        border-left: 2px solid #05acb3;
+        border-right: 2px solid #05acb3;
+    }
+
+    .books_results_holder div:not(.voting_button){
+        border-bottom: 2px solid #05acb3;
+        border-left: 2px solid #05acb3;
+        border-right: 2px solid #05acb3;
+    }
+
+    .books_results_holder p{
+        margin-bottom: 0!important;
+    }
+
 }
 
 @media only screen and (min-width: 40.063em) {

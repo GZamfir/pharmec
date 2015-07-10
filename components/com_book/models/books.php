@@ -65,13 +65,41 @@ class BookModelBooks extends JModelItem
      */
     public function getBooks()
     {
-            $db = JFactory::getDbo();
-            $query = $db->getQuery(true);
-            $query->select('*')
-                ->from('#__book')
-                ->where('published = 1');
-            $db->setQuery((string)$query);
-            $items = $db->loadObjectList();
+        $app = JFactory::getApplication();
+        $post_array = $app->input->post->getArray();
+
+        $session = JFactory::getSession();
+        $filters_array=array();
+
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('*')
+            ->from('#__book')
+            ->where('published = 1');
+
+
+        if (isset($post_array['search_command'])) {
+            if (!empty($post_array['search_field'])) {
+                $search = '%' . $db->escape( $post_array['search_field'], true ) . '%';
+                $query->where($db->quoteName('title'). ' LIKE ' . $db->quote( $search, false ) . '
+                OR '. $db->quoteName('author'). ' LIKE ' . $db->quote( $search, false ));
+                $filters_array['search_field'] = $post_array['search_field'];
+            }
+
+            if (!empty($post_array['order_by']['column'])) {
+                if (!empty($post_array['order_by']['direction'])) {
+                    $query->order($db->quoteName($post_array['order_by']['column']) . $post_array['order_by']['direction']);
+                    $filters_array['order_by_direction'] = $post_array['order_by']['direction'];
+                } else {
+                    $query->order($db->quoteName($post_array['order_by']['column']) . ' ASC');
+                }
+                $filters_array['order_by_column'] = $post_array['order_by']['column'];
+            }
+            $session->set('book_search_filters',$filters_array);
+        }
+
+        $db->setQuery((string)$query);
+        $items = $db->loadObjectList();
 
         foreach ($items as $item) {
             $db = JFactory::getDbo();
@@ -80,7 +108,7 @@ class BookModelBooks extends JModelItem
 
             $db->SetQuery($query);
             $menu_item = $db->loadResult();
-            if(empty($menu_item)){
+            if (empty($menu_item)) {
                 $menu_item = "index.php?option=com_book&view=book&id={$item->id}";
             }
             $item->href = $menu_item;
@@ -88,7 +116,8 @@ class BookModelBooks extends JModelItem
         return $items;
     }
 
-    public function updateVotes($book_id){
+    public function updateVotes($book_id)
+    {
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         // Fields to update.
@@ -110,8 +139,8 @@ class BookModelBooks extends JModelItem
 
         $logged_in_user = JFactory::getUser();
         $user_id = $logged_in_user->id;
-        if($result){
-            $final_result = $this->insertVotingInfo($book_id,$user_id);
+        if ($result) {
+            $final_result = $this->insertVotingInfo($book_id, $user_id);
             return $final_result;
         } else {
             return false;
@@ -130,10 +159,11 @@ class BookModelBooks extends JModelItem
         return $db->loadResult();
     }
 
-    private function insertVotingInfo($book_id,$user_id){
+    private function insertVotingInfo($book_id, $user_id)
+    {
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $columns = array('book_id','user_id');
+        $columns = array('book_id', 'user_id');
 
         // Insert values.
         $values = array(
@@ -153,7 +183,8 @@ class BookModelBooks extends JModelItem
         return $db->execute();
     }
 
-    public function getListOfVotes($user_id){
+    public function getListOfVotes($user_id)
+    {
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->select('book_id')

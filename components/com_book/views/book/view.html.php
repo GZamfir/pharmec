@@ -31,10 +31,8 @@ class BookViewBook extends JViewLegacy
 
         $this->logged_in_user = JFactory::getUser();
 
-        if(!empty($this->logged_in_user->id)) {
-            $model = $this->getModel('book');
-            $this->can_vote_this_book = $model->canVoteThisBook($this->logged_in_user->id);
-        }
+        $session = JFactory::getSession();
+        $this->voted_books_session = $session->get('voted_books');
 
         // Check for errors.
         if (count($errors = $this->get('Errors')))

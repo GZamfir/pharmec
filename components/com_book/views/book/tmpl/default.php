@@ -57,7 +57,7 @@ defined('_JEXEC') or die('Restricted access');
                 <?php if (!empty($this->item->ebook_link)): ?>
                     <a href="<?php echo $this->item->ebook_link; ?>" class="small-12 medium-5 columns button">Citeste Cartea Online</a>
                 <?php endif; ?>
-                <?php if($this->can_vote_this_book):?>
+                <?php if(!in_array($this->item->id,$this->voted_books_session)):?>
                 <div class="small-12 medium-offset-1 medium-4 columns end individual_voting_div">
                     <form method="post">
                         <input type="hidden" name="book_id" class="book_id" value="<?php echo $this->item->id?>">

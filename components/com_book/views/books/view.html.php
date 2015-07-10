@@ -29,19 +29,14 @@ class BookViewBooks extends JViewLegacy
         // Assign data to the view
         $this->books = $this->get('Books');
 
-        $this->logged_in_user = JFactory::getUser();
+        $session = JFactory::getSession();
+        $this->voted_books_session = $session->get('voted_books');
+        $this->filters = $session->get('book_search_filters');
 
-        if(!empty($this->logged_in_user->id)) {
-            $model = $this->getModel('books');
-            $voted_books = $model->getListOfVotes($this->logged_in_user->id);
-
-            $compressed_array = $this->array_pluck($voted_books,"book_id");
-            
-        }
+        $session->clear('book_search_filters');
 
         // Check for errors.
-        if (count($errors = $this->get('Errors')))
-        {
+        if (count($errors = $this->get('Errors'))) {
             JLog::add(implode('<br />', $errors), JLog::WARNING, 'jerror');
 
             return false;
@@ -51,11 +46,4 @@ class BookViewBooks extends JViewLegacy
         parent::display($tpl);
     }
 
-    function array_pluck(array $array = array(), $key)
-    {
-        return array_map(function($item) use($key)
-        {
-            return $item[$key];
-        }, $array);
-    }
 }
