@@ -152,4 +152,16 @@ class BookModelBooks extends JModelItem
 
         return $db->execute();
     }
+
+    public function getListOfVotes($user_id){
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('book_id')
+            ->from('#__book_votes')
+            ->where('user_id=' . (int)$user_id);
+        $db->setQuery((string)$query);
+
+        return $db->loadAssocList();
+
+    }
 }
