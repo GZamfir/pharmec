@@ -46,34 +46,35 @@ ob_start();
 ?>
 var layouts = <?=json_encode($layouts)?>;
 
-var insertColumns = function(editor) {
-link = getSelectedLayout();
-	tag = '<div>';
-	tag = '<label for=\"field[]\">'+ link +'</label>';
-	tag += '<input type=\"hidden\" name=\"label[]\" value=\"'+ link +'\">';
-	tag += '<input type=\"text\" name=\"field[]\"/>';
-	tag += '</div>';
-window.parent.jInsertEditorText(tag, editor);
-window.parent.jModalClose();
+var selection = jQuery(window.parent.tinyMCE.activeEditor.selection.getNode());
 
-return false;
+var input = selection.parent().find("input[name^=label]");
+
+var input_value = input.val();
+
+jQuery(document).ready(function(){
+
+if(input_value == "break"){
+jQuery(".description_text").hide();
+jQuery(".break_text").html("<p>You have selected a break line</p>");
+jQuery(".edit_field").hide();
+} else {
+jQuery("#link").val(input_value);
 }
+});
 
-var insertBreakLine = function(editor) {
-tag = '<div>';
-tag = '<hr/>';
-tag += '<input type="hidden" name="label[]" value=\"break\">';
-tag += '<input type=\"hidden\" value=\"\" name=\"field[]\"/>';
-tag += '</div>';
-window.parent.jInsertEditorText(tag, editor);
+var editField = function(editor) {
+
+var current_text = jQuery('#link').val();
+
+selection.parent().find("label").text(current_text);
+input.val(current_text);
+
 window.parent.jModalClose();
-
 return false;
 }
 
 var removeField = function(editor) {
-var selection = jQuery(window.parent.tinyMCE.activeEditor.selection.getNode());
-
 selection.parent().remove();
 window.parent.jModalClose();
 
@@ -134,11 +135,13 @@ JFactory::getDocument()->addScriptDeclaration($script);
 <form class="form-horizontal">
 
 	<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
-	<div class="control-group layouts">
-		<?php echo JText::_('Please insert description text:'); ?>
+	<div class="control-group description_text">
+		<?php echo JText::_('Please edit the selected field:'); ?>
 		<input type="text" id="link" name="link"/>
 	</div>
-	<button onclick="insertColumns();" class="btn btn-primary"><?php echo JText::_('Insert Field'); ?></button>
-	<button onclick="insertBreakLine();" class="btn btn-primary"><?php echo JText::_('Insert break line'); ?></button>
-	<button onclick="removeField();" class="btn btn-primary"><?php echo JText::_('Remove Selected Field'); ?></button>
+	<div class="break_text">
+
+	</div>
+	<button onclick="editField();" class="btn btn-primary edit_field"><?php echo JText::_('Edit Selected Field'); ?></button>
+	<button onclick="removeField();" class="btn btn-primary remove_field"><?php echo JText::_('Remove Selected Field'); ?></button>
 </form>

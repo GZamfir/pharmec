@@ -48,9 +48,11 @@ var layouts = <?=json_encode($layouts)?>;
 
 var insertColumns = function(editor) {
 link = getSelectedLayout();
-	tag = '<label for=\"field[]\">'+ link +'</label>';
-	tag += '<input type=\"hidden\" name=\"label[]\" value=\"'+ link +'\">';
-	tag += '<input type=\"text\" name=\"field[]\"/>';
+	tag = '<div>';
+		tag = '<label for=\"field[]\">'+ link +'</label>';
+		tag += '<input type=\"hidden\" name=\"label[]\" value=\"'+ link +'\">';
+		tag += '<input type=\"text\" name=\"field[]\"/>';
+		tag += '</div>';
 window.parent.jInsertEditorText(tag, editor);
 window.parent.jModalClose();
 
@@ -58,9 +60,11 @@ return false;
 }
 
 var insertBreakLine = function(editor) {
-tag = '<hr/>';
-tag += '<input type="hidden" name="label[]" value=\"break\">';
-tag += '<input type=\"hidden\" value=\"\" name=\"field[]\"/>';
+tag = '<div>';
+	tag = '<hr/>';
+	tag += '<input type="hidden" name="label[]" value=\"break\">';
+	tag += '<input type=\"hidden\" value=\"\" name=\"field[]\"/>';
+	tag += '</div>';
 window.parent.jInsertEditorText(tag, editor);
 window.parent.jModalClose();
 
