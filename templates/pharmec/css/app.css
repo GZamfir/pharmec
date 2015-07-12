@@ -231,17 +231,28 @@
         border-right: 2px solid #05acb3;
     }
 
-    .books_results_holder div:not(.voting_button){
-        border-bottom: 2px solid #05acb3;
-        border-left: 2px solid #05acb3;
-        border-right: 2px solid #05acb3;
+    .headings{
+        padding: 0;
+        word-wrap: break-word;
+    }
+
+    /*.books_results_holder div:not(.voting_button){*/
+        /*border-bottom: 2px solid #05acb3;*/
+        /*border-left: 2px solid #05acb3;*/
+        /*border-right: 2px solid #05acb3;*/
+    /*}*/
+
+    .books_results_holder p,
+    .book_link_holder,
+    .voting_button input{
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
     .books_results_holder p{
-        margin-bottom: 0!important;
+        margin-bottom: 0;
     }
 
-    
 }
 
 @media only screen and (min-width: 40.063em) {

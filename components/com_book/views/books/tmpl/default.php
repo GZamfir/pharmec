@@ -73,7 +73,7 @@ $logged_in_user = JFactory::getUser();
             </div>
         </div>
         <div class="small-12 columns books_content_holder">
-            <div class="headings">
+            <div class="headings small-12 columns">
                 <div class="small-7 medium-5 columns">
                     <h5>Titlu</h5>
                 </div>
@@ -84,9 +84,9 @@ $logged_in_user = JFactory::getUser();
                     <h5>Voturi</h5>
                 </div>
             </div>
-            <div class="books_results_holder">
+            <div class="books_results_holder small-12 columns">
                 <?php foreach ($this->books as $book): ?>
-                    <div class="small-7 medium-5 columns">
+                    <div class="small-7 medium-5 columns book_link_holder">
                         <a href="/<?php echo $book->href ?>"><?php echo $book->title ?></a>
                     </div>
                     <div class="small-3 columns">
@@ -111,6 +111,11 @@ $logged_in_user = JFactory::getUser();
                     </div>
                 <?php endforeach; ?>
             </div>
+            <?php if(empty($logged_in_user->id)): ?>
+                <div class="small-12 columns books_info_message">
+                    <h4>Pentru a putea vota una dintre carti va rugam sa va <a href="/login">logati</a> sau sa va <a href="/register"> inregistrati</a>.</h4>
+                </div>
+            <?php endif ?>
         </div>
     </div>
 </div>
