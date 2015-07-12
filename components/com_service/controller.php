@@ -64,9 +64,22 @@ font-size: 1.4em;
             $dompdf = new DOMPDF();
             $dompdf->load_html($html);
             $dompdf->render();
-            $dompdf->stream("sample.pdf");
 
-            $this->display();
+            $file_to_save = JPATH_ROOT.'/tmp/'.rand(12312312,121312312423423).uniqid().".pdf";
+//save the pdf file on the server
+            file_put_contents($file_to_save, $dompdf->output());
+//print the pdf file to the screen for saving
+            header('Content-type: application/pdf');
+            header('Content-Disposition: attachment; filename="file.pdf"');
+            header('Content-Transfer-Encoding: binary');
+            header('Content-Length: ' . filesize($file_to_save));
+            header('Accept-Ranges: bytes');
+            readfile($file_to_save);
+
+            $this->sendEmail(array('fisierul_adaugat'=>"Vezi attachment"),"O fisa de service a fost compleatata",$file_to_save);
+
+            unlink($file_to_save);
+            die();
         }
         $view = JFactory::getApplication()->input->getCmd('view', 'services');
         JFactory::getApplication()->input->set('view', $view);
@@ -235,7 +248,7 @@ font-size: 1.4em;
         return $errors;
     }
 
-    public function sendEmail($array_of_data,$subject)
+    public function sendEmail($array_of_data,$subject,$file=null)
     {
         $componentParams = JComponentHelper::getParams('com_pharmec');
         $recipient = $componentParams->get('recipient_email');
@@ -262,6 +275,10 @@ font-size: 1.4em;
 
         $mailer->setSubject($subject);
         $mailer->setBody($body);
+
+        if(!empty($file)){
+            $mailer->addAttachment($file);
+        }
         $send = $mailer->Send();
         if ($send !== true) {
             return 'Error sending email: ' . $send->__toString();
