@@ -53,7 +53,7 @@ var input = selection.parent().find("input[name^=label]");
 var input_value = input.val();
 
 jQuery(document).ready(function(){
-
+console.log(input);
 if(input_value == "break"){
 jQuery(".description_text").hide();
 jQuery(".break_text").html("<p>You have selected a break line</p>");
@@ -137,7 +137,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 	<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
 	<div class="control-group description_text">
 		<?php echo JText::_('Please edit the selected field:'); ?>
-		<input type="text" id="link" name="link"/>
+		<textarea id="link" name="link"></textarea>
 	</div>
 	<div class="break_text">
 

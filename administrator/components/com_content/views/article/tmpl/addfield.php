@@ -49,7 +49,7 @@ var layouts = <?=json_encode($layouts)?>;
 var insertColumns = function(editor) {
 link = getSelectedLayout();
 	tag = '<div>';
-		tag = '<label for=\"field[]\">'+ link +'</label>';
+		tag += '<label for=\"field[]\">'+ link +'</label>';
 		tag += '<input type=\"hidden\" name=\"label[]\" value=\"'+ link +'\">';
 		tag += '<input type=\"text\" name=\"field[]\"/>';
 		tag += '</div>';
@@ -61,7 +61,7 @@ return false;
 
 var insertBreakLine = function(editor) {
 tag = '<div>';
-	tag = '<hr/>';
+	tag += '<hr/>';
 	tag += '<input type="hidden" name="label[]" value=\"break\">';
 	tag += '<input type=\"hidden\" value=\"\" name=\"field[]\"/>';
 	tag += '</div>';
@@ -125,7 +125,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 <form class="form-horizontal">
 	<div class="control-group layouts">
 		<?php echo JText::_('Please insert description text:'); ?>
-		<input type="text" id="link" name="link"/>
+		<textarea id="link" name="link"></textarea>
 	</div>
 	<button onclick="insertColumns();" class="btn btn-primary"><?php echo JText::_('Insert Field'); ?></button>
 	<button onclick="insertBreakLine();" class="btn btn-primary"><?php echo JText::_('Insert break line'); ?></button>
