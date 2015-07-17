@@ -28,6 +28,13 @@ class BookViewBook extends JViewLegacy
     {
         // Assign data to the view
         $this->item = $this->get('Item');
+        if(!empty($this->item)){
+            $this->item->details = json_decode($this->item->params);
+
+            //we need to override the ID
+            $input = JFactory::getApplication()->input;
+            $this->item->id  = $input->get('id');
+        }
 
         $this->logged_in_user = JFactory::getUser();
 

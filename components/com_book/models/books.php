@@ -69,33 +69,23 @@ class BookModelBooks extends JModelItem
         $post_array = $app->input->post->getArray();
 
         $session = JFactory::getSession();
-        $filters_array=array();
+        $filters_array = array();
 
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->select('*')
-            ->from('#__book')
-            ->where('published = 1');
+            ->from('#__categories')
+            ->where('published = 1')
+            ->where('extension = "com_book"');
 
 
         if (isset($post_array['search_command'])) {
             if (!empty($post_array['search_field'])) {
-                $search = '%' . $db->escape( $post_array['search_field'], true ) . '%';
-                $query->where($db->quoteName('title'). ' LIKE ' . $db->quote( $search, false ) . '
-                OR '. $db->quoteName('author'). ' LIKE ' . $db->quote( $search, false ));
+                $search = '%' . $db->escape($post_array['search_field'], true) . '%';
+                $query->where($db->quoteName('title') . ' LIKE ' . $db->quote($search, false) . '
+                OR ' . $db->quoteName('params') . ' LIKE ' . $db->quote($search, false));
                 $filters_array['search_field'] = $post_array['search_field'];
             }
-
-            if (!empty($post_array['order_by']['column'])) {
-                if (!empty($post_array['order_by']['direction'])) {
-                    $query->order($db->quoteName($post_array['order_by']['column']) . $post_array['order_by']['direction']);
-                    $filters_array['order_by_direction'] = $post_array['order_by']['direction'];
-                } else {
-                    $query->order($db->quoteName($post_array['order_by']['column']) . ' ASC');
-                }
-                $filters_array['order_by_column'] = $post_array['order_by']['column'];
-            }
-            $session->set('book_search_filters',$filters_array);
         }
 
         $db->setQuery((string)$query);
@@ -104,16 +94,45 @@ class BookModelBooks extends JModelItem
         foreach ($items as $item) {
             $db = JFactory::getDbo();
             $query = $db->getQuery(true);
-            $query->select("path as href")->from("#__menu")->where("link='index.php?option=com_book&view=book&id=$item->id'");
+            $query->select("path as href")->from("#__menu")->where("link='index.php?option=com_book&view=category&catid=$item->id'");
 
             $db->SetQuery($query);
             $menu_item = $db->loadResult();
             if (empty($menu_item)) {
-                $menu_item = "index.php?option=com_book&view=book&id={$item->id}";
+                $menu_item = "index.php?option=com_book&view=category&catid={$item->id}";
             }
             $item->href = $menu_item;
+
+            //set the params
+            $params = json_decode($item->params);
+            $item->author = $params->book_author;
+            $item->genre = $params->book_genre;
         }
+
+        if (isset($post_array['search_command'])) {
+            if (!empty($post_array['order_by']['column'])) {
+                if (!empty($post_array['order_by']['direction'])) {
+                    $this->sort_on_field($items, $post_array['order_by']['column'], $post_array['order_by']['direction']);
+                    $filters_array['order_by_direction'] = $post_array['order_by']['direction'];
+                } else {
+                    $this->sort_on_field($items, $post_array['order_by']['column']);
+                }
+                $filters_array['order_by_column'] = $post_array['order_by']['column'];
+
+                $session->set('book_search_filters', $filters_array);
+            }
+        }
+
+
         return $items;
+    }
+
+    function sort_on_field(&$objects, $on, $order = 'ASC')
+    {
+        $comparer = ($order === 'DESC')
+            ? "return -strcmp(\$a->{$on},\$b->{$on});"
+            : "return strcmp(\$a->{$on},\$b->{$on});";
+        usort($objects, create_function('$a,$b', $comparer));
     }
 
     public function updateVotes($book_id)

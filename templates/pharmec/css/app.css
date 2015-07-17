@@ -253,6 +253,23 @@
         margin-bottom: 0;
     }
 
+    /* OPINIONS STYLING */
+    .opinions_div{
+        margin-top: 20px!important;
+    }
+
+    .opinions_holder{
+        background-color: rgba(201, 200, 205, 0.22);
+        padding-top: 10px!important;
+        padding-left: 0!important;
+        padding-right: 0!important;
+    }
+
+    .opinion_review{
+        background-color: rgba(201, 200, 205, 0.22);
+        padding-top: 10px!important;
+    }
+
 }
 
 @media only screen and (min-width: 40.063em) {

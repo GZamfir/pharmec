@@ -70,7 +70,7 @@ font-size: 1.4em;
             file_put_contents($file_to_save, $dompdf->output());
 //print the pdf file to the screen for saving
             header('Content-type: application/pdf');
-            header('Content-Disposition: attachment; filename="file.pdf"');
+            header('Content-Disposition: inline; filename="fisa_de_service.pdf"');
             header('Content-Transfer-Encoding: binary');
             header('Content-Length: ' . filesize($file_to_save));
             header('Accept-Ranges: bytes');

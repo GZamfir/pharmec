@@ -29,7 +29,7 @@ abstract class BookHelper
         JSubMenuHelper::addEntry(
             JText::_('COM_BOOK_SUBMENU_MESSAGES'),
             'index.php?option=com_book',
-            $submenu == 'messages'
+            $submenu == 'Books'
         );
 
         JSubMenuHelper::addEntry(

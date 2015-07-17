@@ -35,7 +35,6 @@ class BookViewBooks extends JViewLegacy
         $this->state			= $this->get('State');
         $this->items		= $this->get('Items');
 
-
         $this->pagination	= $this->get('Pagination');
         $this->filter_order 	= $app->getUserStateFromRequest($context.'filter_order', 'filter_order', 'message', 'cmd');
         $this->filter_order_Dir = $app->getUserStateFromRequest($context.'filter_order_Dir', 'filter_order_Dir', 'asc', 'cmd');
@@ -53,6 +52,8 @@ class BookViewBooks extends JViewLegacy
         // Set the toolbar and number of found items
         $this->addToolBar();
 
+        // Set the submenu
+        BookHelper::addSubmenu('Books');
         // Display the template
         parent::display($tpl);
 

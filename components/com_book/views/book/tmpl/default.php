@@ -12,7 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 
 ?>
 <div class="row">
-    <?php if (!empty($this->item->cover)): ?>
+    <?php if (!empty($this->item->details->book_image)): ?>
     <div class="small-12 medium-8 columns book_content">
         <?php else: ?>
         <div class="small-12 medium-12 columns book_content">
@@ -21,22 +21,25 @@ defined('_JEXEC') or die('Restricted access');
                 <h2><?php echo $this->item->title ?></h2>
             </div>
             <div class="book_details">
-                <p>Autor: <?php echo $this->item->author; ?></p>
+                <p>Autor: <?php echo $this->item->details->book_author; ?></p>
 
-                <p>Gen: <?php echo $this->item->genre; ?></p>
+                <p>Gen: <?php echo $this->item->details->book_genre; ?></p>
 
                 <p id="individual_votes">Voturi: <?php echo $this->item->votes; ?></p>
 
                 <p>Cititor: <?php echo $this->item->reader; ?></p>
             </div>
             <div class="book_summary">
-                <h4>Rezumat:</h4>
-                <?php echo $this->item->summary ?>
+                <h4>Opinie:</h4>
+
+                <div class="small-12 columns opinion_review">
+                    <?php echo $this->item->summary ?>
+                </div>
             </div>
         </div>
-        <?php if (!empty($this->item->cover)): ?>
+        <?php if (!empty($this->item->details->book_image)): ?>
             <div class="small-12 medium-4 columns book_cover">
-                <img src="<?php echo $this->item->cover ?>" alt="<?php echo $this->item->title ?>"/>
+                <img src="<?php echo $this->item->details->book_image ?>" alt="<?php echo $this->item->title ?>"/>
             </div>
         <?php endif; ?>
     </div>
@@ -52,24 +55,28 @@ defined('_JEXEC') or die('Restricted access');
                 </div>
             </div>
 
-            <?php if(!empty($this->logged_in_user->id)): ?>
-            <div class="book_action_buttons">
-                <?php if (!empty($this->item->ebook_link)): ?>
-                    <a href="<?php echo $this->item->ebook_link; ?>" class="small-12 medium-5 columns button">Citeste Cartea Online</a>
-                <?php endif; ?>
-                <?php if(!in_array($this->item->id,$this->voted_books_session)):?>
-                <div class="small-12 medium-offset-1 medium-4 columns end individual_voting_div">
-                    <form method="post">
-                        <input type="hidden" name="book_id" class="book_id" value="<?php echo $this->item->id?>">
-                        <input type="submit" name="vote" class="vote button individual_voting_button" value="Voteaza">
-                    </form>
+            <?php if (!empty($this->logged_in_user->id)): ?>
+                <div class="book_action_buttons">
+                    <?php if (!in_array($this->item->id, $this->voted_books_session)): ?>
+                        <div class="small-12 medium-offset-1 medium-4 columns end individual_voting_div">
+                            <form method="post">
+                                <input type="hidden" name="book_id" class="book_id"
+                                       value="<?php echo $this->item->id ?>">
+                                <input type="submit" name="vote" class="vote button individual_voting_button"
+                                       value="Voteaza">
+                            </form>
+                        </div>
+                    <?php else: ?>
+                        <div class="small-12 columns">
+                            <h4>Ati votat deja aceasta opinie. Va multumim.</h4>
+                        </div>
+                    <?php endif; ?>
                 </div>
-                <?php endif; ?>
-            </div>
             <?php else: ?>
-            <h4>Pentru a putea vota aceasta carte sau pentru a citi varianta online, va rugam sa va logati/inregistrati.</h4>
-            <a href="/login" class="button">Login</a>
-            <a href="/register" class="button">Inregistrare</a>
+                <h4>Pentru a putea vota aceasta carte sau pentru a citi varianta online, va rugam sa va
+                    logati/inregistrati.</h4>
+                <a href="/login" class="button">Login</a>
+                <a href="/register" class="button">Inregistrare</a>
             <?php endif; ?>
         </div>
     </div>
@@ -100,7 +107,7 @@ defined('_JEXEC') or die('Restricted access');
                     cache: false,
                     success: function (html) {
                         var data_array = JSON.parse(html);
-                        if(data_array['status'] == "success"){
+                        if (data_array['status'] == "success") {
                             var votes_text;
                             votes_text = "Voturi: " + data_array['current_votes'];
                             $('#individual_votes').text(votes_text);

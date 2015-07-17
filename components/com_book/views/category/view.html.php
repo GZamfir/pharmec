@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_book
+ * @subpackage  com_service
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -15,10 +15,10 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class BookViewBooks extends JViewLegacy
+class BookViewCategory extends JViewLegacy
 {
     /**
-     * Display the  Book view
+     * Display the  Service view
      *
      * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
      *
@@ -27,22 +27,26 @@ class BookViewBooks extends JViewLegacy
     function display($tpl = null)
     {
         // Assign data to the view
-        $this->books = $this->get('Books');
+        $this->item = $this->get('Item');
 
-        $session = JFactory::getSession();
-        $this->filters = $session->get('book_search_filters');
+        if(!empty($this->item)) {
+            $this->item->details = json_decode($this->item->params);
+            $this->opinions = $this->get('Opinions');
+        }
 
-        $session->clear('book_search_filters');
+        $this->logged_in_user = JFactory::getUser();
+
+        //load in jquery
+        JHtml::_('jquery.framework');
 
         // Check for errors.
-        if (count($errors = $this->get('Errors'))) {
+        if (count($errors = $this->get('Errors')))
+        {
             JLog::add(implode('<br />', $errors), JLog::WARNING, 'jerror');
 
             return false;
         }
-
         // Display the view
         parent::display($tpl);
     }
-
 }

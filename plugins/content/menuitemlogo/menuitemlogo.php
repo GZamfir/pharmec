@@ -25,6 +25,12 @@ class plgContentMenuItemLogo extends JPlugin
                         }
                         return true;
                     }
+                    case 'com_book': {
+                        if ($app->isAdmin()){
+                            JForm::addFormPath(__DIR__ . '/forms');
+                            $form->loadFile('booksparams', true);
+                        }
+                    }
                 }
 
             }

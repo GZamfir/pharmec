@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+		<fields name="params">
+			<fieldset label="Detalii carte" name="params">
+				<field
+						name="book_author"
+						type="input"
+						label="Autor:"
+						class="span8"
+						/>
+				<field
+						name="book_genre"
+						type="input"
+						label="Gen:"
+						class="span8"
+						/>
+				<field
+						name="book_image"
+						type="media"
+						label="Imaginea cartii (Cover):"
+						class="span8"
+						/>
+				<field
+						name="book_description"
+						type="editor"
+						label="Descriere"
+						/>
+				<field
+						name="book_ebook_link"
+						type="input"
+						label="E-book Link (Optional):"
+						class="span8"
+						/>
+			</fieldset>
+		</fields>
+</form>

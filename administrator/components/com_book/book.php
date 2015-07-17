@@ -10,6 +10,9 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+// Require helper file
+JLoader::register('BookHelper', JPATH_COMPONENT . '/helpers/book.php');
+
 // Set some global property
 $document = JFactory::getDocument();
 

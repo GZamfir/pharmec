@@ -6,41 +6,6 @@
                 type="hidden"
                 />
         <field
-                name="title"
-                type="textarea"
-                label="Titlu"
-                description="Titlul cartii citite"
-                required="true"
-                default=""
-                class="span8"
-                />
-        <field
-                name="author"
-                type="input"
-                label="Autor"
-                description="Autorul cartii citite"
-                required="true"
-                default=""
-                class="span8"
-                />
-        <field
-                name="genre"
-                type="input"
-                label="Gen"
-                description="Genul cartii citite(SF, Roman Politist, etc)"
-                required="true"
-                default=""
-                class="span8"
-                />
-        <field
-                name="cover"
-                type="media"
-                label="Imagine (Cover)"
-                description="Coverul cartii. Acest camp este optional"
-                default=""
-                class="span8"
-                />
-        <field
                 name="reader"
                 type="input"
                 label="Cititor"
@@ -63,12 +28,16 @@
                 filter="JComponentHelper::filterText"
                 />
             <field
-                    name="ebook_link"
-                    type="input"
-                    label="Link E-book (Optional)"
-                    description="Linkul pentru E-book. Acest camp este optional."
+                    name="catid"
+                    type="category"
+                    extension="com_book"
+                    class="inputbox"
                     default=""
-                    class="span8"
-                    />
+                    label="Carte Citita:"
+                    description="Cartea pe care ati citit-o si la care doriti sa adaugati o opinie."
+                    required="true"
+                    >
+                    <option value="0">Selectati o categorie</option>
+            </field>
     </fieldset>
 </form>

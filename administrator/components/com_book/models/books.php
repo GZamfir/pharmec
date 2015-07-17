@@ -43,22 +43,23 @@ class BookModelBooks extends JModelList
         $query = $db->getQuery(true);
 
         // Create the base select statement.
-        $query->select('*')
-            ->from($db->quoteName('#__book'));
+        $query->select('b.*, c.title, c.params')
+            ->from('#__book b')
+            ->innerJoin('#__categories c ON c.id = b.catid');
 
         // Filter: like / search
         $search = $this->getState('filter.search');
         if (!empty($search)) {
             $like = $db->quote('%' . $search . '%');
-            $query->where('title LIKE ' . $like.' OR author LIKE'.$like);
+            $query->where('c.title LIKE ' . $like);
         }
 
         // Filter by published state
         $published = $this->getState('filter.published');
         if (is_numeric($published)) {
-            $query->where('published = ' . (int)$published);
+            $query->where('b.published = ' . (int)$published);
         } elseif ($published === '') {
-            $query->where('(published IN (0, 1))');
+            $query->where('(b.published IN (0, 1))');
         }
 
         // Add the list ordering clause.

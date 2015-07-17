@@ -29,7 +29,7 @@ $listDirn = $this->escape($this->filter_order_Dir);?>
             <th width="15%">
                 <?php echo JHtml::_('grid.sort', 'COM_BOOK_BOOKS_AUTHOR', 'author', $listDirn, $listOrder); ?>            </th>
             <th width="15%">
-                <?php echo JHtml::_('grid.sort', 'COM_BOOK_BOOKS_GENRE', 'genre', $listDirn, $listOrder); ?>            </th>
+                <?php echo JHtml::_('grid.sort', 'COM_BOOK_BOOKS_VOTES', 'votes', $listDirn, $listOrder); ?>            </th>
             <th width="10%">
                 <?php echo JHtml::_('grid.sort', 'COM_BOOK_BOOKS_READER', 'reader', $listDirn, $listOrder); ?>            </th>
             <th width="5%">
@@ -69,7 +69,7 @@ $listDirn = $this->escape($this->filter_order_Dir);?>
                     <td>
                         <p>
 
-                            <?php echo $row->genre; ?>
+                            <?php echo $row->votes; ?>
                         </p>
                     </td>
                     <td>

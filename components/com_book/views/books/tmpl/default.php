@@ -39,8 +39,8 @@ $logged_in_user = JFactory::getUser();
                             Autor
                         </option>
                         <option
-                            value="votes" <?php echo (!empty($this->filters['order_by_column']) && $this->filters['order_by_column'] == 'votes') ? 'selected' : '' ?>>
-                            Voturi
+                            value="genre" <?php echo (!empty($this->filters['order_by_column']) && $this->filters['order_by_column'] == 'genre') ? 'selected' : '' ?>>
+                            Gen
                         </option>
                     </select>
                 </div>
@@ -77,11 +77,11 @@ $logged_in_user = JFactory::getUser();
                 <div class="small-7 medium-5 columns">
                     <h5>Titlu</h5>
                 </div>
-                <div class="small-3 columns">
+                <div class="small-5 medium-3 columns">
                     <h5>Autor</h5>
                 </div>
-                <div class="small-2 columns end">
-                    <h5>Voturi</h5>
+                <div class="small-2 columns end show-for-medium-up">
+                    <h5>Gen</h5>
                 </div>
             </div>
             <div class="books_results_holder small-12 columns">
@@ -89,33 +89,14 @@ $logged_in_user = JFactory::getUser();
                     <div class="small-7 medium-5 columns book_link_holder">
                         <a href="/<?php echo $book->href ?>"><?php echo $book->title ?></a>
                     </div>
-                    <div class="small-3 columns">
+                    <div class="small-5 medium-3 columns">
                         <p><?php echo $book->author ?></p>
                     </div>
-                    <div class="small-2 columns" id="votes_for_book_<?php echo $book->id; ?>">
-                        <p><?php echo $book->votes ?> <?php echo ($book->votes == 1) ? "Vot" : "Voturi" ?></p>
-                    </div>
-                    <div class="medium-2 columns show-for-medium-up voting_button">
-
-                        <?php if (!empty($logged_in_user->id)): ?>
-                            <?php if (!in_array($book->id, $this->voted_books_session)): ?>
-                                <form method="post">
-                                    <input type="hidden" name="book_id" class="book_id" value="<?php echo $book->id ?>">
-                                    <input type="submit" name="vote" class="vote" value="Voteaza">
-                                </form>
-                            <?php else: ?>
-                                <p>Deja ati votat aceasta carte</p>
-                            <?php endif; ?>
-
-                        <?php endif; ?>
+                    <div class="small-2 columns show-for-medium-up end" id="votes_for_book_<?php echo $book->id; ?>">
+                        <p><?php echo $book->genre ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <?php if(empty($logged_in_user->id)): ?>
-                <div class="small-12 columns books_info_message">
-                    <h4>Pentru a putea vota una dintre carti va rugam sa va <a href="/login">logati</a> sau sa va <a href="/register"> inregistrati</a>.</h4>
-                </div>
-            <?php endif ?>
         </div>
     </div>
 </div>
