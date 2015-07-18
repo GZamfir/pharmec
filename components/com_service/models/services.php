@@ -234,6 +234,11 @@ class ServiceModelServices extends JModelList
 
             $db->SetQuery($query);
             $item->href = $db->loadResult();
+
+            //if we don't have an href, then set it to the path with id
+            if(empty($item->href)){
+                $item->href = "index.php?option=com_service&view=category&catid=$item->id";
+            }
         }
 
         return $items;
@@ -302,6 +307,11 @@ class ServiceModelServices extends JModelList
             $values = array('menutype'=>'mainmenu','link'=>$path);
             $menu_object = $menu->getItems('link',$path,TRUE);
             $item->href = $menu_object->route;
+
+            //if we don't have an href, then set it to the path with id
+            if(empty($item->href)){
+                $item->href = $path;
+            }
         }
 
         return $items;

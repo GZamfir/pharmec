@@ -87,6 +87,11 @@ class ServiceModelCategory extends JModelItem
 
             $db->SetQuery($query);
             $item->href = $db->loadResult();
+
+            //if we don't have an href, then set it to the path with id
+            if(empty($item->href)){
+                $item->href = "index.php?option=com_service&view=service&id=$item->id";
+            }
         }
 
         return $items;

@@ -16,23 +16,30 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
 
 <div class="row top_row">
     <div class="small-12 columns title_and_image">
-        <img src="<?php echo $this->category_details['image']; ?>">
+        <?php if (!empty($this->category_details['image'])): ?>
+            <img src="<?php echo $this->category_details['image']; ?>">
+
 
         <div class="visible-for-large-up">
             <div class="category_title">
                 <h2><?php echo $this->category_details['title']; ?></h2>
             </div>
         </div>
+        <?php else: ?>
+            <h2><?php echo $this->category_details['title']; ?></h2>
+        <?php endif; ?>
     </div>
 
+    <?php if (!empty($this->category_details['image'])): ?>
     <div class="small-12 columns">
         <div class="category_description">
-        <div class="visible-for-medium-down">
-            <h2><?php echo $this->category_details['title']; ?></h2>
-        </div>
-        <?php echo $this->category_details['description']; ?>
+            <div class="visible-for-medium-down">
+                <h2><?php echo $this->category_details['title']; ?></h2>
+            </div>
+            <?php echo $this->category_details['description']; ?>
         </div>
     </div>
+    <?php endif; ?>
 </div>
 
 
@@ -56,3 +63,4 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
         </div>
     <?php endforeach; ?>
 </div>
+

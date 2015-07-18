@@ -17,15 +17,21 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
 
 <div class="row left-collapse top_row">
     <div class="small-12 columns end title_and_image title_and_image_single">
-        <img src="<?php echo $this->item->title_image; ?>">
+        <?php if (!empty($this->item->title_image)): ?>
+            <img src="<?php echo $this->item->title_image; ?>">
+
 
         <div class="visible-for-large-up">
             <div class="category_title">
                 <h2><?php echo $this->item->title; ?></h2>
             </div>
         </div>
+        <?php else: ?>
+        <h2><?php echo $this->item->title; ?></h2>
+        <?php endif; ?>
     </div>
 
+    <?php if (!empty($this->item->title_image)): ?>
     <div class="small-12 columns end single_item_holder visible-for-small-down">
         <div class="category_description small-12 columns">
             <div>
@@ -33,7 +39,9 @@ $doc->addStyleSheet('templates/pharmec/css/services.css');
             </div>
         </div>
     </div>
+    <?php endif; ?>
 </div>
+
 
 <div class="row left-collapse bottom_row">
 
