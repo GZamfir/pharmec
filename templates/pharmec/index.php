@@ -63,8 +63,10 @@ $logged_in_user = JFactory::getUser();
         <?php endif; ?>
     </div>
 
-    <div class="row main_menu">
+    <div class="row">
+        <div class="main_menu">
         <jdoc:include type="modules" name="mainmenu" title="Main Menu"/>
+        </div>
         </div>
 </header>
 

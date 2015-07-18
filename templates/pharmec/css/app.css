@@ -357,6 +357,25 @@
     .book_action_buttons{
         padding-left: 20px;
     }
+
+    .main_menu{
+        white-space: nowrap;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+        overflow-y: hidden;
+    }
+
+    #gruemenu{
+        width: inherit!important;
+    }
+
+    #gruemenu > ul{
+        display: inline-block!important;
+    }
+
+    #gruemenu > ul > li{
+        float:none!important;
+    }
 }
 
 @media only screen and (min-width: 64.063em) {

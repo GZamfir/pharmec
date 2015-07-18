@@ -1,5 +1,22 @@
 j = jQuery.noConflict();
 j(document).ready(function(){
+
+    var menu_width = 0;
+    //loop through all menu items and build the width
+    j('#gruemenu ul > li:not(:has(ul))').each(function(){
+        menu_width += j(this).width();
+    });
+
+    j('#gruemenu .has-sub').hover(function(){
+        var height = j(this).find('ul').height();
+        height += 78;
+        j('.main_menu').height(height + "px");
+    }).mouseout(function(){
+        j('.main_menu').height('76px');
+    })
+
+    console.log(menu_width);
+
     var is_mobile = isMobile();
     var old_is_mobile;
 
