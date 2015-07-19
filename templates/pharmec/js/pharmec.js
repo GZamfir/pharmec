@@ -147,16 +147,6 @@ function setup_trimmed_text(){
     j.desktop_news_array = trimmed_desktop_array;
 }
 
-//function stickServiceBox(){
-//    if(isMobile() == false) {
-//        var height = j(".component_column").height() - j(".footer_holder").height()
-//        j(".purchase_column").css({'height':(height+'px')});
-//        j(".stick").css({'max-height':(height+'px')});
-//        j('.stick').stick_in_parent();
-//    } else {
-//        j(".stick").trigger("sticky_kit:detach");
-//    }
-//}
 
 function checkIfWeNeedScrollingMenu(menu_width){
     console.log(menu_width);
@@ -176,6 +166,7 @@ function addTheScrollingCSS(){
 
 }
 
+var set_height = 0;
 function handleMenu(){
     var menu_width = 0;
     //loop through all menu items and build the width
@@ -194,17 +185,22 @@ console.log(menu_width);
         if (scrolling_menu == true) {
 
             addTheScrollingCSS();
-            j('#gruemenu .has-sub').hover(function () {
-                var height = j(this).find('ul').height();
+            j('#gruemenu .has-sub, #gruemenu .has-sub > ul').hover(function () {
+                if(j(this).parent().parent().is('#gruemenu')){
+                    set_height = j(this).find('ul').height();
+                }
+
+                height = set_height;
                 var margin_top = 68 + height + 20;
                 height += 78;
                 j('.main_menu').height(height + "px");
                 j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
-            }).mouseout(function () {
+                console.log(height);
+            }).mouseleave(function () {
                 j('.main_menu').height('52px');
                 j('#right_btn_div, #left_btn_div').css('margin-top', "-62px");
             })
-
+            
             var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { #gruemenu { width: "+menu_width+"px;}}</style>";
             j('body').append(style);
 
