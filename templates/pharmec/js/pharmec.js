@@ -1,21 +1,51 @@
 j = jQuery.noConflict();
 j(document).ready(function(){
 
-    var menu_width = 0;
     //loop through all menu items and build the width
-    j('#gruemenu ul > li:not(:has(ul))').each(function(){
-        menu_width += j(this).width();
-    });
+    var menu_width = j('#gruemenu ul').width();
 
     j('#gruemenu .has-sub').hover(function(){
         var height = j(this).find('ul').height();
+        var margin_top = 68 + height + 20;
         height += 78;
         j('.main_menu').height(height + "px");
+        j('#right_btn_div, #left_btn_div').css('margin-top',"-"+margin_top+"px");
     }).mouseout(function(){
-        j('.main_menu').height('76px');
+        j('.main_menu').height('59px');
+        j('#right_btn_div, #left_btn_div').css('margin-top',"-69px");
     })
 
-    console.log(menu_width);
+    j('#gruemenu').css('width',menu_width);
+
+
+    /// stuff for scrolling the menu
+    var iv;
+    var div = j('.main_menu');
+
+
+    //set the scroll at the begining
+    div.scrollLeft( div.scrollLeft() - menu_width);
+    checkMenuPosition();
+
+    j('#left-button').mousedown(function(){
+        iv = setInterval(function(){
+            div.scrollLeft( div.scrollLeft() - 15);
+            checkMenuPosition();
+        },20);
+    });
+    j('#right-button').mousedown(function(){
+        iv = setInterval(function(){
+            div.scrollLeft( div.scrollLeft() + 15);
+            checkMenuPosition();
+        },20);
+    });
+    j('#left-button,#right-button').on('mouseup mouseleave', function(){
+        clearInterval(iv);
+        //console.log('up or leave');
+    });
+
+
+
 
     var is_mobile = isMobile();
     var old_is_mobile;
@@ -81,6 +111,28 @@ j(document).ready(function(){
 
 
 });
+
+function checkMenuPosition(){
+    var relativeLeft = j(".main_menu").offset().left - j("#gruemenu").offset().left;
+    var menu_width = j('#gruemenu').width();
+    var div_width = j('.main_menu').width();
+    var difference = menu_width - div_width;
+
+    console.log("left:" + relativeLeft);
+    console.log("diff:" + difference);
+    if(relativeLeft == 0){
+        j('#left-button').hide();
+    } else {
+        j('#left-button').show();
+    }
+
+    if(relativeLeft >= difference){
+        j('#right-button').hide();
+    } else {
+        j('#right-button').show();
+    }
+
+}
 
 function isMobile(){
     if(j('#mobile_identifier').css('width') == "1px" && j('#mobile_identifier').css('height') == "1px"){

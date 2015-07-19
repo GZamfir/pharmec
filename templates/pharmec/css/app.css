@@ -360,13 +360,24 @@
 
     .main_menu{
         white-space: nowrap;
-        overflow-x: scroll;
+        overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
         overflow-y: hidden;
+        direction: ltr;
     }
 
-    #gruemenu{
-        width: inherit!important;
+    #left_btn_div{
+        position: relative;
+        float: left;
+        margin-top: -68.5px;
+        z-index: 100000;
+    }
+    
+    #right_btn_div{
+        position: relative;
+        float: right;
+        margin-top: -68.5px;
+        z-index: 100000;
     }
 
     #gruemenu > ul{
@@ -375,6 +386,21 @@
 
     #gruemenu > ul > li{
         float:none!important;
+    }
+
+    ::-webkit-scrollbar
+    {
+        height: 5px; /* for horizontal scrollbars */
+    }
+
+    ::-webkit-scrollbar-track
+    {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb
+    {
+        background: rgba(0, 0, 0, 0.5);
     }
 }
 
