@@ -1,54 +1,16 @@
 j = jQuery.noConflict();
 j(document).ready(function(){
 
-    //loop through all menu items and build the width
-    var menu_width = j('#gruemenu ul').width();
-
-    j('#gruemenu .has-sub').hover(function(){
-        var height = j(this).find('ul').height();
-        var margin_top = 68 + height + 20;
-        height += 78;
-        j('.main_menu').height(height + "px");
-        j('#right_btn_div, #left_btn_div').css('margin-top',"-"+margin_top+"px");
-    }).mouseout(function(){
-        j('.main_menu').height('59px');
-        j('#right_btn_div, #left_btn_div').css('margin-top',"-69px");
-    })
-
-    j('#gruemenu').css('width',menu_width);
-
-
-    /// stuff for scrolling the menu
-    var iv;
-    var div = j('.main_menu');
-
-
-    //set the scroll at the begining
-    div.scrollLeft( div.scrollLeft() - menu_width);
-    checkMenuPosition();
-
-    j('#left-button').mousedown(function(){
-        iv = setInterval(function(){
-            div.scrollLeft( div.scrollLeft() - 15);
-            checkMenuPosition();
-        },20);
-    });
-    j('#right-button').mousedown(function(){
-        iv = setInterval(function(){
-            div.scrollLeft( div.scrollLeft() + 15);
-            checkMenuPosition();
-        },20);
-    });
-    j('#left-button,#right-button').on('mouseup mouseleave', function(){
-        clearInterval(iv);
-        //console.log('up or leave');
-    });
-
-
-
-
     var is_mobile = isMobile();
     var old_is_mobile;
+
+    if(is_mobile != true){
+        handleMenu();
+    } else {
+        j('#left-button').hide();
+        j('#right-button').hide();
+
+    }
 
     setup_trimmed_text();
     reduce_text_from_news();
@@ -56,8 +18,16 @@ j(document).ready(function(){
     setInterval(function(){
         old_is_mobile = is_mobile;
         is_mobile = isMobile();
-        if(old_is_mobile != is_mobile){
+        if(old_is_mobile != is_mobile) {
             reduce_text_from_news();
+
+            if(is_mobile != true){
+                handleMenu();
+            } else {
+                j('#left-button').hide();
+                j('#right-button').hide();
+            }
+
         }
     },200);
 
@@ -187,3 +157,82 @@ function setup_trimmed_text(){
 //        j(".stick").trigger("sticky_kit:detach");
 //    }
 //}
+
+function checkIfWeNeedScrollingMenu(menu_width){
+    console.log(menu_width);
+    var div_width = j('.main_menu').width();
+
+    if(menu_width > div_width){
+        return true;
+    }
+
+    return false;
+}
+
+function addTheScrollingCSS(){
+    console.log('here');
+    var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { .main_menu{ white-space: nowrap; overflow-x: hidden; -webkit-overflow-scrolling: touch; overflow-y: hidden;  direction: ltr; } #left_btn_div{position: relative; float: left; margin-top: -62px; z-index: 100000; } #right_btn_div{ position: relative; float: right;margin-top: -62px; z-index: 100000; }}</style>";
+    j('body').append(style);
+
+}
+
+function handleMenu(){
+    var menu_width = 0;
+    //loop through all menu items and build the width
+    j('#gruemenu > ul > li').each(function () {
+        menu_width += j(this).width();
+    });
+console.log(menu_width);
+        //check if we even need this
+        var scrolling_menu = checkIfWeNeedScrollingMenu(menu_width);
+
+        //set the buttons to hidden
+
+        j('#left-button').hide();
+        j('#right-button').hide();
+
+        if (scrolling_menu == true) {
+
+            addTheScrollingCSS();
+            j('#gruemenu .has-sub').hover(function () {
+                var height = j(this).find('ul').height();
+                var margin_top = 68 + height + 20;
+                height += 78;
+                j('.main_menu').height(height + "px");
+                j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
+            }).mouseout(function () {
+                j('.main_menu').height('52px');
+                j('#right_btn_div, #left_btn_div').css('margin-top', "-62px");
+            })
+
+            var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { #gruemenu { width: "+menu_width+"px;}}</style>";
+            j('body').append(style);
+
+
+            /// stuff for scrolling the menu
+            var iv;
+            var div = j('.main_menu');
+
+
+            //set the scroll at the begining
+            div.scrollLeft(div.scrollLeft() - menu_width);
+            checkMenuPosition();
+
+            j('#left-button').mousedown(function () {
+                iv = setInterval(function () {
+                    div.scrollLeft(div.scrollLeft() - 15);
+                    checkMenuPosition();
+                }, 20);
+            });
+            j('#right-button').mousedown(function () {
+                iv = setInterval(function () {
+                    div.scrollLeft(div.scrollLeft() + 15);
+                    checkMenuPosition();
+                }, 20);
+            });
+            j('#left-button,#right-button').on('mouseup mouseleave', function () {
+                clearInterval(iv);
+                //console.log('up or leave');
+            });
+        }
+}
