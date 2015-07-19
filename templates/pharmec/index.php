@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php
+
+JHtml::_('jquery.framework');
 $doc = JFactory::getDocument();
 $user = JFactory::getUser();
 $doc->addStyleSheet('templates/' . $this->template . '/css/normalize.css');
@@ -28,6 +30,7 @@ $current_component = $jinput->get('option');
 $componentParams = JComponentHelper::getParams('com_pharmec');
 
 $logged_in_user = JFactory::getUser();
+
 ?>
 
 <html>

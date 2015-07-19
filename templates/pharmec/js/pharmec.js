@@ -200,7 +200,7 @@ console.log(menu_width);
                 j('.main_menu').height('52px');
                 j('#right_btn_div, #left_btn_div').css('margin-top', "-62px");
             })
-            
+
             var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { #gruemenu { width: "+menu_width+"px;}}</style>";
             j('body').append(style);
 
