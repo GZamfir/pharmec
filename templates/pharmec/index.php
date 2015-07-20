@@ -10,7 +10,6 @@ $doc->addStyleSheet('templates/' . $this->template . '/slider/slick.css');
 $doc->addStyleSheet('templates/' . $this->template . '/css/app.css');
 $doc->addScript('/templates/' . $this->template . '/js/modernizr.js', 'text/javascript');
 $doc->addScript('/templates/' . $this->template . '/js/foundation.min.js', 'text/javascript');
-$doc->addScript('/templates/' . $this->template . '/js/pharmec.js', 'text/javascript');
 $doc->addScript('/templates/' . $this->template . '/slider/slick.min.js', 'text/javascript');
 // Get some base joomla stuff
 $renderer = $doc->loadRenderer('module');
@@ -171,5 +170,9 @@ $logged_in_user = JFactory::getUser();
     </div>
 </footer>
 <div class="visible-for-small-down" id="mobile_identifier"></div>
+<?php
+
+$doc->addScript('/templates/' . $this->template . '/js/pharmec.js', 'text/javascript');
+?>
 </body>
 </html>

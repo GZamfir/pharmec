@@ -1,10 +1,11 @@
 j = jQuery.noConflict();
-j(document).ready(function(){
+j(document).ready(function () {
 
     var is_mobile = isMobile();
     var old_is_mobile;
 
-    if(is_mobile != true){
+    console.log(is_mobile);
+    if (is_mobile != true) {
         handleMenu();
     } else {
         j('#left-button').hide();
@@ -15,13 +16,13 @@ j(document).ready(function(){
     setup_trimmed_text();
     reduce_text_from_news();
 
-    setInterval(function(){
+    setInterval(function () {
         old_is_mobile = is_mobile;
         is_mobile = isMobile();
-        if(old_is_mobile != is_mobile) {
+        if (old_is_mobile != is_mobile) {
             reduce_text_from_news();
 
-            if(is_mobile != true){
+            if (is_mobile != true) {
                 handleMenu();
             } else {
                 j('#left-button').hide();
@@ -29,31 +30,31 @@ j(document).ready(function(){
             }
 
         }
-    },200);
+    }, 200);
 
     j('.partners-logos-slider').slick({
         dots: false,
         arrows: true,
         slidesToShow: 3,
-        slidesToScroll:1,
-        autoplay:true,
-        autoplaySpeed:2000,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
         infinite: true,
         responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              arrows: true,
-              slidesToShow: 3
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: true,
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: true,
+                    slidesToShow: 1
+                }
             }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              arrows: true,
-              slidesToShow: 1
-            }
-          }
         ]
     });
     j('.pharmec-testimonials-slider').slick({
@@ -61,28 +62,26 @@ j(document).ready(function(){
         dots: true
     });
 
-    j("#togglemenu").click(function(){
+    j("#togglemenu").click(function () {
         if (j('#top-bar-id').hasClass("expanded")) {
             j('#top-bar-id').removeClass("expanded");
         } else {
             j('.top-bar').addClass("expanded");
         }
     });
-    j(".accordion dd").on("click", "a:eq(0)", function (event)
-        {
+    j(".accordion dd").on("click", "a:eq(0)", function (event) {
 
-            /* j(".accordion dd div.content:visible").slideToggle("slow"); */
-            if (j(this).find(".content").hasClass("active")) {
-                j(this).find("content").hide("slow");
-            }
-            j(this).parent().find(".content").slideToggle("slow");
+        /* j(".accordion dd div.content:visible").slideToggle("slow"); */
+        if (j(this).find(".content").hasClass("active")) {
+            j(this).find("content").hide("slow");
+        }
+        j(this).parent().find(".content").slideToggle("slow");
     });
-
 
 
 });
 
-function checkMenuPosition(){
+function checkMenuPosition() {
     var relativeLeft = j(".main_menu").offset().left - j("#gruemenu").offset().left;
     var menu_width = j('#gruemenu').width();
     var div_width = j('.main_menu').width();
@@ -90,13 +89,13 @@ function checkMenuPosition(){
 
     console.log("left:" + relativeLeft);
     console.log("diff:" + difference);
-    if(relativeLeft == 0){
+    if (relativeLeft == 0) {
         j('#left-button').hide();
     } else {
         j('#left-button').show();
     }
 
-    if(relativeLeft >= difference){
+    if (relativeLeft >= difference) {
         j('#right-button').hide();
     } else {
         j('#right-button').show();
@@ -104,8 +103,8 @@ function checkMenuPosition(){
 
 }
 
-function isMobile(){
-    if(j('#mobile_identifier').css('width') == "1px" && j('#mobile_identifier').css('height') == "1px"){
+function isMobile() {
+    if (j('#mobile_identifier').css('width') == "1px" && j('#mobile_identifier').css('height') == "1px") {
         return false;
     } else {
         return true;
@@ -115,14 +114,14 @@ function isMobile(){
 j.desktop_news_array = {};
 j.mobile_news_array = {};
 
-function reduce_text_from_news(){
-    if(isMobile()){
-        j('.news_description').each(function(index, element) {
+function reduce_text_from_news() {
+    if (isMobile()) {
+        j('.news_description').each(function (index, element) {
             j(this).children().first().html(j.mobile_news_array[index]);
             j(this).children().first().siblings().hide();
         });
     } else {
-        j('.news_description').each(function(index, element) {
+        j('.news_description').each(function (index, element) {
             j(this).children().first().html(j.desktop_news_array[index]);
             j(this).children().first().siblings().hide();
         });
@@ -130,13 +129,13 @@ function reduce_text_from_news(){
 
 }
 
-function setup_trimmed_text(){
-    var trimmed_mobile_array= {};
+function setup_trimmed_text() {
+    var trimmed_mobile_array = {};
     var trimmed_desktop_array = {};
-    j('.news_description').each(function(index, element){
+    j('.news_description').each(function (index, element) {
         var full_text = j(this).children().first().html();
-        var trimmed_text_for_mobile = full_text.slice(0,150);
-        var trimmed_text_for_desktop = full_text.slice(0,366);
+        var trimmed_text_for_mobile = full_text.slice(0, 150);
+        var trimmed_text_for_desktop = full_text.slice(0, 366);
         trimmed_text_for_mobile += " ...";
         trimmed_text_for_desktop += " ...";
         trimmed_mobile_array[index] = trimmed_text_for_mobile;
@@ -148,87 +147,86 @@ function setup_trimmed_text(){
 }
 
 
-function checkIfWeNeedScrollingMenu(menu_width){
-    console.log(menu_width);
+function checkIfWeNeedScrollingMenu(menu_width) {
     var div_width = j('.main_menu').width();
 
-    if(menu_width > div_width){
+    if (menu_width > div_width) {
         return true;
     }
 
     return false;
 }
 
-function addTheScrollingCSS(){
+function addTheScrollingCSS() {
     console.log('here');
-    var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { .main_menu{ white-space: nowrap; overflow-x: hidden; -webkit-overflow-scrolling: touch; overflow-y: hidden;  direction: ltr; } #left_btn_div{position: relative; float: left; margin-top: -62px; z-index: 100000; } #right_btn_div{ position: relative; float: right;margin-top: -62px; z-index: 100000; }}</style>";
+    var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { .main_menu{ white-space: nowrap; overflow-x: hidden; overflow-y: hidden;  direction: ltr; } #left_btn_div{position: relative; float: left; margin-top: -62px; z-index: 100000; } #right_btn_div{ position: relative; float: right;margin-top: -62px; z-index: 100000; }}</style>";
     j('body').append(style);
 
 }
 
 var set_height = 0;
-function handleMenu(){
+function handleMenu() {
     var menu_width = 0;
     //loop through all menu items and build the width
     j('#gruemenu > ul > li').each(function () {
         menu_width += j(this).width();
     });
-console.log(menu_width);
-        //check if we even need this
-        var scrolling_menu = checkIfWeNeedScrollingMenu(menu_width);
 
-        //set the buttons to hidden
+    //check if we even need this
+    var scrolling_menu = checkIfWeNeedScrollingMenu(menu_width);
 
-        j('#left-button').hide();
-        j('#right-button').hide();
+    //set the buttons to hidden
 
-        if (scrolling_menu == true) {
+    j('#left-button').hide();
+    j('#right-button').hide();
 
-            addTheScrollingCSS();
-            j('#gruemenu .has-sub, #gruemenu .has-sub > ul').hover(function () {
-                if(j(this).parent().parent().is('#gruemenu')){
-                    set_height = j(this).find('ul').height();
-                }
+    if (scrolling_menu == true) {
 
-                height = set_height;
-                var margin_top = 68 + height + 20;
-                height += 78;
-                j('.main_menu').height(height + "px");
-                j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
-                console.log(height);
-            }).mouseleave(function () {
-                j('.main_menu').height('52px');
-                j('#right_btn_div, #left_btn_div').css('margin-top', "-62px");
-            })
+        addTheScrollingCSS();
+        j('#gruemenu .has-sub, #gruemenu .has-sub > ul').hover(function () {
+            if (j(this).parent().parent().is('#gruemenu')) {
+                set_height = j(this).find('ul').height();
+            }
 
-            var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { #gruemenu { width: "+menu_width+"px;}}</style>";
-            j('body').append(style);
-
-
-            /// stuff for scrolling the menu
-            var iv;
-            var div = j('.main_menu');
+            height = set_height;
+            var margin_top = 68 + height + 20;
+            height += 78;
+            j('.main_menu').height(height + "px");
+            j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
+            console.log(height);
+        }).mouseleave(function () {
+            j('.main_menu').height('52px');
+            j('#right_btn_div, #left_btn_div').css('margin-top', "-62px");
+        })
+        menu_width += 30;
+        var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { #gruemenu { width: " + menu_width + "px;}}</style>";
+        j('body').append(style);
 
 
-            //set the scroll at the begining
-            div.scrollLeft(div.scrollLeft() - menu_width);
-            checkMenuPosition();
+        /// stuff for scrolling the menu
+        var iv;
+        var div = j('.main_menu');
 
-            j('#left-button').mousedown(function () {
-                iv = setInterval(function () {
-                    div.scrollLeft(div.scrollLeft() - 15);
-                    checkMenuPosition();
-                }, 20);
-            });
-            j('#right-button').mousedown(function () {
-                iv = setInterval(function () {
-                    div.scrollLeft(div.scrollLeft() + 15);
-                    checkMenuPosition();
-                }, 20);
-            });
-            j('#left-button,#right-button').on('mouseup mouseleave', function () {
-                clearInterval(iv);
-                //console.log('up or leave');
-            });
-        }
+
+        //set the scroll at the begining
+        div.scrollLeft(div.scrollLeft() - menu_width);
+        checkMenuPosition();
+
+        j('#left-button').mousedown(function () {
+            iv = setInterval(function () {
+                div.scrollLeft(div.scrollLeft() - 15);
+                checkMenuPosition();
+            }, 20);
+        });
+        j('#right-button').mousedown(function () {
+            iv = setInterval(function () {
+                div.scrollLeft(div.scrollLeft() + 15);
+                checkMenuPosition();
+            }, 20);
+        });
+        j('#left-button,#right-button').on('mouseup mouseleave', function () {
+            clearInterval(iv);
+            //console.log('up or leave');
+        });
+    }
 }

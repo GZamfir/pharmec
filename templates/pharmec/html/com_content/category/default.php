@@ -34,10 +34,12 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
                     $menu_object = $menu->getItems('link',$path,TRUE);
                     if(!empty($menu_object)) {
                         $noutate->href = $menu_object->route;
+                    } else {
+                        $noutate->href = "index.php?option=com_content&view=article&id={$noutate->id}";
                     }
                     ?>
                     <div class="small-12 columns news_more_link_placeholder">
-                        <a class="news_more_link" href="<?php echo (!empty($noutate->href))?$noutate->href:"#" ?>">Mai mult ></a>
+                        <a class="news_more_link" href="/<?php echo (!empty($noutate->href))?$noutate->href:"#" ?>">Mai mult ></a>
                     </div>
                 </div>
             <?php endforeach; ?>
