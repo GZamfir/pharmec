@@ -159,7 +159,7 @@ function checkIfWeNeedScrollingMenu(menu_width) {
 
 function addTheScrollingCSS() {
     console.log('here');
-    var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { .main_menu{ white-space: nowrap; overflow-x: hidden; overflow-y: hidden;  direction: ltr; } #left_btn_div{position: relative; float: left; margin-top: -62px; z-index: 100000; } #right_btn_div{ position: relative; float: right;margin-top: -62px; z-index: 100000; }}</style>";
+    var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { .main_menu{ white-space: nowrap; overflow-x: hidden; overflow-y: hidden;  direction: ltr; position: absolute; left: 0; top: 0; } #left_btn_div{position: relative; float: left; margin-top: 0; z-index: 100000; } #right_btn_div{ position: relative; float: right;margin-top: 0; z-index: 100000; }}</style>";
     j('body').append(style);
 
 }
@@ -192,11 +192,11 @@ function handleMenu() {
             var margin_top = 68 + height + 20;
             height += 78;
             j('.main_menu').height(height + "px");
-            j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
+            //j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
             console.log(height);
         }).mouseleave(function () {
             j('.main_menu').height('52px');
-            j('#right_btn_div, #left_btn_div').css('margin-top', "-62px");
+            //j('#right_btn_div, #left_btn_div').css('margin-top', "-62px");
         })
         menu_width += 30;
         var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { #gruemenu { width: " + menu_width + "px;}}</style>";

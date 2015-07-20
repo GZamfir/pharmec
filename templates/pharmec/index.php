@@ -67,8 +67,12 @@ $logged_in_user = JFactory::getUser();
         <?php endif; ?>
     </div>
 
-    <div class="row">
-        <div class="main_menu">
+
+</header>
+
+<div class="row collapse top_slider">
+    <div class="small-12 columns">
+        <div class="small-12 columns main_menu">
             <jdoc:include type="modules" name="mainmenu" title="Main Menu"/>
         </div>
         <div id="left_btn_div">
@@ -79,10 +83,9 @@ $logged_in_user = JFactory::getUser();
             <a href="#" id="right-button"><img src="/templates/<?php echo $this->template; ?>/images/right_arrow.png"></a>
         </div>
     </div>
-</header>
-
-<div class="top_slider">
+    <div class="small-12 columns">
     <jdoc:include type="modules" name="top"/>
+    </div>
 </div>
 
 <?php if ($this->countModules('right')) {

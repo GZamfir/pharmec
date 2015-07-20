@@ -20,6 +20,7 @@
 
     .main_menu {
         margin-bottom: 5px;
+        padding: 0;
     }
 
     /* Bubble */
@@ -364,6 +365,10 @@
         /*-webkit-overflow-scrolling: touch;*/
         /*overflow-y: hidden;*/
         /*direction: ltr;*/
+    /*}*/
+
+    /*.main_menu{*/
+        /*position: absolute; left: 0; top: 0;*/
     /*}*/
 
     /*#left_btn_div{*/
