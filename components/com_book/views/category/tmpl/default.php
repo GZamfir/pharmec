@@ -46,7 +46,7 @@ defined('_JEXEC') or die('Restricted access');
                 <?php if (!empty($this->opinions)): ?>
                     <?php foreach ($this->opinions as $opinion): ?>
                         <div class="small-8 columns">
-                            <a href="/<?php echo $opinion->href; ?>"><?php echo $opinion->reader; ?></a>
+                            <a href="/<?php echo $opinion->href; ?>"><?php echo $opinion->username; ?></a>
                         </div>
                         <div class="small-4 columns">
                             <p><?php echo $opinion->votes ?> <?php echo ($opinion->votes == 1) ? "Vot" : "Voturi" ?></p>
@@ -60,19 +60,106 @@ defined('_JEXEC') or die('Restricted access');
     </div>
 
     <div class="row">
-        <div class="small-12 medium-8 columns">
+        <div class="small-12 medium-8 columns end">
             <?php if (!empty($this->logged_in_user->id)): ?>
                 <div class="book_action_buttons">
                     <?php if (!empty($this->item->details->book_ebook_link)): ?>
                         <a href="<?php echo $this->item->details->book_ebook_link; ?>" target="_blank"
                            class="small-12 medium-5 columns button">Citeste Cartea Online</a>
                     <?php endif; ?>
+                    <?php if ($this->can_add_opinion): ?>
+                        <a href="#" id="add_opinion_link" class="small-12 medium-5 columns button">Adauga o opinie</a>
+                    <?php endif; ?>
                 </div>
             <?php else: ?>
-                <h4>Pentru a putea vota una dintre pareri sau pentru a citi varianta online, va rugam sa va
+                <h4>Pentru a putea adauga o parere, vota una dintre pareri sau pentru a citi varianta online, va rugam
+                    sa va
                     logati/inregistrati.</h4>
                 <a href="/login" class="button">Login</a>
                 <a href="/register" class="button">Inregistrare</a>
             <?php endif; ?>
         </div>
+        <?php if (!empty($this->logged_in_user->id)): ?>
+            <?php if ($this->can_add_opinion): ?>
+                <div class="small-12 medium-8 columns end add_opinion_holder">
+                    <div class="opinions_success_message"></div>
+                    <div class="opinions_error_message"></div>
+
+                    <div class="opinion_content">
+                        <label for="opinion_text">Opinie:</label>
+                        <textarea rows="10" name="answer[1]" id="opinion_text" class="required"></textarea>
+                        <input type="submit" class="button success add_opinion_button" value="Adauga Opinie"/>
+                        <input type="hidden" value="<?php echo $this->item->id ?>" id="book_id"/>
+                        <a href="#" id="cancel_opinion" class="button alert">Anuleaza</a>
+
+                    </div>
+
+                </div>
+            <?php else: ?>
+                <div class="small-12 medium-8 columns end">
+                    <h4>Ati adaugat deja o opinie si nu puteti adauga mai multe, va multumim.</h4>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
     </div>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $('.add_opinion_holder').hide();
+            $('.opinions_success_message').hide();
+            $('.opinions_error_message').hide();
+
+            $('#add_opinion_link').on('click', function (e) {
+                e.preventDefault();
+                $('.add_opinion_holder').slideDown(1000);
+                $('#add_opinion_link').hide();
+            });
+
+            $('#cancel_opinion').on('click', function (e) {
+                e.preventDefault();
+                $('.add_opinion_holder').slideUp(1000);
+                $('#add_opinion_link').show();
+                $('#opinion_text').val('');
+            });
+
+            $('.add_opinion_button').on('click', function (event) {
+                event.preventDefault();
+
+                $('.opinions_success_message').hide();
+                $('.opinions_error_message').hide();
+
+                var text_to_submit = $('#opinion_text').val();
+                var book_id = $('#book_id').val();
+
+                if (text_to_submit == 'undefined' || text_to_submit == "") {
+                    $('.opinions_error_message').html('<p>Va rugam sa completati sectiunea Opinie.</p>').slideDown();
+                    return;
+                }
+
+                jQuery.ajax
+                ({
+                    type: "POST",
+                    url: "index.php?option=com_book&task=addOpinion&format=raw",
+                    data: {
+                        opinion_data: text_to_submit,
+                        book_id: book_id
+                    },
+                    cache: false,
+                    success: function (html) {
+                        var data_array = JSON.parse(html);
+                        if (data_array['status'] == "success") {
+                            $('.opinions_success_message').html('<p>Opinia dumneavoastra a fost adaugata. Un Administrator o va revizui si o va publica.</p>').slideDown();
+                            $('.opinion_content').hide();
+                            $('#opinion_text').val('');
+                        } else {
+                            if (data_array['message'] != 'undefined' || data_array['message'] != '') {
+                                $('.opinions_error_message').html('<p>' + data_array['message'] + '</p>').slideDown();
+                            } else {
+                                $('.opinions_error_message').html('<p>A fost o problema in procesul de postare a opiniei. Va rugam sa reincercati.</p>').slideDown();
+                            }
+                        }
+                    }
+                })
+            });
+        });
+    </script>

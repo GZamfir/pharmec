@@ -29,6 +29,13 @@ class PartnerViewPartners extends JViewLegacy
         // Assign data to the view
         $this->parteneri = $this->get('Partners');
 
+        foreach($this->parteneri as $partener) {
+            //handle the http for the link
+            $parsed = parse_url($partener->website);
+            if (empty($parsed['scheme'])) {
+                $partener->website = 'http://' . ltrim($partener->website, '/');
+            }
+        }
         // Check for errors.
         if (count($errors = $this->get('Errors')))
         {

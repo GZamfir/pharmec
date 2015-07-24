@@ -135,7 +135,3 @@ $user = $session->get('booking_user_data');
         })
     });
 </script>
-
-<style>
-
-</style>

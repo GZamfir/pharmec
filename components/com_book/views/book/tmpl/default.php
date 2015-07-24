@@ -27,7 +27,9 @@ defined('_JEXEC') or die('Restricted access');
 
                 <p id="individual_votes">Voturi: <?php echo $this->item->votes; ?></p>
 
-                <p>Cititor: <?php echo $this->item->reader; ?></p>
+                <?php if (empty($this->item->details->book_contest) || $this->item->details->book_contest == 0): ?>
+                    <p>Cititor: <?php echo $this->item->username; ?></p>
+                <?php endif; ?>
             </div>
             <div class="book_summary">
                 <h4>Opinie:</h4>
@@ -57,23 +59,40 @@ defined('_JEXEC') or die('Restricted access');
 
             <?php if (!empty($this->logged_in_user->id)): ?>
                 <div class="book_action_buttons">
-                    <?php if (!in_array($this->item->id, $this->voted_books_session)): ?>
-                        <div class="small-12 medium-offset-1 medium-4 columns end individual_voting_div">
-                            <form method="post">
-                                <input type="hidden" name="book_id" class="book_id"
-                                       value="<?php echo $this->item->id ?>">
-                                <input type="submit" name="vote" class="vote button individual_voting_button"
-                                       value="Voteaza">
-                            </form>
-                        </div>
+                    <!-- IF THE CONTEST IS STILL GOING -->
+                    <?php if (isset($this->item->details->book_contest) && $this->item->details->book_contest == 1): ?>
+                        <!-- IF THE USER WROTE THIS OPINION -->
+                        <?php if ($this->logged_in_user->id != $this->item->reader_id): ?>
+                            <!-- IF THE USER ALREADY VOTED THIS BOOK -->
+                            <?php if (!in_array($this->item->id, $this->voted_books_session)): ?>
+                                <div class="small-12 medium-offset-1 medium-4 columns end individual_voting_div">
+                                    <form method="post">
+                                        <input type="hidden" name="book_id" class="book_id"
+                                               value="<?php echo $this->item->id ?>">
+                                        <input type="submit" name="vote" class="vote button individual_voting_button"
+                                               value="Voteaza">
+                                    </form>
+                                </div>
+                            <?php else: ?>
+                                <div class="small-12 columns">
+                                    <h4>Ati votat deja aceasta opinie. Va multumim.</h4>
+                                </div>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <div class="small-12 columns">
+                                <h4>Dumneavoastra ati scris aceasta opinie, prin urmare nu o puteti vota. Va
+                                    multumim.</h4>
+                            </div>
+                        <?php endif; ?>
                     <?php else: ?>
                         <div class="small-12 columns">
-                            <h4>Ati votat deja aceasta opinie. Va multumim.</h4>
+                            <h4>Concursul pentru aceasta carte a luat sfarsit deci nu mai puteti vota opiniile pentru
+                                aceasta. Incercati o alta carte. Va multumim.</h4>
                         </div>
                     <?php endif; ?>
                 </div>
             <?php else: ?>
-                <h4>Pentru a putea vota aceasta carte sau pentru a citi varianta online, va rugam sa va
+                <h4>Pentru a putea vota aceasta opinie, va rugam sa va
                     logati/inregistrati.</h4>
                 <a href="/login" class="button">Login</a>
                 <a href="/register" class="button">Inregistrare</a>

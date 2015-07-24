@@ -35,6 +35,11 @@ class BookViewBooks extends JViewLegacy
         $this->state			= $this->get('State');
         $this->items		= $this->get('Items');
 
+        foreach($this->items as $item){
+            $details = json_decode($item->params);
+            $item->author = $details->book_author;
+        }
+
         $this->pagination	= $this->get('Pagination');
         $this->filter_order 	= $app->getUserStateFromRequest($context.'filter_order', 'filter_order', 'message', 'cmd');
         $this->filter_order_Dir = $app->getUserStateFromRequest($context.'filter_order_Dir', 'filter_order_Dir', 'asc', 'cmd');

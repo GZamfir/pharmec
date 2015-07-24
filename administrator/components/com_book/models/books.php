@@ -43,15 +43,16 @@ class BookModelBooks extends JModelList
         $query = $db->getQuery(true);
 
         // Create the base select statement.
-        $query->select('b.*, c.title, c.params')
+        $query->select('b.*, c.title, c.params, u.username AS reader, u.email AS user_email')
             ->from('#__book b')
-            ->innerJoin('#__categories c ON c.id = b.catid');
+            ->innerJoin('#__categories c ON c.id = b.catid')
+            ->leftJoin('#__users u ON u.id = b.reader_id');
 
         // Filter: like / search
         $search = $this->getState('filter.search');
         if (!empty($search)) {
             $like = $db->quote('%' . $search . '%');
-            $query->where('c.title LIKE ' . $like);
+            $query->where('c.title LIKE ' . $like .' OR c.params LIKE '. $like.' OR u.username LIKE '. $like);
         }
 
         // Filter by published state

@@ -21,6 +21,17 @@
 						class="span8"
 						/>
 				<field
+						name="book_contest"
+						type="list"
+						class="inputbox"
+						default=""
+						label="Concurs"
+						description="Selecteaza daca aceasta carte inca este in concurs"
+						>
+					<option value="1">Deschis</option>
+					<option value="0">Inchis</option>
+				</field>
+				<field
 						name="book_description"
 						type="editor"
 						label="Descriere"

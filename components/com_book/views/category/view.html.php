@@ -32,9 +32,31 @@ class BookViewCategory extends JViewLegacy
         if(!empty($this->item)) {
             $this->item->details = json_decode($this->item->params);
             $this->opinions = $this->get('Opinions');
+
+            //if we have an opinion
+            if(!empty($this->opinions)){
+                //if the contest is opened
+                if(isset($this->item->details->book_contest) && $this->item->details->book_contest == 1) {
+                    foreach ($this->opinions as $key => $opinion) {
+                        //display a list of opinions without the name
+                        $opinion->username = "Opinia ".($key +1);
+                    }
+                }
+            }
+
+            //handle the http for the link
+            $parsed = parse_url($this->item->details->book_ebook_link);
+            if (empty($parsed['scheme'])) {
+                $this->item->details->book_ebook_link = 'http://' . ltrim($this->item->details->book_ebook_link, '/');
+            }
         }
 
         $this->logged_in_user = JFactory::getUser();
+
+        $this->can_add_opinion = false;
+        if((!empty($this->logged_in_user->id))){
+            $this->can_add_opinion = $this->get('CanAddOpinion');
+        }
 
         //load in jquery
         JHtml::_('jquery.framework');

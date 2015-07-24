@@ -79,4 +79,36 @@ class BookController extends JControllerLegacy
             return $item[$key];
         }, $array);
     }
+
+    public function addOpinion(){
+        //posted array
+        $app = JFactory::getApplication();
+        $post_array = $app->input->post->getArray();
+
+        $opinion_data = "<p>" .$post_array['opinion_data'] . "</p>";
+        $book_id = $post_array['book_id'];
+        $this->logged_in_user = JFactory::getUser();
+
+        if(empty($this->logged_in_user)){
+            $returned_array['status'] = "error";
+            $returned_array['message'] = "Nu puteti vota daca nu sunteti logat.";
+        }
+
+
+        if(!empty($post_array['opinion_data'])){
+            $model = $this->getModel('category');
+            $result = $model->addOpinionForBook($this->logged_in_user->id,$book_id,$opinion_data);
+            if($result){
+                $returned_array['status'] = "success";
+            } else {
+                $returned_array['status'] = "error";
+                $returned_array['message'] = "A fost o problema cu inserarea datelor. Va rugam sa incercati mai tarziu.";
+            }
+        } else {
+            $returned_array['status'] = "error";
+            $returned_array['message'] = "Va rugam sa completati campul Opinie.";
+        }
+
+        die(json_encode($returned_array));
+    }
 }

@@ -6,15 +6,6 @@
                 type="hidden"
                 />
         <field
-                name="reader"
-                type="input"
-                label="Cititor"
-                description="Numele persoanei care a citit cartea"
-                required="true"
-                default=""
-                class="span8"
-                />
-        <field
                 name="summary"
                 type="editor"
                 label="Rezumat"

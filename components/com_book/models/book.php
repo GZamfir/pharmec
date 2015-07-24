@@ -69,9 +69,10 @@ class BookModelBook extends JModelItem
             $id = $this->getState('message.id');
             $db = JFactory::getDbo();
             $query = $db->getQuery(true);
-            $query->select('*')
+            $query->select('b.*, c.title, c.params, u.username AS username, u.name AS firstname')
                 ->from('#__book b')
                 ->innerJoin('#__categories c ON b.catid = c.id')
+                ->innerJoin('#__users u ON u.id = b.reader_id')
                 ->where('c.published = 1')
                 ->where('b.published = 1')
                 ->where('b.id=' . (int)$id);
