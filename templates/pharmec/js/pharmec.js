@@ -6,11 +6,12 @@ j(document).ready(function () {
 
     console.log(is_mobile);
     if (is_mobile != true) {
+        j('#left-button').show();
+        j('#right-button').show();
         handleMenu();
     } else {
         j('#left-button').hide();
         j('#right-button').hide();
-
     }
 
     setup_trimmed_text();
@@ -19,10 +20,13 @@ j(document).ready(function () {
     setInterval(function () {
         old_is_mobile = is_mobile;
         is_mobile = isMobile();
+        console.log(is_mobile);
         if (old_is_mobile != is_mobile) {
             reduce_text_from_news();
 
             if (is_mobile != true) {
+                j('#left-button').show();
+                j('#right-button').show();
                 handleMenu();
             } else {
                 j('#left-button').hide();
@@ -104,11 +108,18 @@ function checkMenuPosition() {
 }
 
 function isMobile() {
-    if (j('#mobile_identifier').css('width') == "1px" && j('#mobile_identifier').css('height') == "1px") {
-        return false;
-    } else {
+    //if (j('#mobile_identifier').css('width') == "1px" && j('#mobile_identifier').css('height') == "1px") {
+    //    return false;
+    //} else {
+    //    return true;
+    //}
+
+    var width = j('#menu-button').width();
+console.log(width);
+    if (width != 38) {
         return true;
     }
+    return false;
 }
 
 j.desktop_news_array = {};
@@ -159,7 +170,7 @@ function checkIfWeNeedScrollingMenu(menu_width) {
 
 function addTheScrollingCSS() {
     console.log('here');
-    var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { .main_menu{ white-space: nowrap; overflow-x: hidden; overflow-y: hidden;  direction: ltr; position: absolute; left: 0; top: 0; } #left_btn_div{position: relative; float: left; margin-top: 0; z-index: 100000; width:120px; } #right_btn_div{ position: relative; float: right;margin-top: 0; z-index: 100000; width:120px; }}</style>";
+    var style = "<style type='text/css'>@media only screen and (min-width: 746px) { .main_menu{ white-space: nowrap; overflow-x: hidden; overflow-y: hidden;  direction: ltr; position: absolute; left: 0; top: 0; } #left_btn_div{position: relative; float: left; margin-top: 0; z-index: 100000; width:120px; } #right_btn_div{ position: relative; float: right;margin-top: 0; z-index: 100000; width:120px; }}</style>";
     j('body').append(style);
 
 }
@@ -199,7 +210,7 @@ function handleMenu() {
             //j('#right_btn_div, #left_btn_div').css('margin-top', "-62px");
         })
         menu_width += 30;
-        var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { #gruemenu { width: " + menu_width + "px;}}</style>";
+        var style = "<style type='text/css'>@media only screen and (min-width: 746px) { #gruemenu { width: " + menu_width + "px;}}</style>";
         j('body').append(style);
 
 
