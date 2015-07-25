@@ -76,11 +76,11 @@ $logged_in_user = JFactory::getUser();
             <jdoc:include type="modules" name="mainmenu" title="Main Menu"/>
         </div>
         <div id="left_btn_div">
-            <a href="#" id="left-button"><img src="/templates/<?php echo $this->template; ?>/images/left_arrow.png"></a>
+            <a href="#" id="left-button"><img style="visibility: hidden" src="/templates/<?php echo $this->template; ?>/images/left_arrow.png"></a>
         </div>
 
         <div id="right_btn_div">
-            <a href="#" id="right-button"><img src="/templates/<?php echo $this->template; ?>/images/right_arrow.png"></a>
+            <a href="#" id="right-button"><img style="visibility: hidden" src="/templates/<?php echo $this->template; ?>/images/right_arrow.png"></a>
         </div>
     </div>
     <div class="small-12 columns">

@@ -159,7 +159,7 @@ function checkIfWeNeedScrollingMenu(menu_width) {
 
 function addTheScrollingCSS() {
     console.log('here');
-    var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { .main_menu{ white-space: nowrap; overflow-x: hidden; overflow-y: hidden;  direction: ltr; position: absolute; left: 0; top: 0; } #left_btn_div{position: relative; float: left; margin-top: 0; z-index: 100000; } #right_btn_div{ position: relative; float: right;margin-top: 0; z-index: 100000; }}</style>";
+    var style = "<style type='text/css'>@media only screen and (min-width: 40.063em) { .main_menu{ white-space: nowrap; overflow-x: hidden; overflow-y: hidden;  direction: ltr; position: absolute; left: 0; top: 0; } #left_btn_div{position: relative; float: left; margin-top: 0; z-index: 100000; width:120px; } #right_btn_div{ position: relative; float: right;margin-top: 0; z-index: 100000; width:120px; }}</style>";
     j('body').append(style);
 
 }
@@ -212,21 +212,33 @@ function handleMenu() {
         div.scrollLeft(div.scrollLeft() - menu_width);
         checkMenuPosition();
 
-        j('#left-button').mousedown(function () {
+        j('#left_btn_div').hover(function () {
             iv = setInterval(function () {
-                div.scrollLeft(div.scrollLeft() - 15);
+                div.scrollLeft(div.scrollLeft() - 20);
                 checkMenuPosition();
             }, 20);
-        });
-        j('#right-button').mousedown(function () {
-            iv = setInterval(function () {
-                div.scrollLeft(div.scrollLeft() + 15);
-                checkMenuPosition();
-            }, 20);
-        });
-        j('#left-button,#right-button').on('mouseup mouseleave', function () {
+
+            console.log('over');
+        }, function() {
             clearInterval(iv);
-            //console.log('up or leave');
+
+            console.log('out');
         });
+        j('#right_btn_div').hover(function () {
+            iv = setInterval(function () {
+                div.scrollLeft(div.scrollLeft() + 20);
+                checkMenuPosition();
+            }, 20);
+
+            console.log('over');
+        }, function() {
+            clearInterval(iv);
+
+            console.log('out');
+        });
+        //j('#left-button,#right-button').on('mouseup mouseleave', function () {
+        //    clearInterval(iv);
+        //    //console.log('up or leave');
+        //});
     }
 }
