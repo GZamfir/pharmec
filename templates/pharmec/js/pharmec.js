@@ -20,7 +20,6 @@ j(document).ready(function () {
     setInterval(function () {
         old_is_mobile = is_mobile;
         is_mobile = isMobile();
-        console.log(is_mobile);
         if (old_is_mobile != is_mobile) {
             reduce_text_from_news();
 
@@ -91,8 +90,6 @@ function checkMenuPosition() {
     var div_width = j('.main_menu').width();
     var difference = menu_width - div_width;
 
-    console.log("left:" + relativeLeft);
-    console.log("diff:" + difference);
     if (relativeLeft == 0) {
         j('#left-button').hide();
     } else {
@@ -115,7 +112,7 @@ function isMobile() {
     //}
 
     var width = j('#menu-button').width();
-console.log(width);
+
     if (width != 38) {
         return true;
     }
@@ -169,14 +166,14 @@ function checkIfWeNeedScrollingMenu(menu_width) {
 }
 
 function addTheScrollingCSS() {
-    console.log('here');
-    var style = "<style type='text/css'>@media only screen and (min-width: 746px) { .main_menu{ white-space: nowrap; overflow-x: hidden; overflow-y: hidden;  direction: ltr; position: absolute; left: 0; top: 0; } #left_btn_div{position: relative; float: left; margin-top: 0; z-index: 100000; width:120px; } #right_btn_div{ position: relative; float: right;margin-top: 0; z-index: 100000; width:120px; }}</style>";
+    var style = "<style type='text/css'>@media only screen and (min-width: 748px) { .main_menu{ white-space: nowrap; overflow-x: hidden; overflow-y: hidden;  direction: ltr; position: absolute; left: 0; top: 0; margin-bottom: 10px } #left_btn_div{position: relative; float: left; margin-top: 0; z-index: 100000; width:120px; } #right_btn_div{ position: relative; float: right;margin-top: 0; z-index: 100000; width:120px; }}</style>";
     j('body').append(style);
 
 }
 
 var set_height = 0;
 function handleMenu() {
+    console.log("handle menu")
     var menu_width = 0;
     //loop through all menu items and build the width
     j('#gruemenu > ul > li').each(function () {
@@ -204,13 +201,12 @@ function handleMenu() {
             height += 78;
             j('.main_menu').height(height + "px");
             //j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
-            console.log(height);
         }).mouseleave(function () {
             j('.main_menu').height('52px');
             //j('#right_btn_div, #left_btn_div').css('margin-top', "-62px");
         })
         menu_width += 30;
-        var style = "<style type='text/css'>@media only screen and (min-width: 746px) { #gruemenu { width: " + menu_width + "px;}}</style>";
+        var style = "<style type='text/css'>@media only screen and (min-width: 748px) { #gruemenu { width: " + menu_width + "px;}}</style>";
         j('body').append(style);
 
 
@@ -229,11 +225,9 @@ function handleMenu() {
                 checkMenuPosition();
             }, 20);
 
-            console.log('over');
         }, function() {
             clearInterval(iv);
 
-            console.log('out');
         });
         j('#right_btn_div').hover(function () {
             iv = setInterval(function () {
@@ -241,11 +235,9 @@ function handleMenu() {
                 checkMenuPosition();
             }, 20);
 
-            console.log('over');
         }, function() {
             clearInterval(iv);
 
-            console.log('out');
         });
         //j('#left-button,#right-button').on('mouseup mouseleave', function () {
         //    clearInterval(iv);
