@@ -26,7 +26,7 @@ class PartnerModelPartners extends JModelList
     public function __construct($config = array())
     {
         if (empty($config['filter_fields'])) {
-            $config['filter_fields'] = array('id', 'message', 'published');
+            $config['filter_fields'] = array('id', 'name', 'website', 'published');
         }
         parent::__construct($config);
     }

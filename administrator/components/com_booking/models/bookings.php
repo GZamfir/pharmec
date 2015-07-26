@@ -26,7 +26,7 @@ class BookingModelBookings extends JModelList
     public function __construct($config = array())
     {
         if (empty($config['filter_fields'])) {
-            $config['filter_fields'] = array('id', 'message', 'published');
+            $config['filter_fields'] = array('id', 'name_surname', 'company', 'service_title', 'city', 'message', 'email', 'phone', 'published');
         }
         parent::__construct($config);
     }
@@ -50,7 +50,7 @@ class BookingModelBookings extends JModelList
         $search = $this->getState('filter.search');
         if (!empty($search)) {
             $like = $db->quote('%' . $search . '%');
-            $query->where('message LIKE ' . $like.' OR client LIKE'.$like);
+            $query->where('name_surname LIKE ' . $like.' OR company LIKE'.$like.' OR city LIKE'.$like.' OR message LIKE'.$like.' OR service_title LIKE'.$like);
         }
 
         // Filter by published state
@@ -62,7 +62,7 @@ class BookingModelBookings extends JModelList
         }
 
         // Add the list ordering clause.
-        $orderCol = $this->state->get('list.ordering', 'message');
+        $orderCol = $this->state->get('list.ordering', 'name_surname');
         $orderDirn = $this->state->get('list.direction', 'asc');
         $query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
 

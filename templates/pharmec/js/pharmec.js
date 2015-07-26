@@ -191,7 +191,7 @@ function handleMenu() {
     if (scrolling_menu == true) {
 
         addTheScrollingCSS();
-        j('#gruemenu .has-sub, #gruemenu .has-sub > ul').hover(function () {
+        j('#gruemenu .has-sub').hover(function () {
             if (j(this).parent().parent().is('#gruemenu')) {
                 set_height = j(this).find('ul').height();
             }
@@ -201,9 +201,16 @@ function handleMenu() {
             height += 78;
             j('.main_menu').height(height + "px");
             //j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
-        }).mouseleave(function () {
-            j('.main_menu').height('52px');
-            //j('#right_btn_div, #left_btn_div').css('margin-top', "-62px");
+        }, function (){
+            intv = setInterval(function(){
+                var is_hovered = j(this).children().is(':hover');
+                if(!is_hovered) {
+                    j('.main_menu').height('52px');
+                } else {
+                    clearInterval(intv);
+                }
+            },10)
+
         })
         menu_width += 30;
         var style = "<style type='text/css'>@media only screen and (min-width: 748px) { #gruemenu { width: " + menu_width + "px;}}</style>";
