@@ -192,53 +192,62 @@ function handleMenu() {
 
         addTheScrollingCSS();
         j('#gruemenu .has-sub').hover(function () {
-            if (j(this).parent().parent().is('#gruemenu')) {
-                set_height = j(this).find('ul').height();
+                if (j(this).parent().parent().is('#gruemenu')) {
+                    set_height = j(this).find('ul').height();
+                }
+
+                height = set_height;
+                var margin_top = 68 + height + 20;
+                height += 78;
+                j('.main_menu').height(height + "px");
+                //j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
+            },
+            function () {
+                intv = setInterval(function () {
+                    var is_hovered = j(this).children().ismouseover;
+                    if (!is_hovered) {
+                        j('.main_menu').height('52px');
+                    } else {
+                        clearInterval(intv);
+                    }
+                }, 10)});
+                menu_width += 30;
+                var style = "<style type='text/css'>@media only screen and (min-width: 748px) { #gruemenu { width: " + menu_width + "px;}}</style>";
+                j('body').append(style);
+
+
+                /// stuff for scrolling the menu
+                var iv;
+                var div = j('.main_menu');
+
+
+                //set the scroll at the begining
+                div.scrollLeft(div.scrollLeft() - menu_width);
+                checkMenuPosition();
+
+                j('#left_btn_div').hover(function () {
+                    iv = setInterval(function () {
+                        div.scrollLeft(div.scrollLeft() - 20);
+                        checkMenuPosition();
+                    }, 20);
+
+                }, function () {
+                    clearInterval(iv);
+
+                });
+                j('#right_btn_div').hover(function () {
+                    iv = setInterval(function () {
+                        div.scrollLeft(div.scrollLeft() + 20);
+                        checkMenuPosition();
+                    }, 20);
+
+                }, function () {
+                    clearInterval(iv);
+
+                });
+                //j('#left-button,#right-button').on('mouseup mouseleave', function () {
+                //    clearInterval(iv);
+                //    //console.log('up or leave');
+                //});
             }
-
-            height = set_height;
-            var margin_top = 68 + height + 20;
-            height += 78;
-            j('.main_menu').height(height + "px");
-            //j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
-        })
-        menu_width += 30;
-        var style = "<style type='text/css'>@media only screen and (min-width: 748px) { #gruemenu { width: " + menu_width + "px;}}</style>";
-        j('body').append(style);
-
-
-        /// stuff for scrolling the menu
-        var iv;
-        var div = j('.main_menu');
-
-
-        //set the scroll at the begining
-        div.scrollLeft(div.scrollLeft() - menu_width);
-        checkMenuPosition();
-
-        j('#left_btn_div').hover(function () {
-            iv = setInterval(function () {
-                div.scrollLeft(div.scrollLeft() - 20);
-                checkMenuPosition();
-            }, 20);
-
-        }, function() {
-            clearInterval(iv);
-
-        });
-        j('#right_btn_div').hover(function () {
-            iv = setInterval(function () {
-                div.scrollLeft(div.scrollLeft() + 20);
-                checkMenuPosition();
-            }, 20);
-
-        }, function() {
-            clearInterval(iv);
-
-        });
-        //j('#left-button,#right-button').on('mouseup mouseleave', function () {
-        //    clearInterval(iv);
-        //    //console.log('up or leave');
-        //});
     }
-}
