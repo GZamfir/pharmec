@@ -199,18 +199,22 @@ function handleMenu() {
                 height = set_height;
                 var margin_top = 68 + height + 20;
                 height += 78;
-                j('.main_menu').height(height + "px");
+                var style1 = "<style type='text/css'>@media only screen and (min-width: 748px) { .main_menu{height: "+height+"px;} }</style>";
+                j('body').append(style1);
+                //j('.main_menu').height(height + "px");
                 //j('#right_btn_div, #left_btn_div').css('margin-top', "-" + margin_top + "px");
             },
             function () {
                 intv = setInterval(function () {
-                    var is_hovered = j(this).children().ismouseover;
+                    var is_hovered = j(this).children();
+                    console.log(is_hovered)
                     if (!is_hovered) {
                         j('.main_menu').height('52px');
                     } else {
                         clearInterval(intv);
                     }
-                }, 10)});
+                }, 10)}
+        );
                 menu_width += 30;
                 var style = "<style type='text/css'>@media only screen and (min-width: 748px) { #gruemenu { width: " + menu_width + "px;}}</style>";
                 j('body').append(style);
