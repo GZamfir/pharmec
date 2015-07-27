@@ -29,6 +29,9 @@ defined('_JEXEC') or die('Restricted access');
 
                 <?php if (empty($this->item->details->book_contest) || $this->item->details->book_contest == 0): ?>
                     <p>Cititor: <?php echo $this->item->username; ?></p>
+                    <?php if ($this->can_see_email_field): ?>
+                        <p>Email Cititor: <a href="mailto:<?php echo $this->item->user_email ?>"><?php echo $this->item->user_email ?></a> </p>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
             <div class="book_summary">

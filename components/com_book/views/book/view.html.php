@@ -38,6 +38,20 @@ class BookViewBook extends JViewLegacy
 
         $this->logged_in_user = JFactory::getUser();
 
+        $this->can_see_email_field = false;
+        if(!empty($this->logged_in_user->id)){
+            $user_groups = $this->logged_in_user->groups;
+            //the user groups allowed to see the email
+            $allowed_user_groups = array(6,7,8);
+
+            foreach($user_groups as $user_group){
+                if(in_array($user_group,$allowed_user_groups)){
+                    $this->can_see_email_field = true;
+                    break;
+                }
+            }
+        }
+
         $session = JFactory::getSession();
         $this->voted_books_session = $session->get('voted_books');
 

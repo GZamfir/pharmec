@@ -4,7 +4,6 @@ j(document).ready(function () {
     var is_mobile = isMobile();
     var old_is_mobile;
 
-    console.log(is_mobile);
     if (is_mobile != true) {
         j('#left-button').show();
         j('#right-button').show();
@@ -173,7 +172,6 @@ function addTheScrollingCSS() {
 
 var set_height = 0;
 function handleMenu() {
-    console.log("handle menu")
     var menu_width = 0;
     //loop through all menu items and build the width
     j('#gruemenu > ul > li').each(function () {
@@ -189,12 +187,17 @@ function handleMenu() {
     j('#right-button').hide();
 
     if (scrolling_menu == true) {
-
+var parent_item;
         addTheScrollingCSS();
         j('#gruemenu .has-sub').hover(function () {
                 if (j(this).parent().parent().is('#gruemenu')) {
-                    set_height = j(this).find('ul').height();
+                    parent_item = j(this);
                 }
+                set_height = 0;
+                var uls = parent_item.find('ul');
+                uls.each(function(){
+                    set_height += j(this).height();
+                })
 
                 height = set_height;
                 var margin_top = 68 + height + 20;
@@ -207,7 +210,6 @@ function handleMenu() {
             function () {
                 intv = setInterval(function () {
                     var is_hovered = j(this).children();
-                    console.log(is_hovered)
                     if (!is_hovered) {
                         j('.main_menu').height('52px');
                     } else {
