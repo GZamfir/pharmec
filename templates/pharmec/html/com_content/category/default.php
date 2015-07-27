@@ -16,7 +16,7 @@ $componentParams = JComponentHelper::getParams('com_pharmec');
 <div class="row pharmec_parteneri">
     <div class="small-12 columns">
         <div class="small-6 medium-4 large-3 columns end heading_text_bubble">
-            <h2>Noutati</h2>
+            <h2>Știri</h2>
         </div>
         <div class="small-12 columns holder_bubble">
             <?php foreach ($this->items as $noutate): ?>
