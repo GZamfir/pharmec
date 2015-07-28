@@ -80,24 +80,30 @@ defined('_JEXEC') or die('Restricted access');
             <?php endif; ?>
         </div>
         <?php if (!empty($this->logged_in_user->id)): ?>
-            <?php if ($this->can_add_opinion): ?>
-                <div class="small-12 medium-8 columns end add_opinion_holder">
-                    <div class="opinions_success_message"></div>
-                    <div class="opinions_error_message"></div>
+            <?php if (!$this->contest_ended): ?>
+                <?php if ($this->can_add_opinion): ?>
+                    <div class="small-12 medium-8 columns end add_opinion_holder">
+                        <div class="opinions_success_message"></div>
+                        <div class="opinions_error_message"></div>
 
-                    <div class="opinion_content">
-                        <label for="opinion_text">Opinie:</label>
-                        <textarea rows="10" name="answer[1]" id="opinion_text" class="required"></textarea>
-                        <input type="submit" class="button success add_opinion_button" value="Adauga Opinie"/>
-                        <input type="hidden" value="<?php echo $this->item->id ?>" id="book_id"/>
-                        <a href="#" id="cancel_opinion" class="button alert">Anuleaza</a>
+                        <div class="opinion_content">
+                            <label for="opinion_text">Opinie:</label>
+                            <textarea rows="10" name="answer[1]" id="opinion_text" class="required"></textarea>
+                            <input type="submit" class="button success add_opinion_button" value="Adauga Opinie"/>
+                            <input type="hidden" value="<?php echo $this->item->id ?>" id="book_id"/>
+                            <a href="#" id="cancel_opinion" class="button alert">Anuleaza</a>
+
+                        </div>
 
                     </div>
-
-                </div>
+                <?php else: ?>
+                    <div class="small-12 medium-8 columns end">
+                        <h4>Ati adaugat deja o opinie si nu puteti adauga mai multe, va multumim.</h4>
+                    </div>
+                <?php endif; ?>
             <?php else: ?>
                 <div class="small-12 medium-8 columns end">
-                    <h4>Ati adaugat deja o opinie si nu puteti adauga mai multe, va multumim.</h4>
+                    <h4>Concursul pentru aceasta carte s-a inchis si nu mai puteti adauga o alta opinie.</h4>
                 </div>
             <?php endif; ?>
         <?php endif; ?>

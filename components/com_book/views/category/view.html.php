@@ -54,8 +54,13 @@ class BookViewCategory extends JViewLegacy
         $this->logged_in_user = JFactory::getUser();
 
         $this->can_add_opinion = false;
+        $this->contest_ended = false;
         if((!empty($this->logged_in_user->id))){
-            $this->can_add_opinion = $this->get('CanAddOpinion');
+            if(isset($this->item->details->book_contest) && $this->item->details->book_contest == 1) {
+                $this->can_add_opinion = $this->get('CanAddOpinion');
+            } else {
+                $this->contest_ended = true;
+            }
         }
 
         //load in jquery
