@@ -118,9 +118,8 @@ class BookModelBooks extends JModelItem
                     $this->sort_on_field($items, $post_array['order_by']['column']);
                 }
                 $filters_array['order_by_column'] = $post_array['order_by']['column'];
-
-                $session->set('book_search_filters', $filters_array);
             }
+            $session->set('book_search_filters', $filters_array);
         }
 
 
