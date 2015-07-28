@@ -23,7 +23,9 @@ defined('_JEXEC') or die('Restricted access');
             <div class="book_details">
                 <p>Autor: <?php echo $this->item->details->book_author; ?></p>
 
+                <?php if(!empty($this->item->details->book_genre)): ?>
                 <p>Gen: <?php echo $this->item->details->book_genre; ?></p>
+                <?php endif; ?>
 
                 <p id="individual_votes">Voturi: <?php echo $this->item->votes; ?></p>
 
