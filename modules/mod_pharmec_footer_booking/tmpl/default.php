@@ -25,10 +25,18 @@ $doc->addStyleSheet('templates/pharmec/css/booking.css');
                     </select>
                 </div>
                 <div class="small-12 medium-6 columns end">
-                    <input type="text" id="newsletter_city" placeholder="Oras/Judet"/>
+                    <input type="text" id="newsletter_phone" placeholder="Telefon (optional)"/>
+                </div>
+                <div class="small-12 medium-6 columns">
+                    <select id="newsletter_city">
+                        <option value="">-- Selectati Judetul Dorit --</option>
+                        <option value="Constanta">Constanta</option>
+                        <option value="Brasov">Brasov</option>
+                        <option value="other">Altul</option>
+                    </select>
                 </div>
                 <div class="small-12 medium-6 columns end">
-                    <input type="text" id="newsletter_phone" placeholder="Telefon (optional)"/>
+                    <input type="text" id="newsletter_city_other" placeholder="Alt Judet"/>
                 </div>
             </div>
             <div class="button_placeholder small-2 medium-offset-7 small-offset-3 columns">
@@ -41,6 +49,19 @@ $doc->addStyleSheet('templates/pharmec/css/booking.css');
 <script>
     jQuery(document).ready(function ($) {
 
+        $('#newsletter_city_other').hide();
+        if($('#newsletter_city').find("option:selected").val() == "other") {
+            $('#newsletter_city_other').show();
+        }
+
+        $('#newsletter_city').on('change', function() {
+            if($(this).find("option:selected").val() == "other") {
+                $('#newsletter_city_other').show();
+            } else {
+                $('#newsletter_city_other').hide();
+            }
+        });
+
         $('.newsletter_book_button').on('click', function (event) {
             event.preventDefault();
             $('.newsletter_errors').html('');
@@ -50,6 +71,11 @@ $doc->addStyleSheet('templates/pharmec/css/booking.css');
             var newsletter_type = jQuery('#newsletter_type').val();
             var city = jQuery('#newsletter_city').val();
             var phone = jQuery('#newsletter_phone').val();
+
+            //if the option "other is selected
+            if($('#newsletter_city').find("option:selected").val() == "other") {
+                city = $('#newsletter_city_other').val();
+            }
 
             jQuery.ajax
             ({
@@ -65,7 +91,7 @@ $doc->addStyleSheet('templates/pharmec/css/booking.css');
                 success: function (html) {
                     var data_array = JSON.parse(html);
                     if (data_array['status'] == "error") {
-                        if(j.type(data_array['message'])!='string') {
+                        if (j.type(data_array['message']) != 'string') {
                             $.each(data_array['message'], function (key, value) {
                                 $('.newsletter_errors').append('<p>' + value + '</p>');
                             })

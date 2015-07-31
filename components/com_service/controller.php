@@ -333,6 +333,9 @@ font-size: 1.4em;
         $db->setQuery($query);
         $db->execute();
 
+        //Insert into the phplist database
+        $this->insertDataIntoNewsletterDB($data_array);
+
         $email_array = array();
         $email_array['Email'] = $data_array['email'];
         $email_array['Oras/Judet'] = $data_array['city'];
@@ -360,6 +363,10 @@ font-size: 1.4em;
         } else {
             if (filter_var($data_array['email'], FILTER_VALIDATE_EMAIL) != TRUE) {
                 $errors[] = "Adresa de email este invalida";
+            } else {
+                if ($this->email_is_already_used($data_array['email'])) {
+                    $errors[] = "Adresa de email este deja abonata la newsletter";
+                }
             }
         }
 
@@ -381,5 +388,111 @@ font-size: 1.4em;
         }
 
         return $errors;
+    }
+
+    public function insertDataIntoNewsletterDB($data){
+        //change the database
+        $option = array();
+        $option['database'] = "phplistdb";
+        $option['prefix'] = "phplist_";
+        $db = JDatabaseDriver::getInstance( $option );
+        $query = $db->getQuery(true);
+        $columns = array('email',
+            'confirmed',
+            'blacklisted',
+            'optedin',
+            'bouncecount',
+            'entered',
+            'uniqid',
+            'htmlemail',
+            'disabled'
+        );
+
+        // Insert values.
+        $values = array(
+            $db->quote($data['email']),
+            1,
+            0,
+            0,
+            0,
+            $db->quote(date("Y-m-d H:i:s")),
+            $db->quote(md5($data['email'])),
+            1,
+            0
+            );
+
+        // Prepare the insert query.
+        $query
+            ->insert($db->quoteName('#__user_user'))
+            ->columns($db->quoteName($columns))
+            ->values(implode(',', $values));
+
+        // Set the query using our newly populated query object and execute it.
+        $db->setQuery($query);
+        $db->execute();
+
+        // after the first part of the query is executed, insert the link into second table
+        $inserted_id = $db->insertid();
+
+        //sort out the list_id
+        $pharmec_judete_bv = array('Brasov','Prahova');
+        $pharmec_judete_ct = array('Constanta', 'Ialomita');
+
+        //default newsletter if different city
+        $list_id = 2;
+
+        if($data['newsletter_type'] == "Cabinet") {
+            if (in_array($data['city'], $pharmec_judete_bv)) {
+                $list_id = 3;
+            } else if(in_array($data['city'], $pharmec_judete_ct)) {
+                $list_id = 5;
+            }
+        } else if($data['newsletter_type'] == "Farmacie") {
+            if (in_array($data['city'], $pharmec_judete_bv)) {
+                $list_id = 4;
+            } else if(in_array($data['city'], $pharmec_judete_ct)) {
+                $list_id = 6;
+            }
+        }
+
+        $query = $db->getQuery(true);
+        $second_query_columns = array('userid',
+            'listid',
+            'entered'
+        );
+
+        $second_query_values = array($inserted_id,
+            $list_id,
+            $db->quote(date("Y-m-d H:i:s"))
+        );
+
+        $query
+            ->insert($db->quoteName('#__listuser'))
+            ->columns($db->quoteName($second_query_columns))
+            ->values(implode(',', $second_query_values));
+
+        // Set the query using our newly populated query object and execute it.
+        $db->setQuery($query);
+        $db->execute();
+    }
+
+    public function email_is_already_used($email){
+        $option = array();
+        $option['database'] = "phplistdb";
+        $option['prefix'] = "phplist_";
+        $db = JDatabaseDriver::getInstance( $option );
+        $query = $db->getQuery(true);
+
+        $query->select('COUNT(*)')
+            ->from('#__user_user')
+            ->where($db->quoteName('email'). "=" . $db->quote($email));
+        $db->setQuery($query);
+        $result = $db->loadResult();
+
+        if($result > 0){
+            return true;
+        }
+
+        return false;
     }
 }
