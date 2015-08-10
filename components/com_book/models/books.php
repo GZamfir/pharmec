@@ -134,13 +134,13 @@ class BookModelBooks extends JModelItem
         usort($objects, create_function('$a,$b', $comparer));
     }
 
-    public function updateVotes($book_id)
+    public function updateVotes($book_id, $current_votes)
     {
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         // Fields to update.
         $fields = array(
-            $db->quoteName('votes') . ' = votes + 1'
+            $db->quoteName('votes') . ' = '.$current_votes.' + 1'
         );
 
 // Conditions for which records should be updated.

@@ -306,6 +306,15 @@ font-size: 1.4em;
             die(json_encode($return));
         }
 
+
+        //Insert into the phplist database
+        $result_from_newsletter_db = $this->insertDataIntoNewsletterDB($data_array);
+
+        if(!$result_from_newsletter_db){
+            $return['status'] = "error";
+            $return['message'] = "A fost o problema cu inregistrarea. Va rugam sa reveniti.";
+            die(json_encode($return));
+        }
         $db = JFactory::getDbo();
 
         $query = $db->getQuery(true);
@@ -332,9 +341,6 @@ font-size: 1.4em;
         // Set the query using our newly populated query object and execute it.
         $db->setQuery($query);
         $db->execute();
-
-        //Insert into the phplist database
-        $this->insertDataIntoNewsletterDB($data_array);
 
         $email_array = array();
         $email_array['Email'] = $data_array['email'];
@@ -393,7 +399,12 @@ font-size: 1.4em;
     public function insertDataIntoNewsletterDB($data){
         //change the database
         $option = array();
-        $option['database'] = "phplistdb";
+
+        $option['driver']   = 'mysqli';            // Database driver name
+        $option['host']     = '10.0.2.3';    // Database host name
+        $option['user']     = 'pswsite';       // User for database authentication
+        $option['password'] = 'y2cPDsQQnWcJLs8h';
+        $option['database'] = "psw_phplistpsw";
         $option['prefix'] = "phplist_";
         $db = JDatabaseDriver::getInstance( $option );
         $query = $db->getQuery(true);
@@ -411,7 +422,7 @@ font-size: 1.4em;
         // Insert values.
         $values = array(
             $db->quote($data['email']),
-            1,
+            0,
             0,
             0,
             0,
@@ -435,23 +446,25 @@ font-size: 1.4em;
         $inserted_id = $db->insertid();
 
         //sort out the list_id
-        $pharmec_judete_bv = array('Brasov','Prahova');
-        $pharmec_judete_ct = array('Constanta', 'Ialomita');
+        $pharmec_judete_bv = array('Brasov','Sibiu','Prahova','Alba','Covasna');
+        $pharmec_judete_ct = array('Constanta', 'Tulcea', 'Teleorman', 'Ialomita');
 
         //default newsletter if different city
         $list_id = 2;
 
+        //handle the doctors first
         if($data['newsletter_type'] == "Cabinet") {
+            //handle BV first
             if (in_array($data['city'], $pharmec_judete_bv)) {
-                $list_id = 3;
+                $list_id = 11;
             } else if(in_array($data['city'], $pharmec_judete_ct)) {
-                $list_id = 5;
+                $list_id = 10;
             }
         } else if($data['newsletter_type'] == "Farmacie") {
             if (in_array($data['city'], $pharmec_judete_bv)) {
-                $list_id = 4;
+                $list_id = 9;
             } else if(in_array($data['city'], $pharmec_judete_ct)) {
-                $list_id = 6;
+                $list_id = 8;
             }
         }
 
@@ -473,12 +486,20 @@ font-size: 1.4em;
 
         // Set the query using our newly populated query object and execute it.
         $db->setQuery($query);
-        $db->execute();
+        if($db->execute()){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function email_is_already_used($email){
         $option = array();
-        $option['database'] = "phplistdb";
+        $option['driver']   = 'mysqli';            // Database driver name
+        $option['host']     = '10.0.2.3';    // Database host name
+        $option['user']     = 'pswsite';       // User for database authentication
+        $option['password'] = 'y2cPDsQQnWcJLs8h';
+        $option['database'] = "psw_phplistpsw";
         $option['prefix'] = "phplist_";
         $db = JDatabaseDriver::getInstance( $option );
         $query = $db->getQuery(true);

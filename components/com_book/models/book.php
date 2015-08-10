@@ -102,4 +102,15 @@ class BookModelBook extends JModelItem
                 return false;
             }
     }
+
+    public function getCalculatedVotes(){
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('COUNT(book_id) AS book_votes')
+            ->from('#__book_votes')
+            ->where('book_id ='.$this->item->id);
+
+        $db->setQuery((string)$query);
+        return $db->loadResult();
+    }
 }

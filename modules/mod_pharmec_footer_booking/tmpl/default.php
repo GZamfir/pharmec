@@ -30,8 +30,17 @@ $doc->addStyleSheet('templates/pharmec/css/booking.css');
                 <div class="small-12 medium-6 columns">
                     <select id="newsletter_city">
                         <option value="">-- Selectati Judetul Dorit --</option>
+                        <optgroup label="- PSW"></optgroup>
                         <option value="Constanta">Constanta</option>
+                        <option value="Tulcea">Tulcea</option>
+                        <option value="Teleorman">Teleorman</option>
+                        <option value="Ialomita">Ialomita</option>
+                        <optgroup label="- Farmedia"></optgroup>
                         <option value="Brasov">Brasov</option>
+                        <option value="Sibiu">Sibiu</option>
+                        <option value="Prahova">Prahova</option>
+                        <option value="Alba">Alba</option>
+                        <option value="Covasna">Covasna</option>
                         <option value="other">Altul</option>
                     </select>
                 </div>

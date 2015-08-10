@@ -164,4 +164,16 @@ class BookModelCategory extends JModelItem
         return $db->execute();
     }
 
+    function getListOfVotes($string_of_ids){
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('book_id, COUNT(book_id) AS book_votes')
+            ->from('#__book_votes')
+            ->where('book_id IN ('.$string_of_ids.')')
+            ->group('book_id');
+
+        $db->setQuery((string)$query);
+        return $db->loadAssocList('book_id');
+    }
+
 }

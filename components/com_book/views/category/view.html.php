@@ -42,7 +42,29 @@ class BookViewCategory extends JViewLegacy
                         $opinion->username = "Opinia ".($key +1);
                     }
                 }
+
+                $array_of_ids = array();
+                //calculate the votes dinamically
+                foreach ($this->opinions as $key => $opinion){
+                    //get the votes dinamically
+                    $array_of_ids[] = $opinion->id;
+                }
+
+                $string_of_ids = implode(', ',$array_of_ids);
+                $model = $this->getModel('category');
+                $list_of_votes = $model->getListOfVotes($string_of_ids);
+
+                foreach ($this->opinions as $key => $opinion) {
+                    $opinion->calculated_votes = $list_of_votes[$opinion->id]['book_votes'];
+                    if(!isset($opinion->calculated_votes)){
+                        $opinion->calculated_votes = 0;
+                    }
+                }
+
             }
+
+            //we are sorting this again just in case the query didn't do the job
+            $this->array_sort_by_column($this->opinions,'calculated_votes',SORT_DESC);
 
             //handle the http for the link
             $parsed = parse_url($this->item->details->book_ebook_link);
@@ -76,4 +98,14 @@ class BookViewCategory extends JViewLegacy
         // Display the view
         parent::display($tpl);
     }
+
+    function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
+        $sort_col = array();
+        foreach ($arr as $key=> $row) {
+            $sort_col[$key] = $row->$col;
+        }
+
+        array_multisort($sort_col, $dir, $arr);
+    }
+
 }

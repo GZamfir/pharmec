@@ -34,6 +34,14 @@ class BookViewBook extends JViewLegacy
             //we need to override the ID
             $input = JFactory::getApplication()->input;
             $this->item->id  = $input->get('id');
+
+            //calculate the votes
+            $calculated_votes = $this->get('CalculatedVotes');
+            if(!isset($calculated_votes)){
+                $calculated_votes = 0;
+            }
+
+            $this->item->calculated_votes = $calculated_votes;
         }
 
         $this->logged_in_user = JFactory::getUser();

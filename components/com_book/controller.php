@@ -47,7 +47,7 @@ class BookController extends JControllerLegacy
         $post_array = $app->input->post->getArray();
         if(!empty($post_array['vote']) && !empty($post_array['book_id'])){
             $model = $this->getModel('books');
-            $result = $model->updateVotes($post_array['book_id']);
+            $result = $model->updateVotes($post_array['book_id'],$post_array['current_votes']);
             $returned_array = array();
 
             if($result == true){
@@ -89,9 +89,10 @@ class BookController extends JControllerLegacy
         $book_id = $post_array['book_id'];
         $this->logged_in_user = JFactory::getUser();
 
-        if(empty($this->logged_in_user)){
+        if(empty($this->logged_in_user->id)){
             $returned_array['status'] = "error";
-            $returned_array['message'] = "Nu puteti vota daca nu sunteti logat.";
+            $returned_array['message'] = "Nu puteti vota daca nu sunteti logat. Copiati textul scris, si dati refresh la pagina. Logati-va inapoi si adaugati opinia din nou. Va mulutmim.";
+            die(json_encode($returned_array));
         }
 
 

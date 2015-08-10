@@ -27,7 +27,7 @@ defined('_JEXEC') or die('Restricted access');
                 <p>Gen: <?php echo $this->item->details->book_genre; ?></p>
                 <?php endif; ?>
 
-                <p id="individual_votes">Voturi: <?php echo $this->item->votes; ?></p>
+                <p id="individual_votes">Voturi: <?php echo $this->item->calculated_votes; ?></p>
 
                 <?php if (empty($this->item->details->book_contest) || $this->item->details->book_contest == 0): ?>
                     <p>Cititor: <?php echo $this->item->username; ?></p>
@@ -126,7 +126,8 @@ defined('_JEXEC') or die('Restricted access');
                     url: "index.php?option=com_book&task=vote&format=raw",
                     data: {
                         vote: vote,
-                        book_id: book_id
+                        book_id: book_id,
+                        calculated_votes: <?php echo $this->item->calculated_votes ?>
                     },
                     cache: false,
                     success: function (html) {

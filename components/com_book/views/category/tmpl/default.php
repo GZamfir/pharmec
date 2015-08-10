@@ -49,7 +49,7 @@ defined('_JEXEC') or die('Restricted access');
                             <a href="/<?php echo $opinion->href; ?>"><?php echo $opinion->username; ?></a>
                         </div>
                         <div class="small-4 columns">
-                            <p><?php echo $opinion->votes ?> <?php echo ($opinion->votes == 1) ? "Vot" : "Voturi" ?></p>
+                            <p><?php echo $opinion->calculated_votes ?> <?php echo ($opinion->calculated_votes == 1) ? "Vot" : "Voturi" ?></p>
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
