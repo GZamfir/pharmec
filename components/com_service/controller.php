@@ -459,12 +459,16 @@ font-size: 1.4em;
                 $list_id = 11;
             } else if(in_array($data['city'], $pharmec_judete_ct)) {
                 $list_id = 10;
+            } else {
+                $list_id = 18;
             }
         } else if($data['newsletter_type'] == "Farmacie") {
             if (in_array($data['city'], $pharmec_judete_bv)) {
                 $list_id = 9;
             } else if(in_array($data['city'], $pharmec_judete_ct)) {
                 $list_id = 8;
+            } else {
+                $list_id = 17;
             }
         }
 
